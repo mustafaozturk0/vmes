@@ -1,6 +1,5 @@
 import { Delete, CloseSharp } from "@mui/icons-material";
 import { Box, Typography, Divider, Container, IconButton } from "@mui/material";
-import { Conditions } from "./Conditions/Conditions";
 import { useDeletePolygonMutation } from "../../../api/polygon/polygonApi";
 import { debounce } from "lodash";
 import { useSnackbar } from "notistack";
@@ -84,7 +83,6 @@ export const AreaSettings = () => {
       <Divider />
       <ChangeNameAccordion />
       <ChangeColorAccordion />
-      <Conditions />
     </Container>
   );
 };

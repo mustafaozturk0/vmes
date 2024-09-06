@@ -14,6 +14,10 @@ import { debounce } from "lodash";
 import { MockVideoPlayer } from "./MockVideoPlayer";
 import colors from "../../../utils/colors";
 import { PolygonDto } from "../../../api/swagger/swagger.api";
+import {
+  selectedTreeNodeSelector,
+  selectFactoryTree,
+} from "../../../slices/factory/factorySlice";
 
 interface VideoPlayerProps {
   width: number;
@@ -40,6 +44,8 @@ export const VideoPlayer = ({ width, showStage }: VideoPlayerProps) => {
   const ctxRef = useRef<{ ctx: CanvasRenderingContext2D | null }>({
     ctx: null,
   });
+  const factoryTree = useTypedSelector(selectFactoryTree);
+  const selectedTreeNode = useTypedSelector(selectedTreeNodeSelector);
 
   const [detects, setDetects] = React.useState<string[]>([]);
 
@@ -122,8 +128,13 @@ export const VideoPlayer = ({ width, showStage }: VideoPlayerProps) => {
     deletePolygon(polygonId).unwrap();
   }, 1000);
   const debouncedEditPolygon = debounce((polygon) => {
+    const lineId = factoryTree.find(
+      (i) => i.id === Number(selectedTreeNode?.node?.parent.split("+")[0])
+    )?.id;
+
     editPolygon({
       id: polygon.id,
+      lineId: Number(lineId),
       cameraId: Number(cameraId),
       name: polygon.name || "Area " + (polygons.length + 1),
       x: polygon.x,

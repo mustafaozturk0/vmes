@@ -23,7 +23,13 @@ import {
   selectedTreeNodeSelector,
   setSelectedTreeNodeReducer,
 } from "../../slices/factory/factorySlice";
-import { LineDto } from "../../api/swagger/swagger.api";
+import {
+  LineDto,
+  LineTreeDto,
+  PolygonDto,
+} from "../../api/swagger/swagger.api";
+import { setSelectedCameraId } from "../../slices/camera/cameraSlice";
+import { usePolygons } from "../../contexts/PolygonContext";
 
 interface TreeViewProps {
   defaultExpanded: string[];
@@ -33,16 +39,14 @@ interface TreeViewProps {
 export default function EngineeringTree({ onSelectCallback }: TreeViewProps) {
   const [t] = useTranslation("common");
   const dispatch = useAppDispatch();
-  const factoryTree: LineDto[] = useTypedSelector(selectFactoryTree);
-  const [tree, setTree] = React.useState<LineDto[]>([]);
+  const factoryTree: LineTreeDto[] = useTypedSelector(selectFactoryTree);
   const [treeData, setTreeData] = React.useState<any[]>([]);
   const [getFactoryTree] = useGetFactoryTreeMutation();
   const { enqueueSnackbar } = useSnackbar();
   const expandedIds = useTypedSelector(expandedNodeIdsSelector);
   const selectedTreeNode = useTypedSelector(selectedTreeNodeSelector);
   const ref = React.useRef(null);
-
-  console.log(factoryTree, selectedTreeNode);
+  const { setPolygons } = usePolygons();
 
   useEffect(() => {
     getFactoryTree()
@@ -55,62 +59,46 @@ export default function EngineeringTree({ onSelectCallback }: TreeViewProps) {
   }, []);
 
   useEffect(() => {
-    if (factoryTree) {
-      if (!selectedTreeNode && factoryTree.length > 0) {
-        dispatch(
-          setSelectedTreeNodeReducer({
-            node: factoryTree[0],
-            type: SelectedTreeNodeType.FactoryLine,
-          })
-        );
-        setTree(factoryTree);
-      }
-    }
-  }, [factoryTree]);
-
-  useEffect(() => {
     const treeData: React.SetStateAction<any[]> = [];
 
-    const treeBuf = JSON.parse(JSON.stringify(tree));
+    const treeBuf = JSON.parse(JSON.stringify(factoryTree));
     treeBuf?.forEach(
       (
         line: {
-          factoryLineId: string;
-          factoryLineName: any;
-          factoryStations: any[];
+          id: string;
+          name: any;
+          polygons: any[];
         },
         index: any
       ) => {
         treeData.push({
-          id: line?.factoryLineId + "+" + SelectedTreeNodeType.FactoryLine,
-          text: line?.factoryLineName,
+          id: line?.id + "+" + SelectedTreeNodeType.FactoryLine,
+          text: line?.name,
           droppable: false,
           parent: 0,
           extra: {
             type: SelectedTreeNodeType.FactoryLine,
+            canExpand: true,
           },
         });
 
-        const stations = line?.factoryStations;
-        stations?.forEach(
+        const polygons = line?.polygons || [];
+        polygons?.forEach(
           (
-            station: {
-              factoryStationId: string;
-              factoryStationName: any;
+            polygon: {
+              id: string;
+              name: any;
             },
             index: any
           ) => {
             treeData.push({
-              id:
-                station?.factoryStationId +
-                "+" +
-                SelectedTreeNodeType.FactoryStation,
-              text: station?.factoryStationName,
+              id: polygon?.id + "+" + SelectedTreeNodeType.FactoryStation,
+              text: polygon?.name,
               droppable: false,
-              parent:
-                line?.factoryLineId + "+" + SelectedTreeNodeType.FactoryLine,
+              parent: line?.id + "+" + SelectedTreeNodeType.FactoryLine,
               extra: {
                 type: SelectedTreeNodeType.FactoryStation,
+                canExpand: false,
               },
             });
           }
@@ -119,7 +107,7 @@ export default function EngineeringTree({ onSelectCallback }: TreeViewProps) {
     );
 
     setTreeData(treeData);
-  }, [tree]);
+  }, [factoryTree]);
 
   const getNodeIcon = (
     node: any,
@@ -149,19 +137,27 @@ export default function EngineeringTree({ onSelectCallback }: TreeViewProps) {
     const onClickTreeItem = (e: { stopPropagation: () => void }) => {
       e.stopPropagation();
       handleNodeSelect(node);
+      if (node.extra.type === SelectedTreeNodeType.FactoryStation) {
+        const parentLineId = node.parent.split("+")[0];
+        const line = factoryTree.find((i) => i.id === Number(parentLineId));
+        //@ts-ignore
+        const polygon = line?.polygons.find(
+          (i) => Number(i.id) === Number(node.id.split("+")[0])
+        );
+        const cameraId = polygon?.cameraId;
+        setPolygons([polygon] as PolygonDto[]);
+        dispatch(setSelectedCameraId(cameraId as unknown as string));
+      }
     };
+    console.log(selectedTreeNode);
 
-    const shouldDisplayExpandIcon = true;
-
-    const isSelected = false;
-
+    const isSelected = selectedTreeNode?.node?.id === node.id;
     function getLabelInfo() {
       if (!node.extra.type) return "";
       switch (node.extra.type) {
         case SelectedTreeNodeType.FactoryLine:
           return t("factory.line");
-        case SelectedTreeNodeType.FactoryStation:
-          return t("factory.station");
+
         case SelectedTreeNodeType.FactoryMachine:
           return t("factory.machine");
 
@@ -200,28 +196,28 @@ export default function EngineeringTree({ onSelectCallback }: TreeViewProps) {
             width: "fit-content",
           }}
         >
-          {isOpen && shouldDisplayExpandIcon && (
+          {isOpen && node.extra.canExpand && (
             <MinusSquare sx={{ cursor: "pointer" }} />
           )}
-          {!isOpen && shouldDisplayExpandIcon && (
+          {!isOpen && node.extra.canExpand && (
             <PlusSquare sx={{ cursor: "pointer" }} />
           )}
-          {!shouldDisplayExpandIcon && (
+          {!node.extra.canExpand && (
             <CloseSquare sx={{ cursor: "pointer", color: "gray" }} />
           )}
           <span
             style={{ listStyle: "none" }}
             onClick={onClickTreeItem}
             title={getLabelInfo()}
-          ></span>
+          >
+            {node.text}
+          </span>
         </span>
       </div>
     );
   };
 
   const handleNodeSelect = (node: any) => {
-    const id = node.id.split("+")[0];
-
     if (onSelectCallback)
       onSelectCallback({ node: node, type: node.extra.type });
 

@@ -20,6 +20,7 @@ import {
   SelectedTreeNodeType,
   selectFactoryTree,
 } from "../../slices/factory/factorySlice";
+import { AddStationDialog } from "./AddStationDialog";
 
 export const FactoryTreeButtonGroup = () => {
   const [t] = useTranslation("common");
@@ -154,14 +155,12 @@ export const FactoryTreeButtonGroup = () => {
         label={t("factory.addLine.lineName")}
         placeholder={t("engineeringTools.buttonGroup.linePlaceholder")}
       />
-      <AddFactoryStationDialog
-        addDialogOpen={addStationDialogOpen}
+      <AddStationDialog
+        open={addStationDialogOpen}
         onClose={() => setAddStationDialogOpen(false)}
-        onAddCallback={addNewStation}
-        title={t("factory.addStation")}
-        label={t("factory.stationName")}
-        placeholder={t("factory.stationPlaceholder")}
+        onAddCallback={getFactoryTree}
       />
+
       <Box sx={{ display: "flex", alignItems: "center" }}>
         <Grid container spacing={0}>
           <Grid item xs={9}>

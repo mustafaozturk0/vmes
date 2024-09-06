@@ -17,6 +17,11 @@ import { PolygonDto } from "../../../api/swagger/swagger.api";
 import { useSelector } from "react-redux";
 import { selectedCameraId } from "../../../slices/camera/cameraSlice";
 import { useTranslation } from "react-i18next";
+import {
+  selectedTreeNodeSelector,
+  selectFactoryTree,
+} from "../../../slices/factory/factorySlice";
+import { useGetFactoryTreeMutation } from "../../../api/factory/factoryApi";
 
 export const ChangeNameAccordion = () => {
   const [editPolygon, { isLoading: isEditing }] = useEditPolygonMutation();
@@ -28,12 +33,19 @@ export const ChangeNameAccordion = () => {
     polygons[selectedPolygonIndex as number].name as string
   );
   const cameraId = useSelector(selectedCameraId);
+  const selectedTreeNode = useSelector(selectedTreeNodeSelector);
+  const factoryTree = useSelector(selectFactoryTree);
+  const [getFactoryTree] = useGetFactoryTreeMutation();
 
   const savePolygonName = () => {
     const polygon = polygons[selectedPolygonIndex as number] as PolygonDto;
+    const lineId = factoryTree.find(
+      (i) => i.id === Number(selectedTreeNode?.node?.parent.split("+")[0])
+    )?.id;
 
     editPolygon({
       id: polygon.id,
+      lineId: Number(lineId),
       cameraId: Number(cameraId),
       name: newName,
       x: polygon.x,
@@ -47,6 +59,7 @@ export const ChangeNameAccordion = () => {
         enqueueSnackbar(t("train.areaDialog.polygonNameChanged"), {
           variant: "success",
         });
+        getFactoryTree().unwrap();
       })
       .catch(() => {
         enqueueSnackbar(t("train.areaDialog.polygonNameCouldntChanged"), {
