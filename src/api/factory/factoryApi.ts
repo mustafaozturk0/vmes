@@ -1,29 +1,25 @@
 import { api } from "../api";
 import { EndPoints } from "../EndPoints";
-import {
-  FactoryTreeDTO,
-  FactoryLineDTO,
-  FactoryStationDTO,
-} from "../../slices/factory/factorySlice"; // Import the FactoryLineDTO type
+import { CreateLineDto, LineDto, LineTreeDto } from "../swagger/swagger.api";
 
 export const factoryApi = api.injectEndpoints({
   endpoints: (builder) => ({
-    getFactoryTree: builder.mutation<FactoryTreeDTO[], void>({
+    getFactoryTree: builder.mutation<LineTreeDto[], void>({
       query: () => ({
-        url: `${EndPoints.factory}/`,
+        url: `${EndPoints.line}/tree`,
         method: "GET",
       }),
     }),
-    updateFactoryTree: builder.mutation<FactoryTreeDTO[], FactoryTreeDTO[]>({
+    updateFactoryTree: builder.mutation<LineDto, LineDto>({
       query: (body) => ({
-        url: `${EndPoints.factory}/`,
+        url: `${EndPoints.line}/`,
         method: "PUT",
         body,
       }),
     }),
-    addFactoryLine: builder.mutation<number, { factoryLineName: string }>({
+    addFactoryLine: builder.mutation<LineDto, CreateLineDto>({
       query: (body) => ({
-        url: `${EndPoints.factory}/line`,
+        url: `${EndPoints.line}/`,
         method: "POST",
         body,
       }),
@@ -33,7 +29,7 @@ export const factoryApi = api.injectEndpoints({
       { factoryStationName: string; factoryLineId: number }
     >({
       query: (body) => ({
-        url: `${EndPoints.factory}/station`,
+        url: `${EndPoints.line}/station`,
         method: "POST",
         body,
       }),

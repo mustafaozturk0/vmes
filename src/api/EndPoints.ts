@@ -9,4 +9,5 @@ export const EndPoints = {
   record: `${DevRootURL}/api/record`,
   machine: `${DevRootURL}/api/machine`,
   factory: `${DevRootURL}/api/factory`,
+  line: `${DevRootURL}/api/line`,
 };

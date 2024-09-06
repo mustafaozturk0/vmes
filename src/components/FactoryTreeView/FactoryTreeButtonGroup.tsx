@@ -2,22 +2,12 @@ import React, { useEffect, useState } from "react";
 import { AddStringDialog as AddFactoryLineDialog } from "../../components/Dialog/AddStringDialog";
 import { AddStringDialog as AddFactoryStationDialog } from "../../components/Dialog/AddStringDialog";
 import { Box, Grid, IconButton, Typography } from "@mui/material";
-import {
-  CenterFocusStrong,
-  GppGood,
-  PowerInput,
-  TableRestaurant,
-  Videocam,
-} from "@mui/icons-material";
-import AutoAwesomeMotionOutlinedIcon from "@mui/icons-material/AutoAwesomeMotionOutlined";
-import TaskOutlinedIcon from "@mui/icons-material/TaskOutlined";
-import TocIcon from "@mui/icons-material/Toc";
+import { PowerInput, TableRestaurant } from "@mui/icons-material";
+
 import { useTranslation } from "react-i18next";
 import { useSnackbar } from "notistack";
 import { useDispatch } from "react-redux";
-import uniq from "lodash/uniq";
 import { useTypedSelector } from "../../store/hooks";
-import { deepSearchByKey } from "../../utils/commonUtils";
 import { TooltipWrapper } from "../Tooltip/TooltipWrapper";
 import {
   useAddFactoryLineMutation,
@@ -29,8 +19,6 @@ import {
   selectedTreeNodeSelector,
   SelectedTreeNodeType,
   selectFactoryTree,
-  setExpandedNodeIdsReducer,
-  setSelectedTreeNodeReducer,
 } from "../../slices/factory/factorySlice";
 
 export const FactoryTreeButtonGroup = () => {
@@ -45,12 +33,9 @@ export const FactoryTreeButtonGroup = () => {
   const factoryTree = useTypedSelector(selectFactoryTree);
 
   const [addLineDialogOpen, setAddLineDialogOpen] = useState(false);
-  const [addStationGroupDialogOpen, setAddStationGroupDialogOpen] =
-    useState(false);
-  const [addStationDialogOpen, setAddStationDialogOpen] = useState(false);
-  const [addVideoDialogOpen, setAddVideoDialogOpen] = useState(false);
 
-  const [addStepDialogOpen, setAddStepDialogOpen] = useState(false);
+  const [addStationDialogOpen, setAddStationDialogOpen] = useState(false);
+
   const expandedIds = useTypedSelector(expandedNodeIdsSelector);
   const dispatch = useDispatch();
 
@@ -59,7 +44,7 @@ export const FactoryTreeButtonGroup = () => {
   }, []);
 
   const addNewLine = (lineName: string) => {
-    addFactoryLine({ factoryLineName: lineName })
+    addFactoryLine({ name: lineName })
       .unwrap()
       .then((id) => {
         getFactoryTree();

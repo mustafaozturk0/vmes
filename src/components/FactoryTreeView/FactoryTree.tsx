@@ -15,9 +15,7 @@ import "./factoryTree.css";
 import { useAppDispatch, useTypedSelector } from "../../store/hooks";
 import { useGetFactoryTreeMutation } from "../../api/factory/factoryApi";
 import {
-  FactoryTreeDTO,
   SelectedTreeNode,
-  FactoryLineDTO,
   setExpandedNodeIdsReducer,
   SelectedTreeNodeType,
   selectFactoryTree,
@@ -25,6 +23,7 @@ import {
   selectedTreeNodeSelector,
   setSelectedTreeNodeReducer,
 } from "../../slices/factory/factorySlice";
+import { LineDto } from "../../api/swagger/swagger.api";
 
 interface TreeViewProps {
   defaultExpanded: string[];
@@ -34,26 +33,37 @@ interface TreeViewProps {
 export default function EngineeringTree({ onSelectCallback }: TreeViewProps) {
   const [t] = useTranslation("common");
   const dispatch = useAppDispatch();
-  const factoryTree: FactoryTreeDTO[] = useTypedSelector(selectFactoryTree);
-  const [tree, setTree] = React.useState<FactoryLineDTO[]>([]);
+  const factoryTree: LineDto[] = useTypedSelector(selectFactoryTree);
+  const [tree, setTree] = React.useState<LineDto[]>([]);
   const [treeData, setTreeData] = React.useState<any[]>([]);
-  const [isSortable, setIsSortable] = React.useState<boolean>(false);
   const [getFactoryTree] = useGetFactoryTreeMutation();
   const { enqueueSnackbar } = useSnackbar();
   const expandedIds = useTypedSelector(expandedNodeIdsSelector);
   const selectedTreeNode = useTypedSelector(selectedTreeNodeSelector);
   const ref = React.useRef(null);
+
+  console.log(factoryTree, selectedTreeNode);
+
+  useEffect(() => {
+    getFactoryTree()
+      .unwrap()
+      .catch((error) => {
+        enqueueSnackbar(t("factory.tree.error"), {
+          variant: "error",
+        });
+      });
+  }, []);
+
   useEffect(() => {
     if (factoryTree) {
       if (!selectedTreeNode && factoryTree.length > 0) {
-        const firstNode = factoryTree[0].factoryLines;
         dispatch(
           setSelectedTreeNodeReducer({
-            node: firstNode[0],
+            node: factoryTree[0],
             type: SelectedTreeNodeType.FactoryLine,
           })
         );
-        setTree(firstNode);
+        setTree(factoryTree);
       }
     }
   }, [factoryTree]);
@@ -246,9 +256,6 @@ export default function EngineeringTree({ onSelectCallback }: TreeViewProps) {
               dispatch(setExpandedNodeIdsReducer(ids as number[]))
             }
             canDrag={(node) => {
-              if (!isSortable) {
-                return false;
-              }
               //@ts-ignore
               return node.extra.draggable;
             }}
@@ -268,7 +275,7 @@ export default function EngineeringTree({ onSelectCallback }: TreeViewProps) {
                   className="parent-hover"
                 >
                   <Grid container>
-                    <Grid xs={isSortable ? 10 : 12} item>
+                    <Grid xs={12} item>
                       {getNodeIcon(node, isOpen, onToggle)}
                     </Grid>
                   </Grid>

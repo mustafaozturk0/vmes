@@ -3,32 +3,10 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from "../../store/Store";
 import { factoryApi } from "../../api/factory/factoryApi";
-
-export interface FactoryTreeDTO {
-  factoryLineId: any;
-  factoryLineName: any;
-  factoryLines: FactoryLineDTO[];
-}
-
-export interface FactoryLineDTO {
-  factoryLineId: string;
-  factoryLineName: string;
-  factoryStations: FactoryStationDTO[];
-}
-
-export interface FactoryStationDTO {
-  factoryStationId: string;
-  factoryStationName: string;
-  factoryStations: FactoryMachinesDTO[];
-}
-
-export interface FactoryMachinesDTO {
-  factoryMachineId: string;
-  factoryMachineName: string;
-}
+import { LineDto } from "../../api/swagger/swagger.api";
 
 export interface FactoryState {
-  factoryTree: FactoryTreeDTO[];
+  factoryTree: LineDto[];
   selectedTreeNode: SelectedTreeNode | null;
 
   expandedNodeIds: number[];
@@ -41,7 +19,7 @@ export enum SelectedTreeNodeType {
 }
 
 export interface SelectedTreeNode {
-  node: FactoryMachinesDTO | FactoryStationDTO | FactoryLineDTO | null;
+  node: any | null;
   type: SelectedTreeNodeType;
 }
 
@@ -55,7 +33,7 @@ const factorySlice = createSlice({
   name: "factory",
   initialState,
   reducers: {
-    setFactoryTree: (state, action: PayloadAction<FactoryTreeDTO[]>) => {
+    setFactoryTree: (state, action: PayloadAction<LineDto[]>) => {
       state.factoryTree = action.payload;
     },
 
@@ -78,7 +56,7 @@ const factorySlice = createSlice({
         if (state.selectedTreeNode === null && payload && payload.length > 0) {
           state.selectedTreeNode = {
             type: SelectedTreeNodeType.FactoryLine,
-            node: payload[0]?.factoryLines[0] || null,
+            node: payload[0] || null,
           };
         }
       }
@@ -93,7 +71,7 @@ export const {
 } = factorySlice.actions;
 
 // Selectors
-export const selectFactoryTree = (state: RootState): FactoryTreeDTO[] => {
+export const selectFactoryTree = (state: RootState): LineDto[] => {
   return state.factory?.factoryTree || [];
 };
 
