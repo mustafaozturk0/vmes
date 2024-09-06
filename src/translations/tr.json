@@ -1,0 +1,307 @@
+{
+  "login": {
+    "error": "Kullanıcı adı veya şifre yanlış.",
+    "username": "Kullanıcı adı",
+    "password": "Şifre",
+    "signout": "Çıkış yap",
+    "signin": "Giriş yap",
+    "hidePassword": "Şifreyi gizle",
+    "showPassword": "Şifreyi göster",
+    "required": "Gerekli",
+    "login": "Giriş yap",
+    "sentinel": "Sentinel",
+    "vmes": "VMES",
+    "unauth": "Bu sayfaya erişim yetkiniz yok.",
+    "redirected": "Saniye içerisinde",
+    "loginSec": "Giriş sayfasına yönlendiriliyorsunuz."
+  },
+  "components": {
+    "cameraPicker": {
+      "selectCamera": "Kamera seç",
+      "selectCameraYouWantToUse": "Kullanmak istediğiniz kamerayı seçin"
+    }
+  },
+  "sidebar": {
+    "languages": {
+      "english": "English",
+      "korean": "한국인",
+      "polish": "Polski",
+      "turkish": "Türkçe",
+      "german": "Deutsch",
+      "romania": "Română",
+      "spain": "Español",
+      "italian": "Italiano",
+      "francais": "Français",
+      "ruski": "Русский",
+      "portugal": "Português",
+      "china": "中文"
+    },
+    "switcher": {
+      "darkMode": "Karanlık mod",
+      "lightMode": "Aydınlık mod",
+      "changeLanguage": "Dili değiştir",
+      "toggleMenu": "Menüyü değiştir"
+    },
+    "buttons": {
+      "home": "Genel bakış",
+      "train": "Eğitim",
+      "reports": "Raporlar",
+      "cameras": "Kameralar",
+      "visionMes": "Vision MES",
+      "machines": "Makineler",
+      "outputs": "Çıkışlar",
+      "sentinel": "Sentinel"
+    },
+    "app": {
+      "sentinel": "SENTINEL",
+      "visionME": "VISION M&E"
+    }
+  },
+  "searchForm": {
+    "search": "Ara",
+    "reset": "Sıfırla",
+    "selectStartDate": "Başlangıç tarihini seç",
+    "selectEndDate": "Bitiş tarihini seç",
+    "selectStartTime": "Başlangıç saatini seç",
+    "selectEndTime": "Bitiş saatini seç",
+    "dialogTitle": "Başlangıç tarih ve saatini seç"
+  },
+  "commonWords": {
+    "ok": "Tamam",
+    "cancel": "İptal",
+    "save": "Kaydet",
+    "delete": "Sil",
+    "edit": "Düzenle",
+    "add": "Ekle",
+    "close": "Kapat",
+    "search": "Ara",
+    "clear": "Temizle",
+    "loading": "Yükleniyor",
+    "noData": "Veri yok",
+    "yes": "Evet",
+    "no": "Hayır",
+    "confirm": "Onayla",
+    "error": "Hata",
+    "warning": "Uyarı",
+    "info": "Bilgi",
+    "success": "Başarı",
+    "select": "Seç",
+    "selectAll": "Hepsini seç",
+    "unselectAll": "Tüm seçimleri kaldır",
+    "selectGroup": "Grubu seç",
+    "unselectGroup": "Grup seçimini kaldır",
+    "selectInverse": "Tersini seç",
+    "selectAllPage": "Tüm sayfayı seç",
+    "unselectAllPage": "Tüm sayfa seçimlerini kaldır",
+    "selectGroupPage": "Sayfadaki grubu seç",
+    "unselectGroupPage": "Sayfadaki grup seçimini kaldır",
+    "selectInversePage": "Sayfadaki tersini seç",
+    "refresh": "Yenile",
+    "reset": "Sıfırla",
+    "copy": "Kopyala",
+    "cut": "Kes",
+    "paste": "Yapıştır",
+    "undo": "Geri al",
+    "redo": "Yinele",
+    "prev": "Önceki",
+    "next": "Sonraki",
+    "first": "İlk",
+    "last": "Son",
+    "page": "Sayfa",
+    "rowsPerPage": "Sayfa başına satır",
+    "total": "Toplam",
+    "required": "Gerekli",
+    "requiredField": "Bu alan gerekli",
+    "invalidEmail": "Geçersiz e-posta",
+    "invalidUrl": "Geçersiz URL",
+    "invalidNumber": "Geçersiz numara",
+    "invalidInteger": "Geçersiz tamsayı",
+    "invalidFloat": "Geçersiz ondalık sayı",
+    "invalidDate": "Geçersiz tarih",
+    "invalidTime": "Geçersiz zaman",
+    "invalidDateTime": "Geçersiz tarih ve zaman",
+    "invalidLength": "Geçersiz uzunluk",
+    "invalidMinLength": "Geçersiz minimum uzunluk",
+    "invalidMaxLength": "Geçersiz maksimum uzunluk",
+    "invalidMinValue": "Geçersiz minimum değer",
+    "invalidMaxValue": "Geçersiz maksimum değer",
+    "invalidRange": "Geçersiz aralık",
+    "invalidPattern": "Geçersiz desen",
+    "invalidFormat": "Geçersiz format",
+    "invalidUnique": "Geçersiz benzersiz",
+    "start": "Başla",
+    "end": "Bitiş",
+    "min": "Min",
+    "max": "Max",
+    "step": "Adım",
+    "range": "Aralık"
+  },
+  "overview": {
+    "page": {
+      "activeCameras": "Aktif Kameralar",
+      "totalCameras": "Toplam Kameralar",
+      "data": "Veri"
+    }
+  },
+  "train": {
+    "areaSettings": {
+      "classConnector": {
+        "conditionsAreAdded": "Koşullar eklendi.",
+        "conditionsCouldntBeAdded": "Koşullar eklenemedi.",
+        "subCondition": "Alt Koşul",
+        "with": "İle",
+        "without": "Olmadan",
+        "subClass": "Alt Sınıf",
+        "removeSubCondition": "Alt Koşulu Kaldır",
+        "addSubCondition": "Alt Koşul Ekle",
+        "operator": "Operatör",
+        "and": "Ve",
+        "removeCondition": "Koşulu Kaldır",
+        "class": "Sınıf",
+        "type": "Tür",
+        "count": "Say",
+        "addCondition": "Koşul Ekle",
+        "saveCondition": "Koşulu Kaydet"
+      },
+      "conditions": {
+        "ruleGroupAdded": "Kural grubu eklendi.",
+        "ruleGroupCouldntBeAdded": "Kural grubu eklenemedi.",
+        "manageConditions": "Koşulları Yönet",
+        "ruleGroup": "Kural Grubu",
+        "pleaseAddRuleGroup": "Lütfen bir kural grubu ekleyin",
+        "addRuleGroup": "Kural Grubu Ekle",
+        "addRuleGroup?": "Kural Grubu Ekle?",
+        "enterRuleGroupName": "Kural Grubu Adını Girin",
+        "ruleGroupName": "Kural Grubu Adı"
+      },
+      "outputs": {
+        "outputsAdded": "Çıkışlar eklendi.",
+        "errorAddingOutputs": "Çıkış eklenirken hata oluştu.",
+        "outputs": "Çıkışlar",
+        "selectOutput": "Çıkış Seç",
+        "outputTimes": "Çıkış Zamanları",
+        "outputCoil": "Çıkış Bobini",
+        "addOutput": "Çıkış Ekle",
+        "saveOutputs": "Çıkışları Kaydet"
+      },
+      "emails": {
+        "emailsAdded": "E-postalar eklendi.",
+        "errorAddingEmails": "E-posta eklenirken hata oluştu.",
+        "emails": "E-postalar",
+        "emailAddress": "E-posta Adresi",
+        "description": "Açıklama",
+        "addEmail": "E-posta Ekle",
+        "saveEmails": "E-postaları Kaydet"
+      }
+    },
+    "areaDialog": {
+      "polygonDeleted": "Poligon silindi",
+      "polygonCouldntBeDeleted": "Poligon silinemedi",
+      "wantToDeleteThisPolygon": "Bu poligonu silmek istediğinizden emin misiniz?",
+      "polygonNameChanged": "Poligon adı değiştirildi.",
+      "polygonNameCouldntChanged": "Poligon adı değiştirilemedi.",
+      "areaSettings": "Alan Ayarları",
+      "deleteArea": "Alanı Sil",
+      "changeName": "Adı Değiştir",
+      "name": "Ad",
+      "saveName": "Adı Kaydet",
+      "changeColor": "Rengi Değiştir"
+    },
+    "changeColor": {
+      "devices": "Cihazlar",
+      "addLink": "Bağlantı Ekle"
+    },
+    "videoPlayer": {
+      "loadingVideo": "Video Yükleniyor...",
+      "addArea": "Alan Ekle: ",
+      "add": "Ekle",
+      "clickToAdd": "Eklemek için tıklayın"
+    },
+    "page": {
+      "cameraStatus": "Kamera Durumu: ",
+      "connected": "Bağlandı",
+      "resetCamera": "Kamerayı Sıfırla",
+      "validIpAddress": "Geçerli IP Adresi: ",
+      "ipAddress": "IP Adresi",
+      "save": "Kaydet",
+      "errorAddingPolygon": "Poligon eklenirken hata oluştu",
+      "train": "Eğitim"
+    }
+  },
+  "cameras": {
+    "editCameraDrawer": {
+      "nameIsRequired": "Ad gereklidir",
+      "ipAddressIsRequired": "IP adresi gereklidir",
+      "invalidIpAddressFormat": "Geçersiz IP adresi formatı",
+      "pleaseFillRequiredFields": "Lütfen gerekli alanları doldurun",
+      "cameraEditSuccessfully": "Kamera başarıyla düzenlendi",
+      "cameraAddedSuccessfully": "Kamera başarıyla eklendi",
+      "errorEditingCamera": "Kamera düzenlenirken hata oluştu",
+      "errorAddingCamera": "Kamera eklenirken hata oluştu",
+      "editCamera": "Kamerayı Düzenle",
+      "addCamera": "Kamera Ekle",
+      "name": "Ad",
+      "ipAddress": "IP Adresi"
+    },
+    "cameraTable": {
+      "cameraIdNotFound": "Kamera Kimliği bulunamadı",
+      "wantToDeleteThisCamera": "Bu kamerayı silmek istediğinizden emin misiniz?",
+      "cameraDeletedSuccess": "Kamera başarıyla silindi",
+      "errorDeletingCamera": "Kamera silinirken hata oluştu",
+      "camera": "Kamera",
+      "ipAddress": "IP Adresi",
+      "actions": "İşlemler",
+      "editCamera": "Kamerayı Düzenle",
+      "deleteCamera": "Kamerayı Sil",
+      "refreshCameras": "Kameraları Yenile",
+      "addNewCamera": "Yeni Kamera Ekle"
+    }
+  },
+  "reports": {
+    "page": {
+      "video": "Video",
+      "date": "Tarih: ",
+      "selectDate": "Tarihi Seç",
+      "selectTime": "Saati Seç",
+      "area": "Alan",
+      "condition": "Koşul",
+      "start": "Başla",
+      "selectStartDateTime": "Başlangıç Tarih ve Saatini Seç",
+      "end": "Bitiş",
+      "selectEndDateTime": "Bitiş Tarih ve Saatini Seç",
+      "search": "Ara"
+    },
+    "resultModal": {
+      "markThisImageFalsePositive": "Bu resmi yanlış pozitif olarak işaretlemek istediğinizden emin misiniz?",
+      "falsePositive": "Yanlış Pozitif",
+      "noImageFound": "Resim bulunamadı"
+    }
+  },
+  "outputs": {
+    "outputDrawer": {
+      "nameIsRequired": "Ad gereklidir",
+      "ipAddressIsRequired": "IP adresi gereklidir",
+      "invalidIpAddressFormat": "Geçersiz IP adresi formatı",
+      "pleaseFillRequiredFields": "Lütfen gerekli alanları doldurun",
+      "outputEditSuccessfully": "Çıkış başarıyla düzenlendi",
+      "outputAddedSuccessfully": "Çıkış başarıyla eklendi",
+      "errorEditingOutput": "Çıkış düzenlenirken hata oluştu",
+      "errorAddinOoutput": "Çıkış eklenirken hata oluştu",
+      "editOutput": "Çıkışı Düzenle",
+      "addOutput": "Çıkış Ekle",
+      "name": "Ad",
+      "ipAddress": "IP Adresi"
+    },
+    "outputTable": {
+      "wantToDeleteThisOutput": "Bu çıkışı silmek istediğinizden emin misiniz?",
+      "outputName": "Çıkış Adı",
+      "ipAddress": "IP Adresi",
+      "lastChecked": "Son Kontrol",
+      "isActive": "Aktif mi?",
+      "edit": "Düzenle",
+      "actions": "İşlemler",
+      "refreshOutput": "Çıkışları Yenile",
+      "addOutput": "Çıkış Ekle"
+    }
+  }
+}

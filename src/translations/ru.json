@@ -1,0 +1,307 @@
+{
+  "login": {
+    "error": "Имя пользователя или пароль указаны неверно.",
+    "username": "Имя пользователя",
+    "password": "Пароль",
+    "signout": "Выйти",
+    "signin": "Войти",
+    "hidePassword": "Скрыть пароль",
+    "showPassword": "Показать пароль",
+    "required": "Обязательное поле",
+    "login": "Войти",
+    "sentinel": "Sentinel",
+    "vmes": "VMES",
+    "unauth": "У вас нет доступа к этой странице.",
+    "redirected": "Вы будете перенаправлены через",
+    "loginSec": "секунд для входа"
+  },
+  "components": {
+    "cameraPicker": {
+      "selectCamera": "Выберите камеру",
+      "selectCameraYouWantToUse": "Выберите камеру, которую хотите использовать"
+    }
+  },
+  "sidebar": {
+    "languages": {
+      "english": "English",
+      "korean": "한국인",
+      "polish": "Polski",
+      "turkish": "Türkçe",
+      "german": "Deutsch",
+      "romania": "Română",
+      "spain": "Español",
+      "italian": "Italiano",
+      "francais": "Français",
+      "ruski": "Русский",
+      "portugal": "Português",
+      "china": "中文"
+    },
+    "switcher": {
+      "darkMode": "Темный режим",
+      "lightMode": "Светлый режим",
+      "changeLanguage": "Сменить язык",
+      "toggleMenu": "Переключить меню"
+    },
+    "buttons": {
+      "home": "Обзор",
+      "train": "Тренировка",
+      "reports": "Отчеты",
+      "cameras": "Камеры",
+      "visionMes": "Vision MES",
+      "machines": "Машины",
+      "outputs": "Выходы",
+      "sentinel": "Sentinel"
+    },
+    "app": {
+      "sentinel": "SENTINEL",
+      "visionME": "VISION M&E"
+    }
+  },
+  "searchForm": {
+    "search": "Поиск",
+    "reset": "Сброс",
+    "selectStartDate": "Выберите начальную дату",
+    "selectEndDate": "Выберите конечную дату",
+    "selectStartTime": "Выберите время начала",
+    "selectEndTime": "Выберите время окончания",
+    "dialogTitle": "Выберите дату и время начала"
+  },
+  "commonWords": {
+    "ok": "ОК",
+    "cancel": "Отмена",
+    "save": "Сохранить",
+    "delete": "Удалить",
+    "edit": "Редактировать",
+    "add": "Добавить",
+    "close": "Закрыть",
+    "search": "Поиск",
+    "clear": "Очистить",
+    "loading": "Загрузка",
+    "noData": "Нет данных",
+    "yes": "Да",
+    "no": "Нет",
+    "confirm": "Подтвердить",
+    "error": "Ошибка",
+    "warning": "Предупреждение",
+    "info": "Информация",
+    "success": "Успех",
+    "select": "Выбрать",
+    "selectAll": "Выбрать все",
+    "unselectAll": "Отменить выбор всех",
+    "selectGroup": "Выбрать группу",
+    "unselectGroup": "Отменить выбор группы",
+    "selectInverse": "Инвертировать выбор",
+    "selectAllPage": "Выбрать все на странице",
+    "unselectAllPage": "Отменить выбор всех на странице",
+    "selectGroupPage": "Выбрать группу на странице",
+    "unselectGroupPage": "Отменить выбор группы на странице",
+    "selectInversePage": "Инвертировать выбор на странице",
+    "refresh": "Обновить",
+    "reset": "Сброс",
+    "copy": "Копировать",
+    "cut": "Вырезать",
+    "paste": "Вставить",
+    "undo": "Отменить",
+    "redo": "Повторить",
+    "prev": "Предыдущий",
+    "next": "Следующий",
+    "first": "Первый",
+    "last": "Последний",
+    "page": "Страница",
+    "rowsPerPage": "Строк на страницу",
+    "total": "Всего",
+    "required": "Обязательное поле",
+    "requiredField": "Это поле обязательно для заполнения",
+    "invalidEmail": "Недействительный email",
+    "invalidUrl": "Недействительный URL",
+    "invalidNumber": "Недействительный номер",
+    "invalidInteger": "Недействительное целое число",
+    "invalidFloat": "Недействительный float",
+    "invalidDate": "Недействительная дата",
+    "invalidTime": "Недействительное время",
+    "invalidDateTime": "Недействительная дата и время",
+    "invalidLength": "Недействительная длина",
+    "invalidMinLength": "Недействительная минимальная длина",
+    "invalidMaxLength": "Недействительная максимальная длина",
+    "invalidMinValue": "Недействительное минимальное значение",
+    "invalidMaxValue": "Недействительное максимальное значение",
+    "invalidRange": "Недействительный диапазон",
+    "invalidPattern": "Недействительный шаблон",
+    "invalidFormat": "Недействительный формат",
+    "invalidUnique": "Недействительное уникальное значение",
+    "start": "Начало",
+    "end": "Конец",
+    "min": "Мин",
+    "max": "Макс",
+    "step": "Шаг",
+    "range": "Диапазон"
+  },
+  "overview": {
+    "page": {
+      "activeCameras": "Активные камеры",
+      "totalCameras": "Всего камер",
+      "data": "Данные"
+    }
+  },
+  "train": {
+    "areaSettings": {
+      "classConnector": {
+        "conditionsAreAdded": "Условия добавлены.",
+        "conditionsCouldntBeAdded": "Не удалось добавить условия.",
+        "subCondition": "Подусловие",
+        "with": "С",
+        "without": "Без",
+        "subClass": "Подкласс",
+        "removeSubCondition": "Удалить подусловие",
+        "addSubCondition": "Добавить подусловие",
+        "operator": "Оператор",
+        "and": "И",
+        "removeCondition": "Удалить условие",
+        "class": "Класс",
+        "type": "Тип",
+        "count": "Количество",
+        "addCondition": "Добавить условие",
+        "saveCondition": "Сохранить условие"
+      },
+      "conditions": {
+        "ruleGroupAdded": "Группа правил добавлена.",
+        "ruleGroupCouldntBeAdded": "Не удалось добавить группу правил.",
+        "manageConditions": "Управление условиями",
+        "ruleGroup": "Группа правил",
+        "pleaseAddRuleGroup": "Пожалуйста, добавьте группу правил",
+        "addRuleGroup": "Добавить группу правил",
+        "addRuleGroup?": "Добавить группу правил?",
+        "enterRuleGroupName": "Введите имя группы правил",
+        "ruleGroupName": "Имя группы правил"
+      },
+      "outputs": {
+        "outputsAdded": "Выходы добавлены.",
+        "errorAddingOutputs": "Ошибка при добавлении выходов.",
+        "outputs": "Выходы",
+        "selectOutput": "Выбрать выход",
+        "outputTimes": "Время(я) выхода",
+        "outputCoil": "Выходная катушка",
+        "addOutput": "Добавить выход",
+        "saveOutputs": "Сохранить выходы"
+      },
+      "emails": {
+        "emailsAdded": "E-mail'ы добавлены.",
+        "errorAddingEmails": "Ошибка при добавлении e-mail'ов.",
+        "emails": "E-mail'ы",
+        "emailAddress": "E-mail адрес",
+        "description": "Описание",
+        "addEmail": "Добавить e-mail",
+        "saveEmails": "Сохранить e-mail'ы"
+      }
+    },
+    "areaDialog": {
+      "polygonDeleted": "Многоугольник удален",
+      "polygonCouldntBeDeleted": "Не удалось удалить многоугольник",
+      "wantToDeleteThisPolygon": "Вы уверены, что хотите удалить этот многоугольник?",
+      "polygonNameChanged": "Имя многоугольника изменено.",
+      "polygonNameCouldntChanged": "Не удалось изменить имя многоугольника.",
+      "areaSettings": "Настройки области",
+      "deleteArea": "Удалить область",
+      "changeName": "Изменить имя",
+      "name": "Имя",
+      "saveName": "Сохранить имя",
+      "changeColor": "Изменить цвет"
+    },
+    "changeColor": {
+      "devices": "Устройства",
+      "addLink": "Добавить ссылку"
+    },
+    "videoPlayer": {
+      "loadingVideo": "Загрузка видео...",
+      "addArea": "Добавить область: ",
+      "add": "Добавить",
+      "clickToAdd": "Щелкните для добавления"
+    },
+    "page": {
+      "cameraStatus": "Статус камеры: ",
+      "connected": "Подключен",
+      "resetCamera": "Сбросить камеру",
+      "validIpAddress": "Действительный IP-адрес: ",
+      "ipAddress": "IP-адрес",
+      "save": "Сохранить",
+      "errorAddingPolygon": "Ошибка при добавлении многоугольника",
+      "train": "Тренировка"
+    }
+  },
+  "cameras": {
+    "editCameraDrawer": {
+      "nameIsRequired": "Имя обязательно",
+      "ipAddressIsRequired": "IP-адрес обязателен",
+      "invalidIpAddressFormat": "Неверный формат IP-адреса",
+      "pleaseFillRequiredFields": "Пожалуйста, заполните обязательные поля",
+      "cameraEditSuccessfully": "Камера успешно отредактирована",
+      "cameraAddedSuccessfully": "Камера успешно добавлена",
+      "errorEditingCamera": "Ошибка при редактировании камеры",
+      "errorAddingCamera": "Ошибка при добавлении камеры",
+      "editCamera": "Редактировать камеру",
+      "addCamera": "Добавить камеру",
+      "name": "Имя",
+      "ipAddress": "IP-адрес"
+    },
+    "cameraTable": {
+      "cameraIdNotFound": "ID камеры не найден",
+      "wantToDeleteThisCamera": "Вы уверены, что хотите удалить эту камеру?",
+      "cameraDeletedSuccess": "Камера успешно удалена",
+      "errorDeletingCamera": "Ошибка при удалении камеры",
+      "camera": "Камера",
+      "ipAddress": "IP-адрес",
+      "actions": "Действия",
+      "editCamera": "Редактировать камеру",
+      "deleteCamera": "Удалить камеру",
+      "refreshCameras": "Обновить камеры",
+      "addNewCamera": "Добавить новую камеру"
+    }
+  },
+  "reports": {
+    "page": {
+      "video": "Видео",
+      "date": "Дата: ",
+      "selectDate": "Выберите дату",
+      "selectTime": "Выберите время",
+      "area": "Область",
+      "condition": "Условие",
+      "start": "Начало",
+      "selectStartDateTime": "Выберите дату и время начала",
+      "end": "Конец",
+      "selectEndDateTime": "Выберите дату и время окончания",
+      "search": "Поиск"
+    },
+    "resultModal": {
+      "markThisImageFalsePositive": "Вы уверены, что хотите отметить это изображение как ложное срабатывание?",
+      "falsePositive": "Ложное срабатывание",
+      "noImageFound": "Изображение не найдено"
+    }
+  },
+  "outputs": {
+    "outputDrawer": {
+      "nameIsRequired": "Имя обязательно",
+      "ipAddressIsRequired": "IP-адрес обязателен",
+      "invalidIpAddressFormat": "Неверный формат IP-адреса",
+      "pleaseFillRequiredFields": "Пожалуйста, заполните обязательные поля",
+      "outputEditSuccessfully": "Выход успешно отредактирован",
+      "outputAddedSuccessfully": "Выход успешно добавлен",
+      "errorEditingOutput": "Ошибка при редактировании выхода",
+      "errorAddinOoutput": "Ошибка при добавлении выхода",
+      "editOutput": "Редактировать выход",
+      "addOutput": "Добавить выход",
+      "name": "Имя",
+      "ipAddress": "IP-адрес"
+    },
+    "outputTable": {
+      "wantToDeleteThisOutput": "Вы уверены, что хотите удалить этот выход?",
+      "outputName": "Имя выхода",
+      "ipAddress": "IP-адрес",
+      "lastChecked": "Последняя проверка",
+      "isActive": "Активно?",
+      "edit": "Редактировать",
+      "actions": "Действия",
+      "refreshOutput": "Обновить выходы",
+      "addOutput": "Добавить выход"
+    }
+  }
+}

@@ -1,0 +1,307 @@
+{
+  "login": {
+    "error": "사용자 이름 또는 비밀번호가 올바르지 않습니다.",
+    "username": "사용자 이름",
+    "password": "비밀번호",
+    "signout": "로그아웃",
+    "signin": "로그인",
+    "hidePassword": "비밀번호 숨기기",
+    "showPassword": "비밀번호 표시",
+    "required": "필수",
+    "login": "로그인",
+    "sentinel": "Sentinel",
+    "vmes": "VMES",
+    "unauth": "이 페이지에 접근할 권한이 없습니다.",
+    "redirected": "다음으로 이동 중입니다",
+    "loginSec": "초 후에 로그인"
+  },
+  "components": {
+    "cameraPicker": {
+      "selectCamera": "카메라 선택",
+      "selectCameraYouWantToUse": "사용할 카메라를 선택하세요"
+    }
+  },
+  "sidebar": {
+    "languages": {
+      "english": "English",
+      "korean": "한국인",
+      "polish": "Polski",
+      "turkish": "Türkçe",
+      "german": "Deutsch",
+      "romania": "Română",
+      "spain": "Español",
+      "italian": "Italiano",
+      "francais": "Français",
+      "ruski": "Русский",
+      "portugal": "Português",
+      "china": "中文"
+    },
+    "switcher": {
+      "darkMode": "다크 모드",
+      "lightMode": "라이트 모드",
+      "changeLanguage": "언어 변경",
+      "toggleMenu": "메뉴 토글"
+    },
+    "buttons": {
+      "home": "개요",
+      "train": "훈련",
+      "reports": "보고서",
+      "cameras": "카메라",
+      "visionMes": "비전 MES",
+      "machines": "기계",
+      "outputs": "출력",
+      "sentinel": "Sentinel"
+    },
+    "app": {
+      "sentinel": "SENTINEL",
+      "visionME": "비전 M&E"
+    }
+  },
+  "searchForm": {
+    "search": "검색",
+    "reset": "재설정",
+    "selectStartDate": "시작 날짜 선택",
+    "selectEndDate": "종료 날짜 선택",
+    "selectStartTime": "시작 시간 선택",
+    "selectEndTime": "종료 시간 선택",
+    "dialogTitle": "시작 날짜 및 시간 선택"
+  },
+  "commonWords": {
+    "ok": "확인",
+    "cancel": "취소",
+    "save": "저장",
+    "delete": "삭제",
+    "edit": "편집",
+    "add": "추가",
+    "close": "닫기",
+    "search": "검색",
+    "clear": "지우기",
+    "loading": "로딩 중",
+    "noData": "데이터 없음",
+    "yes": "예",
+    "no": "아니오",
+    "confirm": "확인",
+    "error": "오류",
+    "warning": "경고",
+    "info": "정보",
+    "success": "성공",
+    "select": "선택",
+    "selectAll": "전체 선택",
+    "unselectAll": "전체 선택 취소",
+    "selectGroup": "그룹 선택",
+    "unselectGroup": "그룹 선택 취소",
+    "selectInverse": "반대로 선택",
+    "selectAllPage": "페이지 전체 선택",
+    "unselectAllPage": "페이지 전체 선택 취소",
+    "selectGroupPage": "페이지 그룹 선택",
+    "unselectGroupPage": "페이지 그룹 선택 취소",
+    "selectInversePage": "페이지 반대로 선택",
+    "refresh": "새로고침",
+    "reset": "재설정",
+    "copy": "복사",
+    "cut": "잘라내기",
+    "paste": "붙여넣기",
+    "undo": "실행 취소",
+    "redo": "다시 실행",
+    "prev": "이전",
+    "next": "다음",
+    "first": "처음",
+    "last": "마지막",
+    "page": "페이지",
+    "rowsPerPage": "페이지 당 행 수",
+    "total": "총계",
+    "required": "필수",
+    "requiredField": "이 필드는 필수 항목입니다",
+    "invalidEmail": "잘못된 이메일",
+    "invalidUrl": "잘못된 URL",
+    "invalidNumber": "잘못된 번호",
+    "invalidInteger": "잘못된 정수",
+    "invalidFloat": "잘못된 부동 소수점",
+    "invalidDate": "잘못된 날짜",
+    "invalidTime": "잘못된 시간",
+    "invalidDateTime": "잘못된 날짜 시간",
+    "invalidLength": "잘못된 길이",
+    "invalidMinLength": "최소 길이 부족",
+    "invalidMaxLength": "최대 길이 초과",
+    "invalidMinValue": "최소 값 부족",
+    "invalidMaxValue": "최대 값 초과",
+    "invalidRange": "잘못된 범위",
+    "invalidPattern": "잘못된 패턴",
+    "invalidFormat": "잘못된 형식",
+    "invalidUnique": "유효하지 않은 고유값",
+    "start": "시작",
+    "end": "종료",
+    "min": "최소",
+    "max": "최대",
+    "step": "단계",
+    "range": "범위"
+  },
+  "overview": {
+    "page": {
+      "activeCameras": "활성 카메라",
+      "totalCameras": "총 카메라",
+      "data": "데이터"
+    }
+  },
+  "train": {
+    "areaSettings": {
+      "classConnector": {
+        "conditionsAreAdded": "조건이 추가되었습니다.",
+        "conditionsCouldntBeAdded": "조건을 추가할 수 없습니다.",
+        "subCondition": "하위 조건",
+        "with": "포함",
+        "without": "제외",
+        "subClass": "하위 클래스",
+        "removeSubCondition": "하위 조건 제거",
+        "addSubCondition": "하위 조건 추가",
+        "operator": "연산자",
+        "and": "그리고",
+        "removeCondition": "조건 제거",
+        "class": "클래스",
+        "type": "유형",
+        "count": "카운트",
+        "addCondition": "조건 추가",
+        "saveCondition": "조건 저장"
+      },
+      "conditions": {
+        "ruleGroupAdded": "규칙 그룹이 추가되었습니다.",
+        "ruleGroupCouldntBeAdded": "규칙 그룹을 추가할 수 없습니다.",
+        "manageConditions": "조건 관리",
+        "ruleGroup": "규칙 그룹",
+        "pleaseAddRuleGroup": "규칙 그룹을 추가하세요",
+        "addRuleGroup": "규칙 그룹 추가",
+        "addRuleGroup?": "규칙 그룹을 추가하시겠습니까?",
+        "enterRuleGroupName": "규칙 그룹 이름 입력",
+        "ruleGroupName": "규칙 그룹 이름"
+      },
+      "outputs": {
+        "outputsAdded": "출력이 추가되었습니다.",
+        "errorAddingOutputs": "출력을 추가하는 동안 오류가 발생했습니다.",
+        "outputs": "출력",
+        "selectOutput": "출력 선택",
+        "outputTimes": "출력 시간",
+        "outputCoil": "출력 코일",
+        "addOutput": "출력 추가",
+        "saveOutputs": "출력 저장"
+      },
+      "emails": {
+        "emailsAdded": "이메일이 추가되었습니다.",
+        "errorAddingEmails": "이메일을 추가하는 동안 오류가 발생했습니다.",
+        "emails": "이메일",
+        "emailAddress": "이메일 주소",
+        "description": "설명",
+        "addEmail": "이메일 추가",
+        "saveEmails": "이메일 저장"
+      }
+    },
+    "areaDialog": {
+      "polygonDeleted": "다각형이 삭제되었습니다",
+      "polygonCouldntBeDeleted": "다각형을 삭제할 수 없습니다",
+      "wantToDeleteThisPolygon": "이 다각형을 삭제하시겠습니까?",
+      "polygonNameChanged": "다각형 이름이 변경되었습니다.",
+      "polygonNameCouldntChanged": "다각형 이름을 변경할 수 없습니다.",
+      "areaSettings": "영역 설정",
+      "deleteArea": "영역 삭제",
+      "changeName": "이름 변경",
+      "name": "이름",
+      "saveName": "이름 저장",
+      "changeColor": "색상 변경"
+    },
+    "changeColor": {
+      "devices": "장치",
+      "addLink": "링크 추가"
+    },
+    "videoPlayer": {
+      "loadingVideo": "비디오 로딩 중...",
+      "addArea": "영역 추가: ",
+      "add": "추가",
+      "clickToAdd": "추가하려면 클릭"
+    },
+    "page": {
+      "cameraStatus": "카메라 상태: ",
+      "connected": "연결됨",
+      "resetCamera": "카메라 재설정",
+      "validIpAddress": "유효한 IP 주소: ",
+      "ipAddress": "IP 주소",
+      "save": "저장",
+      "errorAddingPolygon": "다각형을 추가하는 동안 오류가 발생했습니다",
+      "train": "훈련"
+    }
+  },
+  "cameras": {
+    "editCameraDrawer": {
+      "nameIsRequired": "이름이 필수 항목입니다",
+      "ipAddressIsRequired": "IP 주소가 필수 항목입니다",
+      "invalidIpAddressFormat": "잘못된 IP 주소 형식",
+      "pleaseFillRequiredFields": "필수 항목을 작성하세요",
+      "cameraEditSuccessfully": "카메라가 성공적으로 편집되었습니다",
+      "cameraAddedSuccessfully": "카메라가 성공적으로 추가되었습니다",
+      "errorEditingCamera": "카메라 편집 중 오류 발생",
+      "errorAddingCamera": "카메라 추가 중 오류 발생",
+      "editCamera": "카메라 편집",
+      "addCamera": "카메라 추가",
+      "name": "이름",
+      "ipAddress": "IP 주소"
+    },
+    "cameraTable": {
+      "cameraIdNotFound": "카메라 ID를 찾을 수 없습니다",
+      "wantToDeleteThisCamera": "이 카메라를 삭제하시겠습니까?",
+      "cameraDeletedSuccess": "카메라가 성공적으로 삭제되었습니다",
+      "errorDeletingCamera": "카메라 삭제 중 오류 발생",
+      "camera": "카메라",
+      "ipAddress": "IP 주소",
+      "actions": "작업",
+      "editCamera": "카메라 편집",
+      "deleteCamera": "카메라 삭제",
+      "refreshCameras": "카메라 새로 고침",
+      "addNewCamera": "새 카메라 추가"
+    }
+  },
+  "reports": {
+    "page": {
+      "video": "비디오",
+      "date": "날짜: ",
+      "selectDate": "날짜 선택",
+      "selectTime": "시간 선택",
+      "area": "영역",
+      "condition": "조건",
+      "start": "시작",
+      "selectStartDateTime": "시작 날짜 및 시간 선택",
+      "end": "종료",
+      "selectEndDateTime": "종료 날짜 및 시간 선택",
+      "search": "검색"
+    },
+    "resultModal": {
+      "markThisImageFalsePositive": "이 이미지를 오탐으로 표시하시겠습니까?",
+      "falsePositive": "오탐",
+      "noImageFound": "이미지를 찾을 수 없습니다"
+    }
+  },
+  "outputs": {
+    "outputDrawer": {
+      "nameIsRequired": "이름이 필수 항목입니다",
+      "ipAddressIsRequired": "IP 주소가 필수 항목입니다",
+      "invalidIpAddressFormat": "잘못된 IP 주소 형식",
+      "pleaseFillRequiredFields": "필수 항목을 작성하세요",
+      "outputEditSuccessfully": "출력이 성공적으로 편집되었습니다",
+      "outputAddedSuccessfully": "출력이 성공적으로 추가되었습니다",
+      "errorEditingOutput": "출력 편집 중 오류 발생",
+      "errorAddinOoutput": "출력 추가 중 오류 발생",
+      "editOutput": "출력 편집",
+      "addOutput": "출력 추가",
+      "name": "이름",
+      "ipAddress": "IP 주소"
+    },
+    "outputTable": {
+      "wantToDeleteThisOutput": "이 출력을 삭제하시겠습니까?",
+      "outputName": "출력 이름",
+      "ipAddress": "IP 주소",
+      "lastChecked": "마지막 확인",
+      "isActive": "활성화됨?",
+      "edit": "편집",
+      "actions": "작업",
+      "refreshOutput": "출력 새로 고침",
+      "addOutput": "출력 추가"
+    }
+  }
+}

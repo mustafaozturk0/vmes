@@ -1,0 +1,307 @@
+{
+  "login": {
+    "error": "Nume de utilizator sau parolă incorecte.",
+    "username": "Nume de utilizator",
+    "password": "Parolă",
+    "signout": "Deconectare",
+    "signin": "Autentificare",
+    "hidePassword": "Ascundeți parola",
+    "showPassword": "Afișați parola",
+    "required": "Necesar",
+    "login": "Autentificare",
+    "sentinel": "Santinel",
+    "vmes": "VMES",
+    "unauth": "Nu aveți autorizație pentru a accesa această pagină",
+    "redirected": "Sunțiți redirecționat în",
+    "loginSec": "secunde pentru autentificarea dumneavoastră"
+  },
+  "components": {
+    "cameraPicker": {
+      "selectCamera": "Selectați camera",
+      "selectCameraYouWantToUse": "Selectați camera pe care doriți să o utilizați"
+    }
+  },
+  "sidebar": {
+    "languages": {
+      "english": "English",
+      "korean": "한국인",
+      "polish": "Polski",
+      "turkish": "Türkçe",
+      "german": "Deutsch",
+      "romania": "Română",
+      "spain": "Español",
+      "italian": "Italiano",
+      "francais": "Français",
+      "ruski": "Русский",
+      "portugal": "Português",
+      "china": "中文"
+    },
+    "switcher": {
+      "darkMode": "Mod întunecat",
+      "lightMode": "Mod luminos",
+      "changeLanguage": "Schimbă limba",
+      "toggleMenu": "Comută meniul"
+    },
+    "buttons": {
+      "home": "Prezentare generală",
+      "train": "Antrenare",
+      "reports": "Rapoarte",
+      "cameras": "Camere",
+      "visionMes": "Vision MES",
+      "machines": "Mașini",
+      "outputs": "Ieşiri",
+      "sentinel": "Santinel"
+    },
+    "app": {
+      "sentinel": "SANTINEL",
+      "visionME": "VISION M&E"
+    }
+  },
+  "searchForm": {
+    "search": "Căutare",
+    "reset": "Resetare",
+    "selectStartDate": "Selectați data de începere",
+    "selectEndDate": "Selectați data de sfârșit",
+    "selectStartTime": "Selectați ora de început",
+    "selectEndTime": "Selectați ora de sfârșit",
+    "dialogTitle": "Selectați data și ora de început"
+  },
+  "commonWords": {
+    "ok": "OK",
+    "cancel": "Anulare",
+    "save": "Salvați",
+    "delete": "Șterge",
+    "edit": "Editare",
+    "add": "Adăugați",
+    "close": "Închide",
+    "search": "Căutare",
+    "clear": "Ștergeți",
+    "loading": "Se încarcă",
+    "noData": "Fără date",
+    "yes": "Da",
+    "no": "Nu",
+    "confirm": "Confirmare",
+    "error": "Eroare",
+    "warning": "Avertisment",
+    "info": "Informație",
+    "success": "Succes",
+    "select": "Selectați",
+    "selectAll": "Selectați tot",
+    "unselectAll": "Deselectați tot",
+    "selectGroup": "Selectați grupul",
+    "unselectGroup": "Deselectați grupul",
+    "selectInverse": "Selectare inversă",
+    "selectAllPage": "Selectați toată pagina",
+    "unselectAllPage": "Deselectați toată pagina",
+    "selectGroupPage": "Selectați grupul pe pagina",
+    "unselectGroupPage": "Deselectați grupul pe pagina",
+    "selectInversePage": "Selectare inversă pe pagina",
+    "refresh": "Reîmprospătare",
+    "reset": "Resetare",
+    "copy": "Copiați",
+    "cut": "Tăiați",
+    "paste": "Lipiți",
+    "undo": "Anulați",
+    "redo": "Refă",
+    "prev": "Anterior",
+    "next": "Următor",
+    "first": "Primul",
+    "last": "Ultimul",
+    "page": "Pagină",
+    "rowsPerPage": "Rânduri pe pagină",
+    "total": "Total",
+    "required": "Necesar",
+    "requiredField": "Acest câmp este necesar",
+    "invalidEmail": "E-mail invalid",
+    "invalidUrl": "URL invalid",
+    "invalidNumber": "Număr invalid",
+    "invalidInteger": "Număr întreg invalid",
+    "invalidFloat": "Număr zecimal invalid",
+    "invalidDate": "Dată invalidă",
+    "invalidTime": "Ora invalidă",
+    "invalidDateTime": "Dată și oră invalide",
+    "invalidLength": "Lungime invalidă",
+    "invalidMinLength": "Lungime minimă invalidă",
+    "invalidMaxLength": "Lungime maximă invalidă",
+    "invalidMinValue": "Valoare minimă invalidă",
+    "invalidMaxValue": "Valoare maximă invalidă",
+    "invalidRange": "Interval invalid",
+    "invalidPattern": "Model invalid",
+    "invalidFormat": "Format invalid",
+    "invalidUnique": "Unic invalid",
+    "start": "Start",
+    "end": "Sfârșit",
+    "min": "Min",
+    "max": "Max",
+    "step": "Pas",
+    "range": "Interval"
+  },
+  "overview": {
+    "page": {
+      "activeCameras": "Camere active",
+      "totalCameras": "Camere totale",
+      "data": "Date"
+    }
+  },
+  "train": {
+    "areaSettings": {
+      "classConnector": {
+        "conditionsAreAdded": "Condițiile sunt adăugate.",
+        "conditionsCouldntBeAdded": "Condițiile nu au putut fi adăugate.",
+        "subCondition": "Sub-condiție",
+        "with": "Cu",
+        "without": "Fără",
+        "subClass": "Subclasă",
+        "removeSubCondition": "Eliminați subcondiția",
+        "addSubCondition": "Adăugați subcondiție",
+        "operator": "Operator",
+        "and": "Și",
+        "removeCondition": "Eliminați condiția",
+        "class": "Clasă",
+        "type": "Tip",
+        "count": "Numără",
+        "addCondition": "Adăugați condiție",
+        "saveCondition": "Salvați condiția"
+      },
+      "conditions": {
+        "ruleGroupAdded": "Grupul de reguli a fost adăugat.",
+        "ruleGroupCouldntBeAdded": "Grupul de reguli nu a putut fi adăugat.",
+        "manageConditions": "Gestionați condițiile",
+        "ruleGroup": "Grup de reguli",
+        "pleaseAddRuleGroup": "Vă rugăm să adăugați un grup de reguli",
+        "addRuleGroup": "Adăugați grupul de reguli",
+        "addRuleGroup?": "Adăugați grupul de reguli?",
+        "enterRuleGroupName": "Introduceți numele grupului de reguli",
+        "ruleGroupName": "Nume grup de reguli"
+      },
+      "outputs": {
+        "outputsAdded": "Ieșirile au fost adăugate.",
+        "errorAddingOutputs": "Eroare la adăugarea ieșirilor.",
+        "outputs": "Ieşiri",
+        "selectOutput": "Selectați ieșirea",
+        "outputTimes": "Timpurile de ieșire",
+        "outputCoil": "Bobina de ieșire",
+        "addOutput": "Adăugați ieșirea",
+        "saveOutputs": "Salvați ieșirile"
+      },
+      "emails": {
+        "emailsAdded": "E-mailurile au fost adăugate.",
+        "errorAddingEmails": "Eroare la adăugarea e-mailurilor.",
+        "emails": "E-mailuri",
+        "emailAddress": "Adresă de email",
+        "description": "Descriere",
+        "addEmail": "Adăugați e-mail",
+        "saveEmails": "Salvați e-mailurile"
+      }
+    },
+    "areaDialog": {
+      "polygonDeleted": "Poligon șters",
+      "polygonCouldntBeDeleted": "Poligonul nu a putut fi șters",
+      "wantToDeleteThisPolygon": "Sigur doriți să ștergeți acest poligon?",
+      "polygonNameChanged": "Numele poligonului a fost schimbat.",
+      "polygonNameCouldntChanged": "Numele poligonului nu a putut fi schimbat.",
+      "areaSettings": "Setări zonă",
+      "deleteArea": "Ștergeți zona",
+      "changeName": "Schimbare nume",
+      "name": "Nume",
+      "saveName": "Salvați numele",
+      "changeColor": "Schimbare culoare"
+    },
+    "changeColor": {
+      "devices": "Dispozitive",
+      "addLink": "Adăugați link"
+    },
+    "videoPlayer": {
+      "loadingVideo": "Se încarcă videoclipul...",
+      "addArea": "Adăugați zona: ",
+      "add": "Adăugați",
+      "clickToAdd": "Faceți clic pentru a adăuga"
+    },
+    "page": {
+      "cameraStatus": "Starea camerei: ",
+      "connected": "Conectat",
+      "resetCamera": "Resetați camera",
+      "validIpAddress": "Adresă IP validă: ",
+      "ipAddress": "Adresă IP",
+      "save": "Salvați",
+      "errorAddingPolygon": "Eroare la adăugarea poligonului",
+      "train": "Antrenare"
+    }
+  },
+  "cameras": {
+    "editCameraDrawer": {
+      "nameIsRequired": "Numele este necesar",
+      "ipAddressIsRequired": "Adresa IP este necesară",
+      "invalidIpAddressFormat": "Format de adresă IP nevalid",
+      "pleaseFillRequiredFields": "Vă rugăm să completați câmpurile necesare",
+      "cameraEditSuccessfully": "Camera a fost editată cu succes",
+      "cameraAddedSuccessfully": "Camera a fost adăugată cu succes",
+      "errorEditingCamera": "Eroare la editarea camerei",
+      "errorAddingCamera": "Eroare la adăugarea camerei",
+      "editCamera": "Editare cameră",
+      "addCamera": "Adăugați cameră",
+      "name": "Nume",
+      "ipAddress": "Adresă IP"
+    },
+    "cameraTable": {
+      "cameraIdNotFound": "ID-ul camerei nu a fost găsit",
+      "wantToDeleteThisCamera": "Sigur doriți să ștergeți această cameră?",
+      "cameraDeletedSuccess": "Camera a fost ștersă cu succes",
+      "errorDeletingCamera": "Eroare la ștergerea camerei",
+      "camera": "Cameră",
+      "ipAddress": "Adresă IP",
+      "actions": "Acțiuni",
+      "editCamera": "Editare cameră",
+      "deleteCamera": "Ștergere cameră",
+      "refreshCameras": "Reîmprospătați camerele",
+      "addNewCamera": "Adăugați cameră nouă"
+    }
+  },
+  "reports": {
+    "page": {
+      "video": "Video",
+      "date": "Data: ",
+      "selectDate": "Selectați data",
+      "selectTime": "Selectați ora",
+      "area": "Zonă",
+      "condition": "Condiție",
+      "start": "Start",
+      "selectStartDateTime": "Selectați data și ora de început",
+      "end": "Sfârșit",
+      "selectEndDateTime": "Selectați data și ora de sfârșit",
+      "search": "Căutare"
+    },
+    "resultModal": {
+      "markThisImageFalsePositive": "Sigur doriți să marcați această imagine ca Fals Pozitiv?",
+      "falsePositive": "Fals Pozitiv",
+      "noImageFound": "Nu a fost găsită nicio imagine"
+    }
+  },
+  "outputs": {
+    "outputDrawer": {
+      "nameIsRequired": "Numele este necesar",
+      "ipAddressIsRequired": "Adresa IP este necesară",
+      "invalidIpAddressFormat": "Format de adresă IP nevalid",
+      "pleaseFillRequiredFields": "Vă rugăm să completați câmpurile necesare",
+      "outputEditSuccessfully": "Ieșirea a fost editată cu succes",
+      "outputAddedSuccessfully": "Ieșirea a fost adăugată cu succes",
+      "errorEditingOutput": "Eroare la editarea ieșirii",
+      "errorAddinOoutput": "Eroare la adăugarea ieșirii",
+      "editOutput": "Editare ieșire",
+      "addOutput": "Adăugați ieșirea",
+      "name": "Nume",
+      "ipAddress": "Adresă IP"
+    },
+    "outputTable": {
+      "wantToDeleteThisOutput": "Sigur doriți să ștergeți această ieșire?",
+      "outputName": "Nume ieșire",
+      "ipAddress": "Adresă IP",
+      "lastChecked": "Ultima verificare",
+      "isActive": "Este activ?",
+      "edit": "Editare",
+      "actions": "Acțiuni",
+      "refreshOutput": "Reîmprospătați ieșirile",
+      "addOutput": "Adăugați ieșirea"
+    }
+  }
+}

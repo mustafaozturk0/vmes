@@ -1,0 +1,307 @@
+{
+  "login": {
+    "error": "Username or password is not correct.",
+    "username": "Username",
+    "password": "Password",
+    "signout": "Sign Out",
+    "signin": "Sign In",
+    "hidePassword": "Hide Password",
+    "showPassword": "Show Password",
+    "required": "Required",
+    "login": "Login",
+    "sentinel": "Sentinel",
+    "vmes": "VMES",
+    "unauth": "You are unauthorized to access this page",
+    "redirected": "You are being redirected in",
+    "loginSec": "sec for your Login"
+  },
+  "components": {
+    "cameraPicker": {
+      "selectCamera": "Select Camera",
+      "selectCameraYouWantToUse": "Select Camera You Want to Use"
+    }
+  },
+  "sidebar": {
+    "languages": {
+      "english": "English",
+      "korean": "한국인",
+      "polish": "Polski",
+      "turkish": "Türkçe",
+      "german": "Deutsch",
+      "romania": "Română",
+      "spain": "Español",
+      "italian": "Italiano",
+      "francais": "Français",
+      "ruski": "Русский",
+      "portugal": "Português",
+      "china": "中文"
+    },
+    "switcher": {
+      "darkMode": "Dark Mode",
+      "lightMode": "Light Mode",
+      "changeLanguage": "Change Language",
+      "toggleMenu": "Toggle Menu"
+    },
+    "buttons": {
+      "home": "Overview",
+      "train": "Train",
+      "reports": "Reports",
+      "cameras": "Cameras",
+      "visionMes": "Vision MES",
+      "machines": "Machines",
+      "outputs": "Outputs",
+      "sentinel": "Sentinel"
+    },
+    "app": {
+      "sentinel": "SENTINEL",
+      "visionME": "VISION M&E"
+    }
+  },
+  "searchForm": {
+    "search": "Search",
+    "reset": "Reset",
+    "selectStartDate": "Select Start Date",
+    "selectEndDate": "Select End Date",
+    "selectStartTime": "Select Start Time",
+    "selectEndTime": "Select End Time",
+    "dialogTitle": "Select Start Date & Time"
+  },
+  "commonWords": {
+    "ok": "OK",
+    "cancel": "Cancel",
+    "save": "Save",
+    "delete": "Delete",
+    "edit": "Edit",
+    "add": "Add",
+    "close": "Close",
+    "search": "Search",
+    "clear": "Clear",
+    "loading": "Loading",
+    "noData": "No data",
+    "yes": "Yes",
+    "no": "No",
+    "confirm": "Confirm",
+    "error": "Error",
+    "warning": "Warning",
+    "info": "Info",
+    "success": "Success",
+    "select": "Select",
+    "selectAll": "Select All",
+    "unselectAll": "Unselect All",
+    "selectGroup": "Select Group",
+    "unselectGroup": "Unselect Group",
+    "selectInverse": "Select Inverse",
+    "selectAllPage": "Select All Page",
+    "unselectAllPage": "Unselect All Page",
+    "selectGroupPage": "Select Group Page",
+    "unselectGroupPage": "Unselect Group Page",
+    "selectInversePage": "Select Inverse Page",
+    "refresh": "Refresh",
+    "reset": "Reset",
+    "copy": "Copy",
+    "cut": "Cut",
+    "paste": "Paste",
+    "undo": "Undo",
+    "redo": "Redo",
+    "prev": "Prev",
+    "next": "Next",
+    "first": "First",
+    "last": "Last",
+    "page": "Page",
+    "rowsPerPage": "Rows per page",
+    "total": "Total",
+    "required": "Required",
+    "requiredField": "This field is required",
+    "invalidEmail": "Invalid email",
+    "invalidUrl": "Invalid URL",
+    "invalidNumber": "Invalid number",
+    "invalidInteger": "Invalid integer",
+    "invalidFloat": "Invalid float",
+    "invalidDate": "Invalid date",
+    "invalidTime": "Invalid time",
+    "invalidDateTime": "Invalid date time",
+    "invalidLength": "Invalid length",
+    "invalidMinLength": "Invalid min length",
+    "invalidMaxLength": "Invalid max length",
+    "invalidMinValue": "Invalid min value",
+    "invalidMaxValue": "Invalid max value",
+    "invalidRange": "Invalid range",
+    "invalidPattern": "Invalid pattern",
+    "invalidFormat": "Invalid format",
+    "invalidUnique": "Invalid unique",
+    "start": "Start",
+    "end": "End",
+    "min": "Min",
+    "max": "Max",
+    "step": "Step",
+    "range": "Range"
+  },
+  "overview": {
+    "page": {
+      "activeCameras": "Active Cameras",
+      "totalCameras": "Total Cameras",
+      "data": "Data"
+    }
+  },
+  "train": {
+    "areaSettings": {
+      "classConnector": {
+        "conditionsAreAdded": "Conditions are added.",
+        "conditionsCouldntBeAdded": "Conditions couldn't be added.",
+        "subCondition": "Sub-Condition",
+        "with": "With",
+        "without": "Without",
+        "subClass": "Sub-Class",
+        "removeSubCondition": "Remove Subcondition",
+        "addSubCondition": "Add Subcondition",
+        "operator": "Operator",
+        "and": "And",
+        "removeCondition": "Remove Condition",
+        "class": "Class",
+        "type": "Type",
+        "count": "Count",
+        "addCondition": "Add Condition",
+        "saveCondition": "Save Condition"
+      },
+      "conditions": {
+        "ruleGroupAdded": "Rule group added.",
+        "ruleGroupCouldntBeAdded": "Rule group couldn't be added.",
+        "manageConditions": "Manage Conditions",
+        "ruleGroup": "Rule Group",
+        "pleaseAddRuleGroup": "Please Add a Rule Group",
+        "addRuleGroup": "Add Rule Group",
+        "addRuleGroup?": "Add Rule Group?",
+        "enterRuleGroupName": "Enter Rule Group Name",
+        "ruleGroupName": "Rule Group Name"
+      },
+      "outputs": {
+        "outputsAdded": "Outputs added.",
+        "errorAddingOutputs": "Error adding outputs.",
+        "outputs": "Outputs",
+        "selectOutput": "Select Output",
+        "outputTimes": "Output Time(s)",
+        "outputCoil": "Output Coil",
+        "addOutput": "Add Output",
+        "saveOutputs": "Save Outputs"
+      },
+      "emails": {
+        "emailsAdded": "Emails added.",
+        "errorAddingEmails": "Error adding emails.",
+        "emails": "Emails",
+        "emailAddress": "Email Address",
+        "description": "Description",
+        "addEmail": "Add Email",
+        "saveEmails": "Save Emails"
+      }
+    },
+    "areaDialog": {
+      "polygonDeleted": "Polygon deleted",
+      "polygonCouldntBeDeleted": "Polygon couldn't be deleted",
+      "wantToDeleteThisPolygon": "Are you sure you want to delete this polygon?",
+      "polygonNameChanged": "Polygon name changed.",
+      "polygonNameCouldntChanged": "Polygon name couldn't be changed.",
+      "areaSettings": "Area Settings",
+      "deleteArea": "Delete Area",
+      "changeName": "Change Name",
+      "name": "Name",
+      "saveName": "Save Name",
+      "changeColor": "Change Color"
+    },
+    "changeColor": {
+      "devices": "Devices",
+      "addLink": "Add Link"
+    },
+    "videoPlayer": {
+      "loadingVideo": "Loading video...",
+      "addArea": "Add Area: ",
+      "add": "Add ",
+      "clickToAdd": "Click to add"
+    },
+    "page": {
+      "cameraStatus": "Camera Status: ",
+      "connected": "Connected",
+      "resetCamera": "Reset Camera",
+      "validIpAddress": "Valid IP Address: ",
+      "ipAddress": "IP Address",
+      "save": "Save",
+      "errorAddingPolygon": "Error adding polygon",
+      "train": "Train"
+    }
+  },
+  "cameras": {
+    "editCameraDrawer": {
+      "nameIsRequired": "Name is required",
+      "ipAddressIsRequired": "IP address is required",
+      "invalidIpAddressFormat": "Invalid IP address format",
+      "pleaseFillRequiredFields": "Please fill in the required fields",
+      "cameraEditSuccessfully": "Camera edited successfully",
+      "cameraAddedSuccessfully": "Camera added successfully",
+      "errorEditingCamera": "Error editing camera",
+      "errorAddingCamera": "Error adding camera",
+      "editCamera": "Edit Camera",
+      "addCamera": "Add Camera",
+      "name": "Name",
+      "ipAddress": "IP Address"
+    },
+    "cameraTable": {
+      "cameraIdNotFound": "Camera ID not found",
+      "wantToDeleteThisCamera": "Are you sure you want to delete this camera?",
+      "cameraDeletedSuccess": "Camera deleted successfully",
+      "errorDeletingCamera": "Error deleting camera",
+      "camera": "Camera",
+      "ipAddress": "IP Address",
+      "actions": "Actions",
+      "editCamera": "Edit Camera",
+      "deleteCamera": "Delete Camera",
+      "refreshCameras": "Refresh Cameras",
+      "addNewCamera": "Add New Camera"
+    }
+  },
+  "reports": {
+    "page": {
+      "video": "Video",
+      "date": "Date: ",
+      "selectDate": "Select Date",
+      "selectTime": "Select Time",
+      "area": "Area",
+      "condition": "Condition",
+      "start": "Start",
+      "selectStartDateTime": "Select Start Date & Time",
+      "end": "End",
+      "selectEndDateTime": "Select End Date & Time",
+      "search": "Search"
+    },
+    "resultModal": {
+      "markThisImageFalsePositive": "Are you sure to mark this image as False Positive?",
+      "falsePositive": "False Positive",
+      "noImageFound": "No Image Found"
+    }
+  },
+  "outputs": {
+    "outputDrawer": {
+      "nameIsRequired": "Name is required",
+      "ipAddressIsRequired": "IP address is required",
+      "invalidIpAddressFormat": "Invalid IP address format",
+      "pleaseFillRequiredFields": "Please fill in the required fields",
+      "outputEditSuccessfully": "Output edited successfully",
+      "outputAddedSuccessfully": "Output added successfully",
+      "errorEditingOutput": "Error editing output",
+      "errorAddinOoutput": "Error adding output",
+      "editOutput": "Edit Output",
+      "addOutput": "Add Output",
+      "name": "Name",
+      "ipAddress": "IP Address"
+    },
+    "outputTable": {
+      "wantToDeleteThisOutput": "Are you sure you want to delete this output?",
+      "outputName": "Output Name",
+      "ipAddress": "IP Address",
+      "lastChecked": "Last Checked",
+      "isActive": "Is Active?",
+      "edit": "Edit",
+      "actions": "Actions",
+      "refreshOutput": "Refresh Outputs",
+      "addOutput": "Add Output"
+    }
+  }
+}

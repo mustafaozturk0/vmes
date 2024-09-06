@@ -1,0 +1,7 @@
+.hover-show {
+    display: none; /* Hide by default */
+  }
+  
+  .parent-hover:hover .hover-show {
+    display: inline-flex
+  }

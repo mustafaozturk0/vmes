@@ -1,0 +1,307 @@
+{
+  "login": {
+    "error": "Nome utente o password non corretti.",
+    "username": "Nome utente",
+    "password": "Password",
+    "signout": "Disconnettersi",
+    "signin": "Accedi",
+    "hidePassword": "Nascondi Password",
+    "showPassword": "Mostra Password",
+    "required": "Obbligatorio",
+    "login": "Accedi",
+    "sentinel": "Sentinel",
+    "vmes": "VMES",
+    "unauth": "Non sei autorizzato ad accedere a questa pagina.",
+    "redirected": "Verrai reindirizzato tra",
+    "loginSec": "secondi per il tuo accesso"
+  },
+  "components": {
+    "cameraPicker": {
+      "selectCamera": "Seleziona fotocamera",
+      "selectCameraYouWantToUse": "Seleziona la fotocamera che desideri utilizzare"
+    }
+  },
+  "sidebar": {
+    "languages": {
+      "english": "English",
+      "korean": "한국인",
+      "polish": "Polski",
+      "turkish": "Türkçe",
+      "german": "Deutsch",
+      "romania": "Română",
+      "spain": "Español",
+      "italian": "Italiano",
+      "francais": "Français",
+      "ruski": "Русский",
+      "portugal": "Português",
+      "china": "中文"
+    },
+    "switcher": {
+      "darkMode": "Modalità scura",
+      "lightMode": "Modalità chiara",
+      "changeLanguage": "Cambia lingua",
+      "toggleMenu": "Attiva/Disattiva menu"
+    },
+    "buttons": {
+      "home": "Panoramica",
+      "train": "Allenare",
+      "reports": "Rapporti",
+      "cameras": "Telecamere",
+      "visionMes": "Vision MES",
+      "machines": "Macchine",
+      "outputs": "Uscite",
+      "sentinel": "Sentinel"
+    },
+    "app": {
+      "sentinel": "SENTINEL",
+      "visionME": "VISIONE M&E"
+    }
+  },
+  "searchForm": {
+    "search": "Cerca",
+    "reset": "Ripristina",
+    "selectStartDate": "Seleziona data di inizio",
+    "selectEndDate": "Seleziona data di fine",
+    "selectStartTime": "Seleziona ora di inizio",
+    "selectEndTime": "Seleziona ora di fine",
+    "dialogTitle": "Seleziona data e ora di inizio"
+  },
+  "commonWords": {
+    "ok": "OK",
+    "cancel": "Annulla",
+    "save": "Salva",
+    "delete": "Elimina",
+    "edit": "Modifica",
+    "add": "Aggiungi",
+    "close": "Chiudi",
+    "search": "Cerca",
+    "clear": "Cancella",
+    "loading": "Caricamento in corso",
+    "noData": "Nessun dato",
+    "yes": "Sì",
+    "no": "No",
+    "confirm": "Conferma",
+    "error": "Errore",
+    "warning": "Avvertimento",
+    "info": "Informazioni",
+    "success": "Successo",
+    "select": "Seleziona",
+    "selectAll": "Seleziona tutto",
+    "unselectAll": "Deseleziona tutto",
+    "selectGroup": "Seleziona gruppo",
+    "unselectGroup": "Deseleziona gruppo",
+    "selectInverse": "Seleziona inverso",
+    "selectAllPage": "Seleziona tutto nella pagina",
+    "unselectAllPage": "Deseleziona tutto nella pagina",
+    "selectGroupPage": "Seleziona gruppo nella pagina",
+    "unselectGroupPage": "Deseleziona gruppo nella pagina",
+    "selectInversePage": "Seleziona inverso nella pagina",
+    "refresh": "Aggiorna",
+    "reset": "Ripristina",
+    "copy": "Copia",
+    "cut": "Taglia",
+    "paste": "Incolla",
+    "undo": "Annulla",
+    "redo": "Ripristina",
+    "prev": "Prec",
+    "next": "Succ",
+    "first": "Primo",
+    "last": "Ultimo",
+    "page": "Pagina",
+    "rowsPerPage": "Righe per pagina",
+    "total": "Totale",
+    "required": "Obbligatorio",
+    "requiredField": "Questo campo è obbligatorio",
+    "invalidEmail": "Email non valida",
+    "invalidUrl": "URL non valido",
+    "invalidNumber": "Numero non valido",
+    "invalidInteger": "Intero non valido",
+    "invalidFloat": "Decimale non valido",
+    "invalidDate": "Data non valida",
+    "invalidTime": "Ora non valida",
+    "invalidDateTime": "Data e ora non valide",
+    "invalidLength": "Lunghezza non valida",
+    "invalidMinLength": "Lunghezza minima non valida",
+    "invalidMaxLength": "Lunghezza massima non valida",
+    "invalidMinValue": "Valore minimo non valido",
+    "invalidMaxValue": "Valore massimo non valido",
+    "invalidRange": "Intervallo non valido",
+    "invalidPattern": "Modello non valido",
+    "invalidFormat": "Formato non valido",
+    "invalidUnique": "Non univoco",
+    "start": "Inizio",
+    "end": "Fine",
+    "min": "Min",
+    "max": "Max",
+    "step": "Passo",
+    "range": "Intervallo"
+  },
+  "overview": {
+    "page": {
+      "activeCameras": "Telecamere attive",
+      "totalCameras": "Totale telecamere",
+      "data": "Dati"
+    }
+  },
+  "train": {
+    "areaSettings": {
+      "classConnector": {
+        "conditionsAreAdded": "Condizioni aggiunte.",
+        "conditionsCouldntBeAdded": "Impossibile aggiungere le condizioni.",
+        "subCondition": "Sotto-condizione",
+        "with": "Con",
+        "without": "Senza",
+        "subClass": "Sottoclasse",
+        "removeSubCondition": "Rimuovi sotto-condizione",
+        "addSubCondition": "Aggiungi sotto-condizione",
+        "operator": "Operatore",
+        "and": "E",
+        "removeCondition": "Rimuovi condizione",
+        "class": "Classe",
+        "type": "Tipo",
+        "count": "Conteggio",
+        "addCondition": "Aggiungi condizione",
+        "saveCondition": "Salva condizione"
+      },
+      "conditions": {
+        "ruleGroupAdded": "Gruppo di regole aggiunto.",
+        "ruleGroupCouldntBeAdded": "Impossibile aggiungere il gruppo di regole.",
+        "manageConditions": "Gestisci condizioni",
+        "ruleGroup": "Gruppo di regole",
+        "pleaseAddRuleGroup": "Si prega di aggiungere un gruppo di regole",
+        "addRuleGroup": "Aggiungi gruppo di regole",
+        "addRuleGroup?": "Aggiungere il gruppo di regole?",
+        "enterRuleGroupName": "Inserisci il nome del gruppo di regole",
+        "ruleGroupName": "Nome del gruppo di regole"
+      },
+      "outputs": {
+        "outputsAdded": "Uscite aggiunte.",
+        "errorAddingOutputs": "Errore durante l'aggiunta delle uscite.",
+        "outputs": "Uscite",
+        "selectOutput": "Seleziona uscita",
+        "outputTimes": "Orario di uscita",
+        "outputCoil": "Bobina di uscita",
+        "addOutput": "Aggiungi uscita",
+        "saveOutputs": "Salva uscite"
+      },
+      "emails": {
+        "emailsAdded": "Email aggiunte.",
+        "errorAddingEmails": "Errore durante l'aggiunta delle email.",
+        "emails": "Email",
+        "emailAddress": "Indirizzo email",
+        "description": "Descrizione",
+        "addEmail": "Aggiungi email",
+        "saveEmails": "Salva email"
+      }
+    },
+    "areaDialog": {
+      "polygonDeleted": "Poligono eliminato",
+      "polygonCouldntBeDeleted": "Impossibile eliminare il poligono",
+      "wantToDeleteThisPolygon": "Sei sicuro di voler eliminare questo poligono?",
+      "polygonNameChanged": "Nome del poligono cambiato.",
+      "polygonNameCouldntChanged": "Impossibile cambiare il nome del poligono.",
+      "areaSettings": "Impostazioni area",
+      "deleteArea": "Elimina area",
+      "changeName": "Cambia nome",
+      "name": "Nome",
+      "saveName": "Salva nome",
+      "changeColor": "Cambia colore"
+    },
+    "changeColor": {
+      "devices": "Dispositivi",
+      "addLink": "Aggiungi collegamento"
+    },
+    "videoPlayer": {
+      "loadingVideo": "Caricamento video in corso...",
+      "addArea": "Aggiungi area: ",
+      "add": "Aggiungi",
+      "clickToAdd": "Clicca per aggiungere"
+    },
+    "page": {
+      "cameraStatus": "Stato della fotocamera: ",
+      "connected": "Connesso",
+      "resetCamera": "Reimposta fotocamera",
+      "validIpAddress": "Indirizzo IP valido: ",
+      "ipAddress": "Indirizzo IP",
+      "save": "Salva",
+      "errorAddingPolygon": "Errore durante l'aggiunta del poligono",
+      "train": "Allenare"
+    }
+  },
+  "cameras": {
+    "editCameraDrawer": {
+      "nameIsRequired": "Il nome è obbligatorio",
+      "ipAddressIsRequired": "L'indirizzo IP è obbligatorio",
+      "invalidIpAddressFormat": "Formato indirizzo IP non valido",
+      "pleaseFillRequiredFields": "Si prega di compilare i campi obbligatori",
+      "cameraEditSuccessfully": "Fotocamera modificata con successo",
+      "cameraAddedSuccessfully": "Fotocamera aggiunta con successo",
+      "errorEditingCamera": "Errore durante la modifica della fotocamera",
+      "errorAddingCamera": "Errore durante l'aggiunta della fotocamera",
+      "editCamera": "Modifica fotocamera",
+      "addCamera": "Aggiungi fotocamera",
+      "name": "Nome",
+      "ipAddress": "Indirizzo IP"
+    },
+    "cameraTable": {
+      "cameraIdNotFound": "ID fotocamera non trovato",
+      "wantToDeleteThisCamera": "Sei sicuro di voler eliminare questa fotocamera?",
+      "cameraDeletedSuccess": "Fotocamera eliminata con successo",
+      "errorDeletingCamera": "Errore durante l'eliminazione della fotocamera",
+      "camera": "Fotocamera",
+      "ipAddress": "Indirizzo IP",
+      "actions": "Azioni",
+      "editCamera": "Modifica fotocamera",
+      "deleteCamera": "Elimina fotocamera",
+      "refreshCameras": "Aggiorna fotocamere",
+      "addNewCamera": "Aggiungi nuova fotocamera"
+    }
+  },
+  "reports": {
+    "page": {
+      "video": "Video",
+      "date": "Data: ",
+      "selectDate": "Seleziona data",
+      "selectTime": "Seleziona ora",
+      "area": "Area",
+      "condition": "Condizione",
+      "start": "Inizio",
+      "selectStartDateTime": "Seleziona data e ora di inizio",
+      "end": "Fine",
+      "selectEndDateTime": "Seleziona data e ora di fine",
+      "search": "Cerca"
+    },
+    "resultModal": {
+      "markThisImageFalsePositive": "Sei sicuro di contrassegnare questa immagine come falso positivo?",
+      "falsePositive": "Falso Positivo",
+      "noImageFound": "Nessuna immagine trovata"
+    }
+  },
+  "outputs": {
+    "outputDrawer": {
+      "nameIsRequired": "Il nome è obbligatorio",
+      "ipAddressIsRequired": "L'indirizzo IP è obbligatorio",
+      "invalidIpAddressFormat": "Formato indirizzo IP non valido",
+      "pleaseFillRequiredFields": "Si prega di compilare i campi obbligatori",
+      "outputEditSuccessfully": "Uscita modificata con successo",
+      "outputAddedSuccessfully": "Uscita aggiunta con successo",
+      "errorEditingOutput": "Errore durante la modifica dell'uscita",
+      "errorAddinOoutput": "Errore durante l'aggiunta dell'uscita",
+      "editOutput": "Modifica uscita",
+      "addOutput": "Aggiungi uscita",
+      "name": "Nome",
+      "ipAddress": "Indirizzo IP"
+    },
+    "outputTable": {
+      "wantToDeleteThisOutput": "Sei sicuro di voler eliminare questa uscita?",
+      "outputName": "Nome uscita",
+      "ipAddress": "Indirizzo IP",
+      "lastChecked": "Ultimo controllo",
+      "isActive": "È attivo?",
+      "edit": "Modifica",
+      "actions": "Azioni",
+      "refreshOutput": "Aggiorna uscite",
+      "addOutput": "Aggiungi uscita"
+    }
+  }
+}

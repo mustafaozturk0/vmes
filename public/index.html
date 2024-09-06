@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, shrink-to-fit=no"
+  />
+  <meta name="theme-color" content="#1975ff" />
+  <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400&display=swap"
+    rel="stylesheet"
+  />
+  <title>Khenda | Sentinel</title>
+
+  <meta
+    name="description"
+    content="
+    Khenda is an AI-based video analytics platform that helps manufacturing plants to increase their safety, efficiency, and quality at production lines by analyzing manual activities."
+  />
+  <meta
+    name="keywords"
+    content="khenda, ai"
+  />
+    <style>
+      #loading-container {
+          position: fixed;
+          top: 0; right: 0; bottom: 0; left: 0;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          background-color: rgb(242, 245, 249);
+          z-index: 9999;
+      }
+      .horizontal-spinner {
+          height: 5px;
+          background-color: rgb(0 151 220); 
+          top:0;
+          position: absolute;
+          width: 100%;
+          animation: moveLeftRight 5s linear infinite;
+      }
+      @keyframes moveLeftRight {
+          0%, 100% {
+              transform: translateX(-100%);
+          }
+          50% {
+              transform: translateX(100%);
+          }
+      }
+      .logo-heartbeat {
+            animation: heartbeat 1.5s ease-in-out infinite;
+        }
+        @keyframes heartbeat {
+            0% { transform: scale(1); }
+            14% { transform: scale(1.1); }
+            28% { transform: scale(1); }
+            42% { transform: scale(1.1); }
+            70% { transform: scale(1); }
+        }
+  </style>
+</head>
+<body translate="no">
+  <noscript>You need to enable JavaScript to run this app.</noscript>
+  <div id="loading-container">
+    <div class="horizontal-spinner"></div>
+      <img src="/static/images/logo/tiny-logo.png" alt="Logo" class="logo-heartbeat" style="width: 120px; height: auto; margin-bottom: 20px;"> <!-- Adjust path as necessary -->
+  </div>
+  <div id="root" translate="no"></div>
+  <script>
+      document.addEventListener('DOMContentLoaded', () => {
+          const loader = document.getElementById('loading-container');
+          if (loader) {
+              loader.style.display = 'none';
+          }
+      });
+  </script>
+</body>
+</html>

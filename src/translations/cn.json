@@ -1,0 +1,307 @@
+{
+  "login": {
+    "error": "用户名或密码不正确。",
+    "username": "用户名",
+    "password": "密码",
+    "signout": "登出",
+    "signin": "登录",
+    "hidePassword": "隐藏密码",
+    "showPassword": "显示密码",
+    "required": "必填",
+    "login": "登录",
+    "sentinel": "Sentinel",
+    "vmes": "VMES",
+    "unauth": "您无权访问此页面",
+    "redirected": "您将在",
+    "loginSec": "秒后登录"
+  },
+  "components": {
+    "cameraPicker": {
+      "selectCamera": "选择摄像头",
+      "selectCameraYouWantToUse": "选择您要使用的摄像头"
+    }
+  },
+  "sidebar": {
+    "languages": {
+      "english": "English",
+      "korean": "한국인",
+      "polish": "Polski",
+      "turkish": "Türkçe",
+      "german": "Deutsch",
+      "romania": "Română",
+      "spain": "Español",
+      "italian": "Italiano",
+      "francais": "Français",
+      "ruski": "Русский",
+      "portugal": "Português",
+      "china": "中文"
+    },
+    "switcher": {
+      "darkMode": "深色模式",
+      "lightMode": "浅色模式",
+      "changeLanguage": "更改语言",
+      "toggleMenu": "切换菜单"
+    },
+    "buttons": {
+      "home": "概览",
+      "train": "训练",
+      "reports": "报告",
+      "cameras": "摄像头",
+      "visionMes": "视觉 MES",
+      "machines": "机器",
+      "outputs": "输出",
+      "sentinel": "Sentinel"
+    },
+    "app": {
+      "sentinel": "Sentinel",
+      "visionME": "视觉 M&E"
+    }
+  },
+  "searchForm": {
+    "search": "搜索",
+    "reset": "重置",
+    "selectStartDate": "选择开始日期",
+    "selectEndDate": "选择结束日期",
+    "selectStartTime": "选择开始时间",
+    "selectEndTime": "选择结束时间",
+    "dialogTitle": "选择开始日期和时间"
+  },
+  "commonWords": {
+    "ok": "确定",
+    "cancel": "取消",
+    "save": "保存",
+    "delete": "删除",
+    "edit": "编辑",
+    "add": "添加",
+    "close": "关闭",
+    "search": "搜索",
+    "clear": "清除",
+    "loading": "加载中",
+    "noData": "无数据",
+    "yes": "是",
+    "no": "否",
+    "confirm": "确认",
+    "error": "错误",
+    "warning": "警告",
+    "info": "信息",
+    "success": "成功",
+    "select": "选择",
+    "selectAll": "全选",
+    "unselectAll": "取消全选",
+    "selectGroup": "选择组",
+    "unselectGroup": "取消选择组",
+    "selectInverse": "反选",
+    "selectAllPage": "全选本页",
+    "unselectAllPage": "取消全选本页",
+    "selectGroupPage": "选择本页组",
+    "unselectGroupPage": "取消选择本页组",
+    "selectInversePage": "反选本页",
+    "refresh": "刷新",
+    "reset": "重置",
+    "copy": "复制",
+    "cut": "剪切",
+    "paste": "粘贴",
+    "undo": "撤销",
+    "redo": "重做",
+    "prev": "上一个",
+    "next": "下一个",
+    "first": "第一页",
+    "last": "最后一页",
+    "page": "页",
+    "rowsPerPage": "每页行数",
+    "total": "总数",
+    "required": "必填",
+    "requiredField": "此字段为必填项",
+    "invalidEmail": "无效的电子邮件",
+    "invalidUrl": "无效的网址",
+    "invalidNumber": "无效的数字",
+    "invalidInteger": "无效的整数",
+    "invalidFloat": "无效的浮点数",
+    "invalidDate": "无效的日期",
+    "invalidTime": "无效的时间",
+    "invalidDateTime": "无效的日期时间",
+    "invalidLength": "无效的长度",
+    "invalidMinLength": "长度不足",
+    "invalidMaxLength": "长度超出限制",
+    "invalidMinValue": "值小于最小值",
+    "invalidMaxValue": "值超出最大值",
+    "invalidRange": "无效的范围",
+    "invalidPattern": "无效的模式",
+    "invalidFormat": "无效的格式",
+    "invalidUnique": "不唯一",
+    "start": "开始",
+    "end": "结束",
+    "min": "最小",
+    "max": "最大",
+    "step": "步长",
+    "range": "范围"
+  },
+  "overview": {
+    "page": {
+      "activeCameras": "活跃的摄像头",
+      "totalCameras": "摄像头总数",
+      "data": "数据"
+    }
+  },
+  "train": {
+    "areaSettings": {
+      "classConnector": {
+        "conditionsAreAdded": "条件已添加。",
+        "conditionsCouldntBeAdded": "条件无法添加。",
+        "subCondition": "子条件",
+        "with": "有",
+        "without": "无",
+        "subClass": "子类",
+        "removeSubCondition": "移除子条件",
+        "addSubCondition": "添加子条件",
+        "operator": "运算符",
+        "and": "和",
+        "removeCondition": "移除条件",
+        "class": "类",
+        "type": "类型",
+        "count": "计数",
+        "addCondition": "添加条件",
+        "saveCondition": "保存条件"
+      },
+      "conditions": {
+        "ruleGroupAdded": "规则组已添加。",
+        "ruleGroupCouldntBeAdded": "规则组无法添加。",
+        "manageConditions": "管理条件",
+        "ruleGroup": "规则组",
+        "pleaseAddRuleGroup": "请添加规则组",
+        "addRuleGroup": "添加规则组",
+        "addRuleGroup?": "添加规则组？",
+        "enterRuleGroupName": "输入规则组名称",
+        "ruleGroupName": "规则组名称"
+      },
+      "outputs": {
+        "outputsAdded": "输出已添加。",
+        "errorAddingOutputs": "添加输出时出错。",
+        "outputs": "输出",
+        "selectOutput": "选择输出",
+        "outputTimes": "输出时间",
+        "outputCoil": "输出线圈",
+        "addOutput": "添加输出",
+        "saveOutputs": "保存输出"
+      },
+      "emails": {
+        "emailsAdded": "电子邮件已添加。",
+        "errorAddingEmails": "添加电子邮件时出错。",
+        "emails": "电子邮件",
+        "emailAddress": "电子邮件地址",
+        "description": "描述",
+        "addEmail": "添加电子邮件",
+        "saveEmails": "保存电子邮件"
+      }
+    },
+    "areaDialog": {
+      "polygonDeleted": "多边形已删除",
+      "polygonCouldntBeDeleted": "多边形无法删除",
+      "wantToDeleteThisPolygon": "您确定要删除此多边形吗？",
+      "polygonNameChanged": "多边形名称已更改。",
+      "polygonNameCouldntChanged": "多边形名称无法更改。",
+      "areaSettings": "区域设置",
+      "deleteArea": "删除区域",
+      "changeName": "更改名称",
+      "name": "名称",
+      "saveName": "保存名称",
+      "changeColor": "更改颜色"
+    },
+    "changeColor": {
+      "devices": "设备",
+      "addLink": "添加链接"
+    },
+    "videoPlayer": {
+      "loadingVideo": "视频加载中...",
+      "addArea": "添加区域：",
+      "add": "添加",
+      "clickToAdd": "点击添加"
+    },
+    "page": {
+      "cameraStatus": "摄像头状态：",
+      "connected": "已连接",
+      "resetCamera": "重置摄像头",
+      "validIpAddress": "有效的 IP 地址：",
+      "ipAddress": "IP 地址",
+      "save": "保存",
+      "errorAddingPolygon": "添加多边形时出错",
+      "train": "训练"
+    }
+  },
+  "cameras": {
+    "editCameraDrawer": {
+      "nameIsRequired": "名称为必填项",
+      "ipAddressIsRequired": "IP 地址为必填项",
+      "invalidIpAddressFormat": "无效的 IP 地址格式",
+      "pleaseFillRequiredFields": "请填写必填字段",
+      "cameraEditSuccessfully": "摄像头编辑成功",
+      "cameraAddedSuccessfully": "摄像头添加成功",
+      "errorEditingCamera": "编辑摄像头时出错",
+      "errorAddingCamera": "添加摄像头时出错",
+      "editCamera": "编辑摄像头",
+      "addCamera": "添加摄像头",
+      "name": "名称",
+      "ipAddress": "IP 地址"
+    },
+    "cameraTable": {
+      "cameraIdNotFound": "找不到摄像头 ID",
+      "wantToDeleteThisCamera": "您确定要删除此摄像头吗？",
+      "cameraDeletedSuccess": "摄像头删除成功",
+      "errorDeletingCamera": "删除摄像头时出错",
+      "camera": "摄像头",
+      "ipAddress": "IP 地址",
+      "actions": "操作",
+      "editCamera": "编辑摄像头",
+      "deleteCamera": "删除摄像头",
+      "refreshCameras": "刷新摄像头",
+      "addNewCamera": "添加新摄像头"
+    }
+  },
+  "reports": {
+    "page": {
+      "video": "视频",
+      "date": "日期：",
+      "selectDate": "选择日期",
+      "selectTime": "选择时间",
+      "area": "区域",
+      "condition": "条件",
+      "start": "开始",
+      "selectStartDateTime": "选择开始日期和时间",
+      "end": "结束",
+      "selectEndDateTime": "选择结束日期和时间",
+      "search": "搜索"
+    },
+    "resultModal": {
+      "markThisImageFalsePositive": "确定将此图像标记为误报吗？",
+      "falsePositive": "误报",
+      "noImageFound": "未找到图像"
+    }
+  },
+  "outputs": {
+    "outputDrawer": {
+      "nameIsRequired": "名称为必填项",
+      "ipAddressIsRequired": "IP 地址为必填项",
+      "invalidIpAddressFormat": "无效的 IP 地址格式",
+      "pleaseFillRequiredFields": "请填写必填字段",
+      "outputEditSuccessfully": "输出编辑成功",
+      "outputAddedSuccessfully": "输出添加成功",
+      "errorEditingOutput": "编辑输出时出错",
+      "errorAddinOoutput": "添加输出时出错",
+      "editOutput": "编辑输出",
+      "addOutput": "添加输出",
+      "name": "名称",
+      "ipAddress": "IP 地址"
+    },
+    "outputTable": {
+      "wantToDeleteThisOutput": "您确定要删除此输出吗？",
+      "outputName": "输出名称",
+      "ipAddress": "IP 地址",
+      "lastChecked": "上次检查",
+      "isActive": "是否激活？",
+      "edit": "编辑",
+      "actions": "操作",
+      "refreshOutput": "刷新输出",
+      "addOutput": "添加输出"
+    }
+  }
+}
