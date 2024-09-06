@@ -10,7 +10,7 @@ export const MachinesPage = () => {
   return (
     <>
       <Helmet>
-        <title>Khenda Sentinel | {t("sidebar.buttons.machines")}</title>
+        <title>Khenda VMES | {t("sidebar.buttons.machines")}</title>
       </Helmet>
       <PageTitleWrapper>
         <PageTitle heading={t("MES")} />

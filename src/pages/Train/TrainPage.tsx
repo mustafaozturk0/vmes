@@ -14,7 +14,7 @@ export const TrainPage = () => {
   return (
     <>
       <Helmet>
-        <title>Khenda Sentinel | {t("train.page.train")}</title>
+        <title>Khenda VMES | {t("train.page.train")}</title>
       </Helmet>
       <PageTitleWrapper>
         <PageTitle heading={t("train.page.train")} />

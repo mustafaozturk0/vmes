@@ -14,11 +14,6 @@ import { MachinesPage } from "./pages/Machines/MachinesPage";
 import { FalsePositivesPage } from "./pages/Reports/FalsePositives/FalsePositivesPage";
 import { MesTrainPage } from "./pages/MES/MesTrain/MesTrainPage";
 
-export enum AppNames {
-  Sentinel = "SENTINEL",
-  Vmes = "VMES",
-}
-
 const routes: RouteObject[] = [
   {
     path: "",
@@ -44,11 +39,7 @@ const routes: RouteObject[] = [
         path: "train",
         element: (
           <PrivateRoute>
-            {process.env.REACT_APP_MODE === AppNames.Vmes ? (
-              <MesTrainPage />
-            ) : (
-              <TrainPage />
-            )}
+            <MesTrainPage />
           </PrivateRoute>
         ),
       },
@@ -84,26 +75,22 @@ const routes: RouteObject[] = [
           </PrivateRoute>
         ),
       },
-      ...(process.env.REACT_APP_MODE === AppNames.Vmes
-        ? [
-            {
-              path: "vmes",
-              element: (
-                <PrivateRoute>
-                  <MesPage />
-                </PrivateRoute>
-              ),
-            },
-            {
-              path: "machines",
-              element: (
-                <PrivateRoute>
-                  <MachinesPage />
-                </PrivateRoute>
-              ),
-            },
-          ]
-        : []),
+      {
+        path: "vmes",
+        element: (
+          <PrivateRoute>
+            <MesPage />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "machines",
+        element: (
+          <PrivateRoute>
+            <MachinesPage />
+          </PrivateRoute>
+        ),
+      },
     ],
   },
 

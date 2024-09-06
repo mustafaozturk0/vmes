@@ -16,7 +16,6 @@ import { useNavigate } from "react-router";
 import { MenuTwoTone } from "@mui/icons-material";
 import Scrollbar from "../../../components/Scrollbar";
 import { SidebarContext } from "../../../contexts/SidebarContext";
-import { AppNames } from "../../../router";
 
 const SidebarWrapper = styled(Box)(({ theme }) => ({
   color: theme.colors.alpha.trueWhite[70],
@@ -117,9 +116,7 @@ function Sidebar() {
             }}
           >
             <Typography variant="h5" color="primary">
-              {process.env.REACT_APP_MODE === AppNames.Sentinel
-                ? t("sidebar.app.sentinel")
-                : t("sidebar.app.visionME")}
+              {t("sidebar.app.visionME")}
             </Typography>
           </Box>
         </SidebarWrapper>

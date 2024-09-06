@@ -10,7 +10,7 @@ export const FalsePositivesPage = () => {
   return (
     <>
       <Helmet>
-        <title>Khenda Sentinel | {t("False Positives")}</title>
+        <title>Khenda VMES | {t("False Positives")}</title>
       </Helmet>
       <PageTitleWrapper>
         <PageTitle heading={t("False Positives")} />

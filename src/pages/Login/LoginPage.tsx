@@ -6,7 +6,6 @@ import { useTranslation } from "react-i18next";
 import { DarkModeSwitcher } from "../../components/DarkModeSwitcher/DarkModeSwitcher";
 import Logo from "../../components/LogoSign";
 import LanguageSelector from "../../layouts/SidebarLayout/Header/LanguageSelector/LanguageSelector";
-import { AppNames } from "../../router";
 
 export const LoginWrapper = styled(Box)(
   () => `
@@ -59,7 +58,7 @@ function LoginPage() {
   return (
     <>
       <Helmet>
-        <title>Khenda Sentinel | {t("login.login")}</title>
+        <title>Khenda VMES | {t("login.login")}</title>
       </Helmet>
       <LoginWrapper>
         <Container maxWidth="md" sx={{ background: "transparent" }}>
@@ -122,9 +121,7 @@ function LoginPage() {
                 >
                   <Logo transparentBg loginPage width={240} />
                   <Typography variant="h4" mt={-2} fontStyle={"italic"} ml={15}>
-                    {process.env.REACT_APP_MODE === AppNames.Sentinel
-                      ? t("login.sentinel")
-                      : t("login.vmes")}
+                    {t("sidebar.app.visionME")}
                   </Typography>
                 </Box>
               </Grid>

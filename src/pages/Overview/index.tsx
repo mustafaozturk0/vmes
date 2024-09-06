@@ -23,7 +23,7 @@ function Overview() {
   return (
     <>
       <Helmet>
-        <title>Khenda Sentinel | {t("sidebar.buttons.home")}</title>
+        <title>Khenda VMES | {t("sidebar.buttons.home")}</title>
       </Helmet>
       <PageTitleWrapper>
         <PageTitle heading={t("sidebar.buttons.home")} />

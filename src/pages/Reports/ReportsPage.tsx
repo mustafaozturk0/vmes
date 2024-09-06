@@ -10,7 +10,7 @@ export const ReportsPage = () => {
   return (
     <>
       <Helmet>
-        <title>Khenda Sentinel | {t("sidebar.buttons.reports")}</title>
+        <title>Khenda VMES | {t("sidebar.buttons.reports")}</title>
       </Helmet>
       <PageTitleWrapper>
         <PageTitle heading={t("sidebar.buttons.reports")} />

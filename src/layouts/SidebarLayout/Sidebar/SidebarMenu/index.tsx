@@ -25,7 +25,6 @@ import {
 } from "@mui/icons-material";
 import { useContext } from "react";
 import { SidebarContext } from "../../../../contexts/SidebarContext";
-import { AppNames } from "../../../../router";
 
 const MenuWrapper = styled(Box)(
   ({ theme }) => `
@@ -231,20 +230,6 @@ function SidebarMenu() {
                 </CustomizedItemText>
               </Button>
             </ListItem>
-            {/*    <ListItem component="div">
-              <Button
-                disableRipple
-                component={RouterLink}
-                to="/reports"
-                onClick={handleItemClick}
-              >
-                <Report />{" "}
-                <CustomizedItemText>
-                  {" "}
-                  {t("sidebar.buttons.reports")}{" "}
-                </CustomizedItemText>
-              </Button>
-            </ListItem> */}
 
             <CustomizedAccordion defaultExpanded={true} id="reports">
               <AccordionSummary expandIcon={<Expand />} sx={{ px: 0.5 }}>
@@ -303,38 +288,36 @@ function SidebarMenu() {
                 </CustomizedItemText>
               </Button>
             </ListItem>
-            {process.env.REACT_APP_MODE === AppNames.Vmes && (
-              <>
-                <ListItem component="div">
-                  <Button
-                    disableRipple
-                    component={RouterLink}
-                    to="/vmes"
-                    onClick={handleItemClick}
-                  >
-                    <VideoStableOutlined />
-                    <CustomizedItemText>
-                      {" "}
-                      {t("sidebar.buttons.visionMes")}{" "}
-                    </CustomizedItemText>
-                  </Button>
-                </ListItem>
-                <ListItem component="div">
-                  <Button
-                    disableRipple
-                    component={RouterLink}
-                    to="/machines"
-                    onClick={handleItemClick}
-                  >
-                    <Output />{" "}
-                    <CustomizedItemText>
-                      {" "}
-                      {t("sidebar.buttons.machines")}{" "}
-                    </CustomizedItemText>
-                  </Button>
-                </ListItem>
-              </>
-            )}
+            <>
+              <ListItem component="div">
+                <Button
+                  disableRipple
+                  component={RouterLink}
+                  to="/vmes"
+                  onClick={handleItemClick}
+                >
+                  <VideoStableOutlined />
+                  <CustomizedItemText>
+                    {" "}
+                    {t("sidebar.buttons.visionMes")}{" "}
+                  </CustomizedItemText>
+                </Button>
+              </ListItem>
+              <ListItem component="div">
+                <Button
+                  disableRipple
+                  component={RouterLink}
+                  to="/machines"
+                  onClick={handleItemClick}
+                >
+                  <Output />{" "}
+                  <CustomizedItemText>
+                    {" "}
+                    {t("sidebar.buttons.machines")}{" "}
+                  </CustomizedItemText>
+                </Button>
+              </ListItem>
+            </>
             <ListItem component="div">
               <Button
                 disableRipple

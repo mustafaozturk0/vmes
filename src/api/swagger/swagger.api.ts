@@ -1,8 +1,8 @@
 /// <reference path="./custom.d.ts" />
 // tslint:disable
 /**
- * Khenda Sentinel API
- * Khenda Sentinel API
+ * Khenda VSM API
+ * Khenda VSM API
  *
  * OpenAPI spec version: 1.0
  *
@@ -130,6 +130,20 @@ export interface CreateCameraDto {
 /**
  *
  * @export
+ * @interface CreateLineDto
+ */
+export interface CreateLineDto {
+  /**
+   *
+   * @type {string}
+   * @memberof CreateLineDto
+   */
+  name?: string;
+}
+
+/**
+ *
+ * @export
  * @interface CreateOutputDto
  */
 export interface CreateOutputDto {
@@ -159,6 +173,12 @@ export interface CreatePolygonDto {
    * @memberof CreatePolygonDto
    */
   cameraId?: number;
+  /**
+   *
+   * @type {number}
+   * @memberof CreatePolygonDto
+   */
+  lineId?: number;
   /**
    *
    * @type {string}
@@ -195,6 +215,52 @@ export interface CreatePolygonDto {
    * @memberof CreatePolygonDto
    */
   conditionPages?: Array<PolygonConditionPageDto>;
+}
+
+/**
+ *
+ * @export
+ * @interface LineDto
+ */
+export interface LineDto {
+  /**
+   *
+   * @type {number}
+   * @memberof LineDto
+   */
+  id?: number;
+  /**
+   *
+   * @type {string}
+   * @memberof LineDto
+   */
+  name?: string;
+}
+
+/**
+ *
+ * @export
+ * @interface LineTreeDto
+ */
+export interface LineTreeDto {
+  /**
+   *
+   * @type {number}
+   * @memberof LineTreeDto
+   */
+  id?: number;
+  /**
+   *
+   * @type {string}
+   * @memberof LineTreeDto
+   */
+  name?: string;
+  /**
+   *
+   * @type {Array<PolygonDto>}
+   * @memberof LineTreeDto
+   */
+  polygons?: Array<PolygonDto>;
 }
 
 /**
@@ -401,6 +467,12 @@ export interface PolygonDto {
    * @memberof PolygonDto
    */
   cameraId?: number;
+  /**
+   *
+   * @type {number}
+   * @memberof PolygonDto
+   */
+  lineId?: number;
   /**
    *
    * @type {string}
@@ -1559,6 +1631,656 @@ export class CameraApi extends BaseAPI {
 }
 
 /**
+ * LineApi - fetch parameter creator
+ * @export
+ */
+export const LineApiFetchParamCreator = function (
+  configuration?: Configuration
+) {
+  return {
+    /**
+     *
+     * @param {number} id
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    deleteLineId(id: number, options: any = {}): FetchArgs {
+      // verify required parameter 'id' is not null or undefined
+      if (id === null || id === undefined) {
+        throw new RequiredError(
+          "id",
+          "Required parameter id was null or undefined when calling deleteLineId."
+        );
+      }
+      const localVarPath = `/api/line/{id}`.replace(
+        `{${"id"}}`,
+        encodeURIComponent(String(id))
+      );
+      const localVarUrlObj = url.parse(localVarPath, true);
+      const localVarRequestOptions = Object.assign(
+        { method: "DELETE" },
+        options
+      );
+      const localVarHeaderParameter = {} as any;
+      const localVarQueryParameter = {} as any;
+
+      // authentication apikey required
+      if (configuration && configuration.apiKey) {
+        const localVarApiKeyValue =
+          typeof configuration.apiKey === "function"
+            ? configuration.apiKey("Authorization")
+            : configuration.apiKey;
+        localVarHeaderParameter["Authorization"] = localVarApiKeyValue;
+      }
+
+      localVarUrlObj.query = Object.assign(
+        {},
+        localVarUrlObj.query,
+        localVarQueryParameter,
+        options.query
+      );
+      // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+      localVarUrlObj.search = null;
+      localVarRequestOptions.headers = Object.assign(
+        {},
+        localVarHeaderParameter,
+        options.headers
+      );
+
+      return {
+        url: url.format(localVarUrlObj),
+        options: localVarRequestOptions,
+      };
+    },
+    /**
+     *
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getLine(options: any = {}): FetchArgs {
+      const localVarPath = `/api/line/`;
+      const localVarUrlObj = url.parse(localVarPath, true);
+      const localVarRequestOptions = Object.assign({ method: "GET" }, options);
+      const localVarHeaderParameter = {} as any;
+      const localVarQueryParameter = {} as any;
+
+      // authentication apikey required
+      if (configuration && configuration.apiKey) {
+        const localVarApiKeyValue =
+          typeof configuration.apiKey === "function"
+            ? configuration.apiKey("Authorization")
+            : configuration.apiKey;
+        localVarHeaderParameter["Authorization"] = localVarApiKeyValue;
+      }
+
+      localVarUrlObj.query = Object.assign(
+        {},
+        localVarUrlObj.query,
+        localVarQueryParameter,
+        options.query
+      );
+      // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+      localVarUrlObj.search = null;
+      localVarRequestOptions.headers = Object.assign(
+        {},
+        localVarHeaderParameter,
+        options.headers
+      );
+
+      return {
+        url: url.format(localVarUrlObj),
+        options: localVarRequestOptions,
+      };
+    },
+    /**
+     *
+     * @param {number} id
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getLineId(id: number, options: any = {}): FetchArgs {
+      // verify required parameter 'id' is not null or undefined
+      if (id === null || id === undefined) {
+        throw new RequiredError(
+          "id",
+          "Required parameter id was null or undefined when calling getLineId."
+        );
+      }
+      const localVarPath = `/api/line/{id}`.replace(
+        `{${"id"}}`,
+        encodeURIComponent(String(id))
+      );
+      const localVarUrlObj = url.parse(localVarPath, true);
+      const localVarRequestOptions = Object.assign({ method: "GET" }, options);
+      const localVarHeaderParameter = {} as any;
+      const localVarQueryParameter = {} as any;
+
+      // authentication apikey required
+      if (configuration && configuration.apiKey) {
+        const localVarApiKeyValue =
+          typeof configuration.apiKey === "function"
+            ? configuration.apiKey("Authorization")
+            : configuration.apiKey;
+        localVarHeaderParameter["Authorization"] = localVarApiKeyValue;
+      }
+
+      localVarUrlObj.query = Object.assign(
+        {},
+        localVarUrlObj.query,
+        localVarQueryParameter,
+        options.query
+      );
+      // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+      localVarUrlObj.search = null;
+      localVarRequestOptions.headers = Object.assign(
+        {},
+        localVarHeaderParameter,
+        options.headers
+      );
+
+      return {
+        url: url.format(localVarUrlObj),
+        options: localVarRequestOptions,
+      };
+    },
+    /**
+     *
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getLineTree(options: any = {}): FetchArgs {
+      const localVarPath = `/api/line/tree`;
+      const localVarUrlObj = url.parse(localVarPath, true);
+      const localVarRequestOptions = Object.assign({ method: "GET" }, options);
+      const localVarHeaderParameter = {} as any;
+      const localVarQueryParameter = {} as any;
+
+      // authentication apikey required
+      if (configuration && configuration.apiKey) {
+        const localVarApiKeyValue =
+          typeof configuration.apiKey === "function"
+            ? configuration.apiKey("Authorization")
+            : configuration.apiKey;
+        localVarHeaderParameter["Authorization"] = localVarApiKeyValue;
+      }
+
+      localVarUrlObj.query = Object.assign(
+        {},
+        localVarUrlObj.query,
+        localVarQueryParameter,
+        options.query
+      );
+      // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+      localVarUrlObj.search = null;
+      localVarRequestOptions.headers = Object.assign(
+        {},
+        localVarHeaderParameter,
+        options.headers
+      );
+
+      return {
+        url: url.format(localVarUrlObj),
+        options: localVarRequestOptions,
+      };
+    },
+    /**
+     *
+     * @param {CreateLineDto} payload
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    postLine(payload: CreateLineDto, options: any = {}): FetchArgs {
+      // verify required parameter 'payload' is not null or undefined
+      if (payload === null || payload === undefined) {
+        throw new RequiredError(
+          "payload",
+          "Required parameter payload was null or undefined when calling postLine."
+        );
+      }
+      const localVarPath = `/api/line/`;
+      const localVarUrlObj = url.parse(localVarPath, true);
+      const localVarRequestOptions = Object.assign({ method: "POST" }, options);
+      const localVarHeaderParameter = {} as any;
+      const localVarQueryParameter = {} as any;
+
+      // authentication apikey required
+      if (configuration && configuration.apiKey) {
+        const localVarApiKeyValue =
+          typeof configuration.apiKey === "function"
+            ? configuration.apiKey("Authorization")
+            : configuration.apiKey;
+        localVarHeaderParameter["Authorization"] = localVarApiKeyValue;
+      }
+
+      localVarHeaderParameter["Content-Type"] = "application/json";
+
+      localVarUrlObj.query = Object.assign(
+        {},
+        localVarUrlObj.query,
+        localVarQueryParameter,
+        options.query
+      );
+      // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+      localVarUrlObj.search = null;
+      localVarRequestOptions.headers = Object.assign(
+        {},
+        localVarHeaderParameter,
+        options.headers
+      );
+      const needsSerialization =
+        <any>"CreateLineDto" !== "string" ||
+        localVarRequestOptions.headers["Content-Type"] === "application/json";
+      localVarRequestOptions.body = needsSerialization
+        ? JSON.stringify(payload || {})
+        : payload || "";
+
+      return {
+        url: url.format(localVarUrlObj),
+        options: localVarRequestOptions,
+      };
+    },
+    /**
+     *
+     * @param {LineDto} payload
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    putLine(payload: LineDto, options: any = {}): FetchArgs {
+      // verify required parameter 'payload' is not null or undefined
+      if (payload === null || payload === undefined) {
+        throw new RequiredError(
+          "payload",
+          "Required parameter payload was null or undefined when calling putLine."
+        );
+      }
+      const localVarPath = `/api/line/`;
+      const localVarUrlObj = url.parse(localVarPath, true);
+      const localVarRequestOptions = Object.assign({ method: "PUT" }, options);
+      const localVarHeaderParameter = {} as any;
+      const localVarQueryParameter = {} as any;
+
+      // authentication apikey required
+      if (configuration && configuration.apiKey) {
+        const localVarApiKeyValue =
+          typeof configuration.apiKey === "function"
+            ? configuration.apiKey("Authorization")
+            : configuration.apiKey;
+        localVarHeaderParameter["Authorization"] = localVarApiKeyValue;
+      }
+
+      localVarHeaderParameter["Content-Type"] = "application/json";
+
+      localVarUrlObj.query = Object.assign(
+        {},
+        localVarUrlObj.query,
+        localVarQueryParameter,
+        options.query
+      );
+      // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+      localVarUrlObj.search = null;
+      localVarRequestOptions.headers = Object.assign(
+        {},
+        localVarHeaderParameter,
+        options.headers
+      );
+      const needsSerialization =
+        <any>"LineDto" !== "string" ||
+        localVarRequestOptions.headers["Content-Type"] === "application/json";
+      localVarRequestOptions.body = needsSerialization
+        ? JSON.stringify(payload || {})
+        : payload || "";
+
+      return {
+        url: url.format(localVarUrlObj),
+        options: localVarRequestOptions,
+      };
+    },
+  };
+};
+
+/**
+ * LineApi - functional programming interface
+ * @export
+ */
+export const LineApiFp = function (configuration?: Configuration) {
+  return {
+    /**
+     *
+     * @param {number} id
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    deleteLineId(
+      id: number,
+      options?: any
+    ): (fetch?: FetchAPI, basePath?: string) => Promise<LineDto> {
+      const localVarFetchArgs = LineApiFetchParamCreator(
+        configuration
+      ).deleteLineId(id, options);
+      return (
+        fetch: FetchAPI = portableFetch,
+        basePath: string = BASE_PATH
+      ) => {
+        return fetch(
+          basePath + localVarFetchArgs.url,
+          localVarFetchArgs.options
+        ).then((response) => {
+          if (response.status >= 200 && response.status < 300) {
+            return response.json();
+          } else {
+            throw response;
+          }
+        });
+      };
+    },
+    /**
+     *
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getLine(
+      options?: any
+    ): (fetch?: FetchAPI, basePath?: string) => Promise<LineDto> {
+      const localVarFetchArgs =
+        LineApiFetchParamCreator(configuration).getLine(options);
+      return (
+        fetch: FetchAPI = portableFetch,
+        basePath: string = BASE_PATH
+      ) => {
+        return fetch(
+          basePath + localVarFetchArgs.url,
+          localVarFetchArgs.options
+        ).then((response) => {
+          if (response.status >= 200 && response.status < 300) {
+            return response.json();
+          } else {
+            throw response;
+          }
+        });
+      };
+    },
+    /**
+     *
+     * @param {number} id
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getLineId(
+      id: number,
+      options?: any
+    ): (fetch?: FetchAPI, basePath?: string) => Promise<LineDto> {
+      const localVarFetchArgs = LineApiFetchParamCreator(
+        configuration
+      ).getLineId(id, options);
+      return (
+        fetch: FetchAPI = portableFetch,
+        basePath: string = BASE_PATH
+      ) => {
+        return fetch(
+          basePath + localVarFetchArgs.url,
+          localVarFetchArgs.options
+        ).then((response) => {
+          if (response.status >= 200 && response.status < 300) {
+            return response.json();
+          } else {
+            throw response;
+          }
+        });
+      };
+    },
+    /**
+     *
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getLineTree(
+      options?: any
+    ): (fetch?: FetchAPI, basePath?: string) => Promise<Array<LineTreeDto>> {
+      const localVarFetchArgs =
+        LineApiFetchParamCreator(configuration).getLineTree(options);
+      return (
+        fetch: FetchAPI = portableFetch,
+        basePath: string = BASE_PATH
+      ) => {
+        return fetch(
+          basePath + localVarFetchArgs.url,
+          localVarFetchArgs.options
+        ).then((response) => {
+          if (response.status >= 200 && response.status < 300) {
+            return response.json();
+          } else {
+            throw response;
+          }
+        });
+      };
+    },
+    /**
+     *
+     * @param {CreateLineDto} payload
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    postLine(
+      payload: CreateLineDto,
+      options?: any
+    ): (fetch?: FetchAPI, basePath?: string) => Promise<LineDto> {
+      const localVarFetchArgs = LineApiFetchParamCreator(
+        configuration
+      ).postLine(payload, options);
+      return (
+        fetch: FetchAPI = portableFetch,
+        basePath: string = BASE_PATH
+      ) => {
+        return fetch(
+          basePath + localVarFetchArgs.url,
+          localVarFetchArgs.options
+        ).then((response) => {
+          if (response.status >= 200 && response.status < 300) {
+            return response.json();
+          } else {
+            throw response;
+          }
+        });
+      };
+    },
+    /**
+     *
+     * @param {LineDto} payload
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    putLine(
+      payload: LineDto,
+      options?: any
+    ): (fetch?: FetchAPI, basePath?: string) => Promise<LineDto> {
+      const localVarFetchArgs = LineApiFetchParamCreator(configuration).putLine(
+        payload,
+        options
+      );
+      return (
+        fetch: FetchAPI = portableFetch,
+        basePath: string = BASE_PATH
+      ) => {
+        return fetch(
+          basePath + localVarFetchArgs.url,
+          localVarFetchArgs.options
+        ).then((response) => {
+          if (response.status >= 200 && response.status < 300) {
+            return response.json();
+          } else {
+            throw response;
+          }
+        });
+      };
+    },
+  };
+};
+
+/**
+ * LineApi - factory interface
+ * @export
+ */
+export const LineApiFactory = function (
+  configuration?: Configuration,
+  fetch?: FetchAPI,
+  basePath?: string
+) {
+  return {
+    /**
+     *
+     * @param {number} id
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    deleteLineId(id: number, options?: any) {
+      return LineApiFp(configuration).deleteLineId(id, options)(
+        fetch,
+        basePath
+      );
+    },
+    /**
+     *
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getLine(options?: any) {
+      return LineApiFp(configuration).getLine(options)(fetch, basePath);
+    },
+    /**
+     *
+     * @param {number} id
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getLineId(id: number, options?: any) {
+      return LineApiFp(configuration).getLineId(id, options)(fetch, basePath);
+    },
+    /**
+     *
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getLineTree(options?: any) {
+      return LineApiFp(configuration).getLineTree(options)(fetch, basePath);
+    },
+    /**
+     *
+     * @param {CreateLineDto} payload
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    postLine(payload: CreateLineDto, options?: any) {
+      return LineApiFp(configuration).postLine(payload, options)(
+        fetch,
+        basePath
+      );
+    },
+    /**
+     *
+     * @param {LineDto} payload
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    putLine(payload: LineDto, options?: any) {
+      return LineApiFp(configuration).putLine(payload, options)(
+        fetch,
+        basePath
+      );
+    },
+  };
+};
+
+/**
+ * LineApi - object-oriented interface
+ * @export
+ * @class LineApi
+ * @extends {BaseAPI}
+ */
+export class LineApi extends BaseAPI {
+  /**
+   *
+   * @param {number} id
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof LineApi
+   */
+  public deleteLineId(id: number, options?: any) {
+    return LineApiFp(this.configuration).deleteLineId(id, options)(
+      this.fetch,
+      this.basePath
+    );
+  }
+
+  /**
+   *
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof LineApi
+   */
+  public getLine(options?: any) {
+    return LineApiFp(this.configuration).getLine(options)(
+      this.fetch,
+      this.basePath
+    );
+  }
+
+  /**
+   *
+   * @param {number} id
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof LineApi
+   */
+  public getLineId(id: number, options?: any) {
+    return LineApiFp(this.configuration).getLineId(id, options)(
+      this.fetch,
+      this.basePath
+    );
+  }
+
+  /**
+   *
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof LineApi
+   */
+  public getLineTree(options?: any) {
+    return LineApiFp(this.configuration).getLineTree(options)(
+      this.fetch,
+      this.basePath
+    );
+  }
+
+  /**
+   *
+   * @param {CreateLineDto} payload
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof LineApi
+   */
+  public postLine(payload: CreateLineDto, options?: any) {
+    return LineApiFp(this.configuration).postLine(payload, options)(
+      this.fetch,
+      this.basePath
+    );
+  }
+
+  /**
+   *
+   * @param {LineDto} payload
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof LineApi
+   */
+  public putLine(payload: LineDto, options?: any) {
+    return LineApiFp(this.configuration).putLine(payload, options)(
+      this.fetch,
+      this.basePath
+    );
+  }
+}
+
+/**
  * OutputApi - fetch parameter creator
  * @export
  */
@@ -2329,6 +3051,57 @@ export const PolygonApiFetchParamCreator = function (
     },
     /**
      *
+     * @param {number} id
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getPolygonLineId(id: number, options: any = {}): FetchArgs {
+      // verify required parameter 'id' is not null or undefined
+      if (id === null || id === undefined) {
+        throw new RequiredError(
+          "id",
+          "Required parameter id was null or undefined when calling getPolygonLineId."
+        );
+      }
+      const localVarPath = `/api/polygon/line/{id}`.replace(
+        `{${"id"}}`,
+        encodeURIComponent(String(id))
+      );
+      const localVarUrlObj = url.parse(localVarPath, true);
+      const localVarRequestOptions = Object.assign({ method: "GET" }, options);
+      const localVarHeaderParameter = {} as any;
+      const localVarQueryParameter = {} as any;
+
+      // authentication apikey required
+      if (configuration && configuration.apiKey) {
+        const localVarApiKeyValue =
+          typeof configuration.apiKey === "function"
+            ? configuration.apiKey("Authorization")
+            : configuration.apiKey;
+        localVarHeaderParameter["Authorization"] = localVarApiKeyValue;
+      }
+
+      localVarUrlObj.query = Object.assign(
+        {},
+        localVarUrlObj.query,
+        localVarQueryParameter,
+        options.query
+      );
+      // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+      localVarUrlObj.search = null;
+      localVarRequestOptions.headers = Object.assign(
+        {},
+        localVarHeaderParameter,
+        options.headers
+      );
+
+      return {
+        url: url.format(localVarUrlObj),
+        options: localVarRequestOptions,
+      };
+    },
+    /**
+     *
      * @param {CreatePolygonDto} payload
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -2563,6 +3336,35 @@ export const PolygonApiFp = function (configuration?: Configuration) {
     },
     /**
      *
+     * @param {number} id
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getPolygonLineId(
+      id: number,
+      options?: any
+    ): (fetch?: FetchAPI, basePath?: string) => Promise<Array<PolygonDto>> {
+      const localVarFetchArgs = PolygonApiFetchParamCreator(
+        configuration
+      ).getPolygonLineId(id, options);
+      return (
+        fetch: FetchAPI = portableFetch,
+        basePath: string = BASE_PATH
+      ) => {
+        return fetch(
+          basePath + localVarFetchArgs.url,
+          localVarFetchArgs.options
+        ).then((response) => {
+          if (response.status >= 200 && response.status < 300) {
+            return response.json();
+          } else {
+            throw response;
+          }
+        });
+      };
+    },
+    /**
+     *
      * @param {CreatePolygonDto} payload
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -2678,6 +3480,18 @@ export const PolygonApiFactory = function (
     },
     /**
      *
+     * @param {number} id
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getPolygonLineId(id: number, options?: any) {
+      return PolygonApiFp(configuration).getPolygonLineId(id, options)(
+        fetch,
+        basePath
+      );
+    },
+    /**
+     *
      * @param {CreatePolygonDto} payload
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -2760,6 +3574,20 @@ export class PolygonApi extends BaseAPI {
    */
   public getPolygonId(id: number, options?: any) {
     return PolygonApiFp(this.configuration).getPolygonId(id, options)(
+      this.fetch,
+      this.basePath
+    );
+  }
+
+  /**
+   *
+   * @param {number} id
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof PolygonApi
+   */
+  public getPolygonLineId(id: number, options?: any) {
+    return PolygonApiFp(this.configuration).getPolygonLineId(id, options)(
       this.fetch,
       this.basePath
     );
