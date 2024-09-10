@@ -67,30 +67,11 @@ export const SearchForm = ({ onSubmitCallback, loading }: SearchFormProps) => {
   }, [cameraId]);
 
   useEffect(() => {
-    if (
-      polygons &&
-      polygons[0]?.conditionPages &&
-      polygons[0].conditionPages[0]
-    ) {
+    if (polygons.length > 0) {
       setValue("area", (polygons[0].id as unknown as string) || "");
-      setValue(
-        "conditionId",
-        (polygons[0].conditionPages[0].id as string) || ""
-      );
+      setValue("conditionId", (polygons[0].id as unknown as string) || "");
     }
   }, [polygons]);
-
-  useEffect(() => {
-    const conditionPages = selectedPolygon?.conditionPages;
-    if (selectedPolygon && conditionPages) {
-      setConditionOptions(
-        conditionPages.map((condition) => ({
-          value: condition.id,
-          label: condition.name,
-        }))
-      );
-    }
-  }, [selectedPolygon]);
 
   const { control, handleSubmit, setValue, getValues } = useForm<FormValues>({
     defaultValues: {

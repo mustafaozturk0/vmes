@@ -149,7 +149,6 @@ export default function EngineeringTree({ onSelectCallback }: TreeViewProps) {
         dispatch(setSelectedCameraId(cameraId as unknown as string));
       }
     };
-    console.log(selectedTreeNode);
 
     const isSelected = selectedTreeNode?.node?.id === node.id;
     function getLabelInfo() {

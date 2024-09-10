@@ -303,20 +303,6 @@ function SidebarMenu() {
                   </CustomizedItemText>
                 </Button>
               </ListItem>
-              <ListItem component="div">
-                <Button
-                  disableRipple
-                  component={RouterLink}
-                  to="/machines"
-                  onClick={handleItemClick}
-                >
-                  <Output />{" "}
-                  <CustomizedItemText>
-                    {" "}
-                    {t("sidebar.buttons.machines")}{" "}
-                  </CustomizedItemText>
-                </Button>
-              </ListItem>
             </>
             <ListItem component="div">
               <Button

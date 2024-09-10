@@ -10,7 +10,6 @@ import PrivateRoute from "./pages/Auth/PrivateRoute";
 import { OutputsPage } from "./pages/Outputs/OutputsPage";
 import { CamerasPage } from "./pages/Cameras/CamerasPage";
 import { MesPage } from "./pages/MES/MesPage";
-import { MachinesPage } from "./pages/Machines/MachinesPage";
 import { FalsePositivesPage } from "./pages/Reports/FalsePositives/FalsePositivesPage";
 import { MesTrainPage } from "./pages/MES/MesTrain/MesTrainPage";
 
@@ -80,14 +79,6 @@ const routes: RouteObject[] = [
         element: (
           <PrivateRoute>
             <MesPage />
-          </PrivateRoute>
-        ),
-      },
-      {
-        path: "machines",
-        element: (
-          <PrivateRoute>
-            <MachinesPage />
           </PrivateRoute>
         ),
       },

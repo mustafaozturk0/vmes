@@ -1,23 +1,15 @@
 import { Box, Card } from "@mui/material";
 import Konva from "konva";
 import React, { useContext, useEffect, useRef } from "react";
-import { Stage, Layer, Line, Circle } from "react-konva";
-import {
-  useEditPolygonMutation,
-  useDeletePolygonMutation,
-} from "../../../api/polygon/polygonApi";
+import { Stage, Layer, Line, Text } from "react-konva";
+
 import { useTypedSelector } from "../../../store/hooks";
 import { selectedCameraId } from "../../../slices/camera/cameraSlice";
 import { SocketContext } from "../../../contexts/SocketContext";
 import { usePolygons } from "../../../contexts/PolygonContext";
-import { debounce } from "lodash";
 import { MockVideoPlayer } from "./MockVideoPlayer";
 import colors from "../../../utils/colors";
 import { PolygonDto } from "../../../api/swagger/swagger.api";
-import {
-  selectedTreeNodeSelector,
-  selectFactoryTree,
-} from "../../../slices/factory/factorySlice";
 
 interface VideoPlayerProps {
   width: number;
@@ -35,8 +27,6 @@ export const VideoPlayer = ({ width, showStage }: VideoPlayerProps) => {
     setSelectedPolygonIndex,
   } = usePolygons();
 
-  const [deletePolygon] = useDeletePolygonMutation();
-  const [editPolygon] = useEditPolygonMutation();
   const socket = useContext(SocketContext);
   const imgRef = useRef<HTMLImageElement>(null);
   const [imageLoaded, setImageLoaded] = React.useState(false);
@@ -44,17 +34,8 @@ export const VideoPlayer = ({ width, showStage }: VideoPlayerProps) => {
   const ctxRef = useRef<{ ctx: CanvasRenderingContext2D | null }>({
     ctx: null,
   });
-  const factoryTree = useTypedSelector(selectFactoryTree);
-  const selectedTreeNode = useTypedSelector(selectedTreeNodeSelector);
 
-  const [detects, setDetects] = React.useState<string[]>([]);
-
-  useEffect(() => {
-    window.addEventListener("keydown", handleDeleteKeyPress);
-    return () => {
-      window.removeEventListener("keydown", handleDeleteKeyPress);
-    };
-  }, [selectedPolygonIndex, polygons]);
+  const [detects, setDetects] = React.useState<string>("");
 
   const scaleFactors = {
     x: fixedWidth / 640,
@@ -79,32 +60,6 @@ export const VideoPlayer = ({ width, showStage }: VideoPlayerProps) => {
     setPolygons(newPolygons);
   };
 
-  const handlePointDragMove = (
-    e: Konva.KonvaEventObject<DragEvent>,
-    polygonIndex: number,
-    pointIndex: number
-  ) => {
-    const newPolygons = polygons.map((polygon, pIndex) => {
-      if (pIndex === polygonIndex) {
-        const newPoints = (polygon.points ?? []).map((point, pIndex) => {
-          if (pIndex === pointIndex) {
-            return [
-              e.target.x() - (polygon.x ?? 0),
-              e.target.y() - (polygon.y ?? 0),
-            ];
-          }
-          return point;
-        });
-        return {
-          ...polygon,
-          points: newPoints,
-        };
-      }
-      return polygon;
-    });
-    setPolygons(newPolygons);
-  };
-
   const handlePolygonClick = (polygonIndex: number) => {
     if (selectedPolygonIndex === polygonIndex) {
       setSelectedPolygonIndex(null);
@@ -112,84 +67,6 @@ export const VideoPlayer = ({ width, showStage }: VideoPlayerProps) => {
       setSelectedPolygonIndex(polygonIndex);
     }
   };
-
-  const handleDeleteKeyPress = (e: KeyboardEvent) => {
-    if (e.key === "Delete" && selectedPolygonIndex !== null) {
-      setPolygons(
-        polygons.filter((_, index) => index !== selectedPolygonIndex)
-      );
-      setSelectedPolygonIndex(null);
-
-      debounceDeletePolygon(polygons[selectedPolygonIndex].id);
-    }
-  };
-
-  const debounceDeletePolygon = debounce((polygonId) => {
-    deletePolygon(polygonId).unwrap();
-  }, 1000);
-  const debouncedEditPolygon = debounce((polygon) => {
-    const lineId = factoryTree.find(
-      (i) => i.id === Number(selectedTreeNode?.node?.parent.split("+")[0])
-    )?.id;
-
-    editPolygon({
-      id: polygon.id,
-      lineId: Number(lineId),
-      cameraId: Number(cameraId),
-      name: polygon.name || "Area " + (polygons.length + 1),
-      x: polygon.x,
-      y: polygon.y,
-      color: polygon.color,
-      points: polygon.points,
-      conditionPages: polygon.conditionPages,
-    }).unwrap();
-  }, 1000);
-
-  const handleDragEnd = (
-    e: Konva.KonvaEventObject<DragEvent>,
-    polygonIndex: number
-  ) => {
-    const polygon = polygons[polygonIndex];
-    debouncedEditPolygon({
-      id: polygon.id,
-      x: Number(e.target.x().toFixed(0)),
-      y: Number(e.target.y().toFixed(0)),
-      color: polygon.color,
-      points: polygon.points,
-      conditionPages: polygon.conditionPages,
-    });
-  };
-
-  const handlePointDragEnd = (
-    e: Konva.KonvaEventObject<DragEvent>,
-    polygonIndex: number,
-    pointIndex: number
-  ) => {
-    debounceEditMovePoint(e, polygonIndex, pointIndex);
-  };
-
-  const debounceEditMovePoint = debounce((e, polygonIndex, pointIndex) => {
-    const newPolygons = polygons.map((polygon, pIndex) => {
-      if (pIndex === polygonIndex) {
-        const newPoints = (polygon.points ?? []).map((point, pIndex) => {
-          if (pIndex === pointIndex) {
-            return [
-              e.target.x() - (polygon.x ?? 0),
-              e.target.y() - (polygon.y ?? 0),
-            ];
-          }
-          return point;
-        });
-        return {
-          ...polygon,
-          points: newPoints,
-        };
-      }
-      return polygon;
-    });
-    setPolygons(newPolygons);
-    debouncedEditPolygon(newPolygons[polygonIndex]);
-  }, 1000);
 
   useEffect(() => {
     setImageLoaded(false);
@@ -260,24 +137,20 @@ export const VideoPlayer = ({ width, showStage }: VideoPlayerProps) => {
       }
     });
 
-    socket.on("detect", (data: string) => {
-      setDetects([...detects, data]);
-    });
-
-    socket.on("not_detect", (data: string) => {
-      let buf = detects.filter((d) => d !== data);
-      setDetects(buf);
+    socket.on("detect", (data: any) => {
+      if (data?.polygonId === polygons[0]?.id) {
+        setDetects(data.class);
+      }
     });
 
     return () => {
       socket.off("frame");
       socket.off("detect");
-      socket.off("not_detect");
       setImageLoaded(false);
       socket.emit("leave", {
         room: "" + cameraId,
       });
-      setDetects([]);
+      setDetects("");
     };
   }, [socket, cameraId]);
 
@@ -343,6 +216,13 @@ export const VideoPlayer = ({ width, showStage }: VideoPlayerProps) => {
               scale={{ x: scaleFactors.x, y: scaleFactors.y }}
             >
               <Layer>
+                <Text
+                  x={polygons[0]?.points?.[0]?.[0] ?? 0}
+                  y={(polygons[0]?.points?.[0]?.[1] ?? 0) - 20}
+                  fill={"red"}
+                  fontSize={20}
+                  text={detects || " "}
+                ></Text>
                 {polygons.map((polygon, polygonIndex) => (
                   <React.Fragment key={polygonIndex}>
                     <Line
@@ -357,33 +237,8 @@ export const VideoPlayer = ({ width, showStage }: VideoPlayerProps) => {
                       }
                       x={polygon.x}
                       y={polygon.y}
-                      draggable
-                      onDragMove={(e) => handlePolygonDragMove(e, polygonIndex)}
-                      onDragEnd={(e) => {
-                        handleDragEnd(e, polygonIndex);
-                      }}
                       onClick={() => handlePolygonClick(polygonIndex)}
                     />
-                    {polygon.points?.map((point, pointIndex) => (
-                      <Circle
-                        key={pointIndex}
-                        // @ts-ignore
-                        x={point[0] + polygon?.x || 0}
-                        // @ts-ignore
-                        y={point[1] + polygon?.y ?? 0}
-                        radius={8}
-                        onDragEnd={(e) => {
-                          handlePointDragEnd(e, polygonIndex, pointIndex);
-                        }}
-                        fill={
-                          selectedPolygonIndex === polygonIndex ? "red" : "blue"
-                        }
-                        draggable
-                        onDragMove={(e) =>
-                          handlePointDragMove(e, polygonIndex, pointIndex)
-                        }
-                      />
-                    ))}
                   </React.Fragment>
                 ))}
               </Layer>

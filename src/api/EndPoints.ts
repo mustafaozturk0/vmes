@@ -10,4 +10,6 @@ export const EndPoints = {
   machine: `${DevRootURL}/api/machine`,
   factory: `${DevRootURL}/api/factory`,
   line: `${DevRootURL}/api/line`,
+  machineLogs: `${DevRootURL}/api/machineLog`,
+  vggModels: `${DevRootURL}/api/vggModels`,
 };

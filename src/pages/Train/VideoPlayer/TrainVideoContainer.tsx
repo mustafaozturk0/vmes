@@ -38,7 +38,6 @@ export const TrainVideoContainer = ({ loading }: TrainVideoPlayerProps) => {
     const postData: CreatePolygonDto = {
       ...newPolygon,
       cameraId: Number(cameraId),
-      conditionPages: [],
     };
 
     addPolygon(postData)

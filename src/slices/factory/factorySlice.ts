@@ -53,12 +53,6 @@ const factorySlice = createSlice({
       factoryApi.endpoints.getFactoryTree.matchFulfilled,
       (state, { payload }) => {
         state.factoryTree = payload || [];
-        if (state.selectedTreeNode === null && payload && payload.length > 0) {
-          state.selectedTreeNode = {
-            type: SelectedTreeNodeType.FactoryLine,
-            node: payload[0] || null,
-          };
-        }
       }
     );
   },

@@ -52,7 +52,6 @@ export const ChangeNameAccordion = () => {
       y: polygon.y,
       color: polygon.color,
       points: polygon.points,
-      conditionPages: polygon.conditionPages,
     })
       .unwrap()
       .then(() => {

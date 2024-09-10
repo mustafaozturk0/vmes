@@ -1,8 +1,8 @@
 /// <reference path="./custom.d.ts" />
 // tslint:disable
 /**
- * Khenda VSM API
- * Khenda VSM API
+ * Khenda VMS API
+ * Khenda VMS API
  *
  * OpenAPI spec version: 1.0
  *
@@ -211,10 +211,68 @@ export interface CreatePolygonDto {
   points?: Array<Array<number>>;
   /**
    *
-   * @type {Array<PolygonConditionPageDto>}
+   * @type {string}
    * @memberof CreatePolygonDto
    */
-  conditionPages?: Array<PolygonConditionPageDto>;
+  modelName?: string;
+  /**
+   *
+   * @type {Array<string>}
+   * @memberof CreatePolygonDto
+   */
+  classList?: Array<string>;
+  /**
+   *
+   * @type {any}
+   * @memberof CreatePolygonDto
+   */
+  classColors?: any;
+}
+
+/**
+ *
+ * @export
+ * @interface GetMachineLogsDto
+ */
+export interface GetMachineLogsDto {
+  /**
+   *
+   * @type {Array<number>}
+   * @memberof GetMachineLogsDto
+   */
+  polygonIds?: Array<number>;
+  /**
+   *
+   * @type {Date}
+   * @memberof GetMachineLogsDto
+   */
+  from?: Date;
+  /**
+   *
+   * @type {Date}
+   * @memberof GetMachineLogsDto
+   */
+  to?: Date;
+}
+
+/**
+ *
+ * @export
+ * @interface GetMachineLogsResponseDto
+ */
+export interface GetMachineLogsResponseDto {
+  /**
+   *
+   * @type {number}
+   * @memberof GetMachineLogsResponseDto
+   */
+  polygonId?: number;
+  /**
+   *
+   * @type {Array<MachineLogDto>}
+   * @memberof GetMachineLogsResponseDto
+   */
+  logs?: Array<MachineLogDto>;
 }
 
 /**
@@ -312,6 +370,38 @@ export interface LoginResponseDto {
 /**
  *
  * @export
+ * @interface MachineLogDto
+ */
+export interface MachineLogDto {
+  /**
+   *
+   * @type {number}
+   * @memberof MachineLogDto
+   */
+  id?: number;
+  /**
+   *
+   * @type {number}
+   * @memberof MachineLogDto
+   */
+  polygonId?: number;
+  /**
+   *
+   * @type {string}
+   * @memberof MachineLogDto
+   */
+  log?: string;
+  /**
+   *
+   * @type {Date}
+   * @memberof MachineLogDto
+   */
+  datetime?: Date;
+}
+
+/**
+ *
+ * @export
  * @interface OutputDto
  */
 export interface OutputDto {
@@ -345,108 +435,6 @@ export interface OutputDto {
    * @memberof OutputDto
    */
   isActive?: boolean;
-}
-
-/**
- *
- * @export
- * @interface PolygonConditionDto
- */
-export interface PolygonConditionDto {
-  /**
-   *
-   * @type {number}
-   * @memberof PolygonConditionDto
-   */
-  class?: number;
-  /**
-   *
-   * @type {string}
-   * @memberof PolygonConditionDto
-   */
-  operator?: PolygonConditionDto.OperatorEnum;
-  /**
-   *
-   * @type {number}
-   * @memberof PolygonConditionDto
-   */
-  count?: number;
-  /**
-   *
-   * @type {Array<PolygonSubConditionDto>}
-   * @memberof PolygonConditionDto
-   */
-  subConditions?: Array<PolygonSubConditionDto>;
-  /**
-   *
-   * @type {string}
-   * @memberof PolygonConditionDto
-   */
-  type?: PolygonConditionDto.TypeEnum;
-}
-
-/**
- * @export
- * @namespace PolygonConditionDto
- */
-export namespace PolygonConditionDto {
-  /**
-   * @export
-   * @enum {string}
-   */
-  export enum OperatorEnum {
-    GreaterThan = <any>">",
-    LessThan = <any>"<",
-    Equal = <any>"=",
-    GreaterThanOrEqualTo = <any>">=",
-    LessThanOrEqualTo = <any>"<=",
-  }
-  /**
-   * @export
-   * @enum {string}
-   */
-  export enum TypeEnum {
-    Intersect = <any>"intersect",
-    Contain = <any>"contain",
-  }
-}
-
-/**
- *
- * @export
- * @interface PolygonConditionPageDto
- */
-export interface PolygonConditionPageDto {
-  /**
-   *
-   * @type {string}
-   * @memberof PolygonConditionPageDto
-   */
-  id?: string;
-  /**
-   *
-   * @type {string}
-   * @memberof PolygonConditionPageDto
-   */
-  name?: string;
-  /**
-   *
-   * @type {Array<PolygonConditionDto>}
-   * @memberof PolygonConditionPageDto
-   */
-  conditions?: Array<PolygonConditionDto>;
-  /**
-   *
-   * @type {Array<PolygonOutputDto>}
-   * @memberof PolygonConditionPageDto
-   */
-  outputs?: Array<PolygonOutputDto>;
-  /**
-   *
-   * @type {Array<string>}
-   * @memberof PolygonConditionPageDto
-   */
-  outputMails?: Array<string>;
 }
 
 /**
@@ -505,77 +493,22 @@ export interface PolygonDto {
   points?: Array<Array<number>>;
   /**
    *
-   * @type {Array<PolygonConditionPageDto>}
+   * @type {string}
    * @memberof PolygonDto
    */
-  conditionPages?: Array<PolygonConditionPageDto>;
-}
-
-/**
- *
- * @export
- * @interface PolygonOutputDto
- */
-export interface PolygonOutputDto {
+  modelName?: string;
   /**
    *
-   * @type {number}
-   * @memberof PolygonOutputDto
+   * @type {Array<string>}
+   * @memberof PolygonDto
    */
-  id?: number;
+  classList?: Array<string>;
   /**
    *
-   * @type {number}
-   * @memberof PolygonOutputDto
+   * @type {any}
+   * @memberof PolygonDto
    */
-  number?: number;
-  /**
-   *
-   * @type {number}
-   * @memberof PolygonOutputDto
-   */
-  duration?: number;
-}
-
-/**
- *
- * @export
- * @interface PolygonSubConditionDto
- */
-export interface PolygonSubConditionDto {
-  /**
-   *
-   * @type {string}
-   * @memberof PolygonSubConditionDto
-   */
-  name?: string;
-  /**
-   *
-   * @type {number}
-   * @memberof PolygonSubConditionDto
-   */
-  class?: number;
-  /**
-   *
-   * @type {string}
-   * @memberof PolygonSubConditionDto
-   */
-  operator?: PolygonSubConditionDto.OperatorEnum;
-}
-
-/**
- * @export
- * @namespace PolygonSubConditionDto
- */
-export namespace PolygonSubConditionDto {
-  /**
-   * @export
-   * @enum {string}
-   */
-  export enum OperatorEnum {
-    With = <any>"with",
-    Without = <any>"without",
-  }
+  classColors?: any;
 }
 
 /**
@@ -798,6 +731,56 @@ export interface UserDto {
    * @memberof UserDto
    */
   username?: string;
+}
+
+/**
+ *
+ * @export
+ * @interface VggModelsDto
+ */
+export interface VggModelsDto {
+  /**
+   *
+   * @type {string}
+   * @memberof VggModelsDto
+   */
+  modelFile?: string;
+  /**
+   *
+   * @type {number}
+   * @memberof VggModelsDto
+   */
+  x?: number;
+  /**
+   *
+   * @type {number}
+   * @memberof VggModelsDto
+   */
+  y?: number;
+  /**
+   *
+   * @type {number}
+   * @memberof VggModelsDto
+   */
+  width?: number;
+  /**
+   *
+   * @type {number}
+   * @memberof VggModelsDto
+   */
+  height?: number;
+  /**
+   *
+   * @type {Array<string>}
+   * @memberof VggModelsDto
+   */
+  classList?: Array<string>;
+  /**
+   *
+   * @type {any}
+   * @memberof VggModelsDto
+   */
+  classColors?: any;
 }
 
 /**
@@ -2274,6 +2257,161 @@ export class LineApi extends BaseAPI {
    */
   public putLine(payload: LineDto, options?: any) {
     return LineApiFp(this.configuration).putLine(payload, options)(
+      this.fetch,
+      this.basePath
+    );
+  }
+}
+
+/**
+ * MachineLogApi - fetch parameter creator
+ * @export
+ */
+export const MachineLogApiFetchParamCreator = function (
+  configuration?: Configuration
+) {
+  return {
+    /**
+     *
+     * @param {GetMachineLogsDto} payload
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    postCamera(payload: GetMachineLogsDto, options: any = {}): FetchArgs {
+      // verify required parameter 'payload' is not null or undefined
+      if (payload === null || payload === undefined) {
+        throw new RequiredError(
+          "payload",
+          "Required parameter payload was null or undefined when calling postCamera."
+        );
+      }
+      const localVarPath = `/api/machineLog/`;
+      const localVarUrlObj = url.parse(localVarPath, true);
+      const localVarRequestOptions = Object.assign({ method: "POST" }, options);
+      const localVarHeaderParameter = {} as any;
+      const localVarQueryParameter = {} as any;
+
+      // authentication apikey required
+      if (configuration && configuration.apiKey) {
+        const localVarApiKeyValue =
+          typeof configuration.apiKey === "function"
+            ? configuration.apiKey("Authorization")
+            : configuration.apiKey;
+        localVarHeaderParameter["Authorization"] = localVarApiKeyValue;
+      }
+
+      localVarHeaderParameter["Content-Type"] = "application/json";
+
+      localVarUrlObj.query = Object.assign(
+        {},
+        localVarUrlObj.query,
+        localVarQueryParameter,
+        options.query
+      );
+      // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+      localVarUrlObj.search = null;
+      localVarRequestOptions.headers = Object.assign(
+        {},
+        localVarHeaderParameter,
+        options.headers
+      );
+      const needsSerialization =
+        <any>"GetMachineLogsDto" !== "string" ||
+        localVarRequestOptions.headers["Content-Type"] === "application/json";
+      localVarRequestOptions.body = needsSerialization
+        ? JSON.stringify(payload || {})
+        : payload || "";
+
+      return {
+        url: url.format(localVarUrlObj),
+        options: localVarRequestOptions,
+      };
+    },
+  };
+};
+
+/**
+ * MachineLogApi - functional programming interface
+ * @export
+ */
+export const MachineLogApiFp = function (configuration?: Configuration) {
+  return {
+    /**
+     *
+     * @param {GetMachineLogsDto} payload
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    postCamera(
+      payload: GetMachineLogsDto,
+      options?: any
+    ): (
+      fetch?: FetchAPI,
+      basePath?: string
+    ) => Promise<Array<GetMachineLogsResponseDto>> {
+      const localVarFetchArgs = MachineLogApiFetchParamCreator(
+        configuration
+      ).postCamera(payload, options);
+      return (
+        fetch: FetchAPI = portableFetch,
+        basePath: string = BASE_PATH
+      ) => {
+        return fetch(
+          basePath + localVarFetchArgs.url,
+          localVarFetchArgs.options
+        ).then((response) => {
+          if (response.status >= 200 && response.status < 300) {
+            return response.json();
+          } else {
+            throw response;
+          }
+        });
+      };
+    },
+  };
+};
+
+/**
+ * MachineLogApi - factory interface
+ * @export
+ */
+export const MachineLogApiFactory = function (
+  configuration?: Configuration,
+  fetch?: FetchAPI,
+  basePath?: string
+) {
+  return {
+    /**
+     *
+     * @param {GetMachineLogsDto} payload
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    postCamera(payload: GetMachineLogsDto, options?: any) {
+      return MachineLogApiFp(configuration).postCamera(payload, options)(
+        fetch,
+        basePath
+      );
+    },
+  };
+};
+
+/**
+ * MachineLogApi - object-oriented interface
+ * @export
+ * @class MachineLogApi
+ * @extends {BaseAPI}
+ */
+export class MachineLogApi extends BaseAPI {
+  /**
+   *
+   * @param {GetMachineLogsDto} payload
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof MachineLogApi
+   */
+  public postCamera(payload: GetMachineLogsDto, options?: any) {
+    return MachineLogApiFp(this.configuration).postCamera(payload, options)(
       this.fetch,
       this.basePath
     );
@@ -4664,6 +4802,134 @@ export class RecordApi extends BaseAPI {
    */
   public postRecord(payload: RecordSearchDto, options?: any) {
     return RecordApiFp(this.configuration).postRecord(payload, options)(
+      this.fetch,
+      this.basePath
+    );
+  }
+}
+
+/**
+ * VggModelsApi - fetch parameter creator
+ * @export
+ */
+export const VggModelsApiFetchParamCreator = function (
+  configuration?: Configuration
+) {
+  return {
+    /**
+     *
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getCamera(options: any = {}): FetchArgs {
+      const localVarPath = `/api/vggModels/`;
+      const localVarUrlObj = url.parse(localVarPath, true);
+      const localVarRequestOptions = Object.assign({ method: "GET" }, options);
+      const localVarHeaderParameter = {} as any;
+      const localVarQueryParameter = {} as any;
+
+      // authentication apikey required
+      if (configuration && configuration.apiKey) {
+        const localVarApiKeyValue =
+          typeof configuration.apiKey === "function"
+            ? configuration.apiKey("Authorization")
+            : configuration.apiKey;
+        localVarHeaderParameter["Authorization"] = localVarApiKeyValue;
+      }
+
+      localVarUrlObj.query = Object.assign(
+        {},
+        localVarUrlObj.query,
+        localVarQueryParameter,
+        options.query
+      );
+      // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+      localVarUrlObj.search = null;
+      localVarRequestOptions.headers = Object.assign(
+        {},
+        localVarHeaderParameter,
+        options.headers
+      );
+
+      return {
+        url: url.format(localVarUrlObj),
+        options: localVarRequestOptions,
+      };
+    },
+  };
+};
+
+/**
+ * VggModelsApi - functional programming interface
+ * @export
+ */
+export const VggModelsApiFp = function (configuration?: Configuration) {
+  return {
+    /**
+     *
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getCamera(
+      options?: any
+    ): (fetch?: FetchAPI, basePath?: string) => Promise<Array<VggModelsDto>> {
+      const localVarFetchArgs =
+        VggModelsApiFetchParamCreator(configuration).getCamera(options);
+      return (
+        fetch: FetchAPI = portableFetch,
+        basePath: string = BASE_PATH
+      ) => {
+        return fetch(
+          basePath + localVarFetchArgs.url,
+          localVarFetchArgs.options
+        ).then((response) => {
+          if (response.status >= 200 && response.status < 300) {
+            return response.json();
+          } else {
+            throw response;
+          }
+        });
+      };
+    },
+  };
+};
+
+/**
+ * VggModelsApi - factory interface
+ * @export
+ */
+export const VggModelsApiFactory = function (
+  configuration?: Configuration,
+  fetch?: FetchAPI,
+  basePath?: string
+) {
+  return {
+    /**
+     *
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getCamera(options?: any) {
+      return VggModelsApiFp(configuration).getCamera(options)(fetch, basePath);
+    },
+  };
+};
+
+/**
+ * VggModelsApi - object-oriented interface
+ * @export
+ * @class VggModelsApi
+ * @extends {BaseAPI}
+ */
+export class VggModelsApi extends BaseAPI {
+  /**
+   *
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof VggModelsApi
+   */
+  public getCamera(options?: any) {
+    return VggModelsApiFp(this.configuration).getCamera(options)(
       this.fetch,
       this.basePath
     );

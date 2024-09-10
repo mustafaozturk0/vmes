@@ -21,8 +21,10 @@ import {
 } from "../../slices/camera/cameraSlice";
 import { useTypedSelector } from "../../store/hooks";
 import { useAddPolygonMutation } from "../../api/polygon/polygonApi";
-import { CreatePolygonDto } from "../../api/swagger/swagger.api";
+import { CreatePolygonDto, VggModelsDto } from "../../api/swagger/swagger.api";
 import { selectedTreeNodeSelector } from "../../slices/factory/factorySlice";
+import { useGetVggModelsMutation } from "../../api/vgg/vggModelsApi";
+import { enqueueSnackbar } from "notistack";
 
 interface AddStringDialogProps {
   open: boolean;
@@ -42,11 +44,14 @@ export const AddStationDialog = ({
   const selectedTreeNode = useTypedSelector(selectedTreeNodeSelector);
   const dispatch = useDispatch();
   const [addPolygon, { isLoading }] = useAddPolygonMutation();
+  const [getVggModels, { data: vggModels }] = useGetVggModelsMutation();
   const handleCameraChange = (e: SelectChangeEvent<unknown>) => {
     setCameraId(e.target.value as string);
   };
+  const [selectedVgg, setSelectedVgg] = useState<VggModelsDto>();
 
   useEffect(() => {
+    getVggModels().unwrap();
     setNewString("");
   }, [open]);
 
@@ -55,6 +60,7 @@ export const AddStationDialog = ({
   };
 
   const handleAdd = () => {
+    console.log(selectedVgg);
     const dto: CreatePolygonDto = {
       name: newString,
       cameraId: Number(cameraId),
@@ -62,23 +68,52 @@ export const AddStationDialog = ({
       x: 0,
       y: 0,
       points: [
-        [0, 0],
-        [180, 0],
-        [180, 180],
-        [0, 180],
+        [selectedVgg?.x || 0, selectedVgg?.y || 0],
+        [
+          (selectedVgg?.x || 0) + (selectedVgg?.width || 0),
+          selectedVgg?.y || 0,
+        ],
+        [
+          (selectedVgg?.x || 0) + (selectedVgg?.width || 0),
+          (selectedVgg?.y || 0) + (selectedVgg?.height || 0),
+        ],
+        [
+          selectedVgg?.x || 0,
+          (selectedVgg?.y || 0) + (selectedVgg?.height || 0),
+        ],
       ],
-      conditionPages: [],
       color: "rgba(0, 0, 255, 0.5)",
+      modelName: selectedVgg?.modelFile || "",
+      classList: selectedVgg?.classList || [],
     };
-    addPolygon(dto).then(() => {
-      onAddCallback();
-      handleClose();
-    });
+    addPolygon(dto)
+      .then(() => {
+        onAddCallback();
+        handleClose();
+      })
+      .then(() => {
+        enqueueSnackbar("Polygon added successfully", {
+          variant: "success",
+        });
+      })
+      .catch(() => {
+        enqueueSnackbar("Polygon could not be added", {
+          variant: "error",
+        });
+      });
   };
 
   const handleStringChange = (event: any) => {
     setNewString(event.target.value as string);
   };
+
+  const handleVggModelChange = (e: SelectChangeEvent<unknown>) => {
+    const selectedModel = vggModels?.find(
+      (model) => model.modelFile === e.target.value
+    );
+    setSelectedVgg(selectedModel);
+  };
+
   const [t] = useTranslation("common");
   return (
     <Dialog open={open} onClose={handleClose}>
@@ -119,6 +154,28 @@ export const AddStationDialog = ({
             ))}
           </Select>
         </FormControl>
+        <FormControl fullWidth sx={{ marginTop: 2 }}>
+          <InputLabel id="camera-select-label" shrink={true}>
+            {t("Vgg Models")}
+          </InputLabel>
+          <Select
+            variant="outlined"
+            title={t("Vgg Models")}
+            label={t("Vgg Models")}
+            sx={{ minWidth: 120 }}
+            value={selectedVgg?.modelFile}
+            disabled={!vggModels?.length}
+            onChange={(e) => {
+              handleVggModelChange(e);
+            }}
+          >
+            {vggModels?.map((model) => (
+              <MenuItem key={model.modelFile} value={model.modelFile}>
+                {model.modelFile?.split(".pth")[0]}
+              </MenuItem>
+            ))}
+          </Select>
+        </FormControl>
       </DialogContent>
       <DialogActions>
         <Button onClick={handleClose} color="primary">
@@ -130,7 +187,11 @@ export const AddStationDialog = ({
           loading={isLoading}
           color="primary"
           variant={"outlined"}
-          disabled={newString.length === 0}
+          disabled={
+            newString.length === 0 ||
+            selectedVgg === undefined ||
+            cameraId === ""
+          }
         >
           <> {t("commonWords.add")}</>
         </LoadingButton>

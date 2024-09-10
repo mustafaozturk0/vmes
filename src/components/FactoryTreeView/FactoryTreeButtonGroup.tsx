@@ -85,6 +85,7 @@ export const FactoryTreeButtonGroup = () => {
         });
       });
   };
+
   function renderTreeButtonGroup() {
     const iconFontSize = 8;
     return (
