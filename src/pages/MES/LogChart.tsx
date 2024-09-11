@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import { MachineLogDto } from "../../api/swagger/swagger.api";
 import * as echarts from "echarts";
-import { duration } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 
 interface LogChartProps {
   data: MachineLogDto[];
@@ -13,42 +13,58 @@ const LogChart: React.FC<LogChartProps> = ({ data, colors }) => {
   let chartInstance: echarts.ECharts | null = null;
 
   const processData = (data: MachineLogDto[], colors: any) => {
+    const totalDurations: Record<string, number> = {};
+
     const processed = data.reduce(
       (acc, cur, index) => {
         const { log, datetime } = cur;
+        const prevDatetime = data[index - 1]?.datetime;
+        const duration = prevDatetime
+          ? Math.floor(
+              Math.abs(
+                new Date(datetime as any).getTime() -
+                  new Date(prevDatetime).getTime()
+              ) / 1000
+            )
+          : 0;
+
+        if (!totalDurations[log as string]) {
+          totalDurations[log as string] = 0;
+        }
+        totalDurations[log as string] += duration;
+
         acc.categories.push(log as string);
         acc.data.push({
           name: log,
           value: datetime,
           itemStyle: {
-            color: colors[log as string],
+            color: colors[log as string] || "#000",
           },
-          duration: Math.floor(
-            Math.abs(
-              new Date(cur.datetime as any).getTime() -
-                new Date(data[index - 1]?.datetime as any)?.getTime()
-            ) / 1000
-          ),
+          duration: duration,
         });
+
         return acc;
       },
       {
         categories: [] as string[],
-        data: [] as any[], // each entry contains a series item with color and value
+        data: [] as any[],
       }
     );
 
-    return { processed };
+    return { processed, totalDurations };
   };
 
   useEffect(() => {
     if (chartRef.current && data?.length > 0) {
       if (chartInstance) {
-        chartInstance.dispose(); // Dispose the previous instance to avoid memory leaks
+        chartInstance.dispose();
       }
 
-      const { processed } = processData(data, colors);
-      chartInstance = echarts.init(chartRef.current); // Initialize a new chart instance
+      const { processed, totalDurations } = processData(data, colors);
+
+      console.log(processed);
+
+      chartInstance = echarts.init(chartRef.current);
 
       const options = {
         tooltip: {
@@ -57,9 +73,9 @@ const LogChart: React.FC<LogChartProps> = ({ data, colors }) => {
             type: "shadow",
           },
           formatter: (params: any) => {
+            console.log(params);
             const param = params[0];
-            console.log(param);
-            return `${param.name}: ${param.value}`;
+            return `${param.name}: ${param.data.duration} seconds`;
           },
         },
         legend: {},
@@ -72,7 +88,10 @@ const LogChart: React.FC<LogChartProps> = ({ data, colors }) => {
         xAxis: {
           type: "value",
           axisLabel: {
-            formatter: "{value} seconds",
+            formatter: (value: number) => {
+              console.log(value);
+              return new Date(value).toLocaleString();
+            },
           },
         },
         yAxis: {
@@ -82,7 +101,6 @@ const LogChart: React.FC<LogChartProps> = ({ data, colors }) => {
           name: item.name,
           type: "bar",
           stack: "total",
-
           emphasis: {
             focus: "series",
           },
@@ -104,6 +122,17 @@ const LogChart: React.FC<LogChartProps> = ({ data, colors }) => {
       };
 
       chartInstance.setOption(options);
+
+      // Update the total up/down/other times dynamically
+      const logSummaryElement = document.getElementById("logSummary");
+      if (logSummaryElement) {
+        logSummaryElement.innerHTML = Object.entries(totalDurations)
+          .map(
+            ([log, duration]) =>
+              `<div>${log.toLocaleUpperCase()}: ${duration} (sec)</div>`
+          )
+          .join("");
+      }
     }
 
     // Clean up the chart instance when component unmounts
@@ -115,11 +144,18 @@ const LogChart: React.FC<LogChartProps> = ({ data, colors }) => {
   }, [data, colors]);
 
   return (
-    <div
-      ref={chartRef}
-      className="chart"
-      style={{ height: "200px", width: "100%" }}
-    ></div>
+    <Box display="inline-flex" gap={2} width={"100%"}>
+      <div
+        ref={chartRef}
+        className="chart"
+        style={{ height: "200px", width: "80%" }}
+      ></div>
+      <Box id="logSummary" sx={{ mt: 2 }}>
+        <Typography variant="h5" align="center">
+          Log Summary:
+        </Typography>
+      </Box>
+    </Box>
   );
 };
 

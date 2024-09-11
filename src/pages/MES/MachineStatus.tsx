@@ -35,27 +35,11 @@ import { DatePicker, TimePicker } from "@mui/x-date-pickers";
 import { enqueueSnackbar } from "notistack";
 import LogChart from "./LogChart";
 
-// Type definitions
 interface MachineState {
   color: string;
   duration: number;
 }
 
-interface MachineData {
-  name: string;
-  time: string;
-  percentage: string;
-  states: MachineState[];
-  status: string;
-  statusTime: string;
-  image: string;
-}
-
-interface MachineBarProps {
-  machineData: MachineData;
-}
-
-// Main component
 const MachineStatus: React.FC = () => {
   const [getLogs, { data: logs, isLoading }] = useGetMachineLogsMutation();
   const [getPolygons, { data: polygons }] = useGetPolygonsMutation();
@@ -180,7 +164,7 @@ const MachineStatus: React.FC = () => {
   };
 
   return (
-    <Box p={3}>
+    <Box p={0}>
       <Card sx={{ p: 1, mb: 4 }}>
         <form
           onSubmit={handleSubmit(onSubmit)}
