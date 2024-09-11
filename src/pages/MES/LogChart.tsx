@@ -42,7 +42,6 @@ const LogChart: React.FC<LogChartProps> = ({ data, colors }) => {
             color: colors[log as string] || "#000",
           },
           duration: duration,
-          to: data[index + 1]?.datetime,
         });
 
         return acc;
@@ -67,42 +66,63 @@ const LogChart: React.FC<LogChartProps> = ({ data, colors }) => {
 
       chartInstance = echarts.init(chartRef.current);
 
-      var categories = processed.data.map((item) => item.name);
-      var durations = processed.data.map((item) => item.duration);
-      var c = processed.data.map((item) => item.itemStyle.color);
-
-      // ECharts option configuration
-      var options = {
-        title: {
-          text: "Horizontal Bar Graph",
-        },
+      const options = {
         tooltip: {
           trigger: "axis",
           axisPointer: {
             type: "shadow",
           },
+          formatter: (params: any) => {
+            console.log(params);
+            const param = params[0];
+            return `${param.name}: ${param.data.duration} seconds`;
+          },
+        },
+        legend: {},
+        grid: {
+          left: "8%",
+          right: "4%",
+          bottom: "10%",
+          containLabel: true,
         },
         xAxis: {
           type: "value",
-          boundaryGap: [0, 0.01],
+          axisLabel: {
+            formatter: (value: number) => {
+              console.log(value);
+              return new Date(value).toLocaleString();
+            },
+          },
         },
         yAxis: {
           type: "category",
-          data: categories,
+          show: false,
         },
-        series: [
+        series: processed.data.map(
+          (item) => (
+            console.log(item),
+            {
+              name: item.name,
+              type: "bar",
+              stack: "total",
+              emphasis: {
+                focus: "series",
+              },
+              data: [item.duration],
+              itemStyle: item.itemStyle,
+            }
+          )
+        ),
+        dataZoom: [
           {
-            name: "Duration",
-            type: "bar",
-            stack: "total",
-            data: durations.map((value, index) => {
-              return {
-                value: value,
-                itemStyle: {
-                  color: c[index],
-                },
-              };
-            }),
+            type: "slider",
+            xAxisIndex: 0,
+            filterMode: "empty",
+          },
+          {
+            type: "inside",
+            xAxisIndex: 0,
+            filterMode: "empty",
           },
         ],
       };
