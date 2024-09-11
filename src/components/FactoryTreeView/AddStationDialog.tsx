@@ -82,9 +82,10 @@ export const AddStationDialog = ({
           (selectedVgg?.y || 0) + (selectedVgg?.height || 0),
         ],
       ],
-      color: "rgba(0, 0, 255, 0.5)",
       modelName: selectedVgg?.modelFile || "",
       classList: selectedVgg?.classList || [],
+      classColors: selectedVgg?.classColors || [],
+      color: "rgba(0, 0, 255, 0.5)",
     };
     addPolygon(dto)
       .then(() => {

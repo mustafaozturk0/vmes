@@ -21,6 +21,7 @@ import {
 import {
   GetMachineLogsDto,
   GetMachineLogsResponseDto,
+  MachineLogDto,
 } from "../../api/swagger/swagger.api";
 import { useGetMachineLogsMutation } from "../../api/machine/machineLogApi";
 import { useGetPolygonsMutation } from "../../api/polygon/polygonApi";
@@ -32,6 +33,7 @@ import { LoadingButton } from "@mui/lab";
 import { DatePicker, TimePicker } from "@mui/x-date-pickers";
 
 import { enqueueSnackbar } from "notistack";
+import LogChart from "./LogChart";
 
 // Type definitions
 interface MachineState {
@@ -53,54 +55,10 @@ interface MachineBarProps {
   machineData: MachineData;
 }
 
-// A function to represent each machine's data bar
-const MachineBar: React.FC<GetMachineLogsResponseDto> = ({ logs }) => (
-  <Box sx={{ display: "flex", alignItems: "center", mb: 2 }}>
-    {logs?.map((machine, index) => (
-      <Box
-        key={index}
-        sx={{
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          width: 20,
-          background: machine.log === "processing" ? "green" : "red",
-        }}
-      >
-        -
-      </Box>
-    ))}
-  </Box>
-);
-
-// Legend component
-const Legend: React.FC = () => (
-  <Box
-    sx={{
-      display: "flex",
-      justifyContent: "center",
-      mb: 3,
-    }}
-  >
-    <Box sx={{ display: "flex", alignItems: "center", mr: 2 }}>
-      <Box sx={{ width: 20, height: 20, backgroundColor: "#4caf50", mr: 1 }} />
-      <Typography variant="caption">Start</Typography>
-    </Box>
-    <Box sx={{ display: "flex", alignItems: "center", mr: 2 }}>
-      <Box sx={{ width: 20, height: 20, backgroundColor: "#f44336", mr: 1 }} />
-      <Typography variant="caption">Stop</Typography>
-    </Box>
-    <Box sx={{ display: "flex", alignItems: "center", mr: 2 }}>
-      <Box sx={{ width: 20, height: 20, backgroundColor: "#ffeb3b", mr: 1 }} />
-      <Typography variant="caption">Idle</Typography>
-    </Box>
-  </Box>
-);
-
 // Main component
 const MachineStatus: React.FC = () => {
   const [getLogs, { data: logs, isLoading }] = useGetMachineLogsMutation();
-  const [getPolygons] = useGetPolygonsMutation();
+  const [getPolygons, { data: polygons }] = useGetPolygonsMutation();
   const [polygonOptions, setPolygonOptions] = React.useState<
     { id: number; name: string }[]
   >([]);
@@ -351,12 +309,17 @@ const MachineStatus: React.FC = () => {
         {renderDateTimePicker("startDate")}
         {renderDateTimePicker("endDate")}
       </Card>
-      <Legend />
       {logs?.map((machine, index) => (
         <Paper key={index} sx={{ mb: 3, p: 2 }}>
           <Grid container spacing={2}>
             <Grid item xs={12} sm={9}>
-              <MachineBar logs={machine.logs} />
+              <Typography variant="h6">
+                {polygonOptions.find((p) => p.id === machine.polygonId)?.name}
+              </Typography>
+              <LogChart
+                data={machine.logs as MachineLogDto[]}
+                colors={polygons && polygons[index]?.classColors}
+              />
             </Grid>
           </Grid>
         </Paper>

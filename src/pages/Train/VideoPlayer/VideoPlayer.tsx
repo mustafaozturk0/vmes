@@ -219,7 +219,7 @@ export const VideoPlayer = ({ width, showStage }: VideoPlayerProps) => {
                 <Text
                   x={polygons[0]?.points?.[0]?.[0] ?? 0}
                   y={(polygons[0]?.points?.[0]?.[1] ?? 0) - 20}
-                  fill={"red"}
+                  fill={polygons[0]?.classColors[detects] || "black"}
                   fontSize={20}
                   text={detects || " "}
                 ></Text>
