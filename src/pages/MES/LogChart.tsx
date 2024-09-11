@@ -21,13 +21,13 @@ const LogChart: React.FC<LogChartProps> = ({ data, colors }) => {
         const prevDatetime = data[index - 1]?.datetime;
         const duration = prevDatetime
           ? Number(
-            (
-              Math.abs(
-                new Date(datetime as any).getTime() -
-                new Date(prevDatetime).getTime()
-              ) / 1000
-            ).toFixed(2)
-          )
+              (
+                Math.abs(
+                  new Date(datetime as any).getTime() -
+                    new Date(prevDatetime).getTime()
+                ) / 1000
+              ).toFixed(2)
+            )
           : 0;
 
         if (!totalDurations[log as string]) {
@@ -72,7 +72,7 @@ const LogChart: React.FC<LogChartProps> = ({ data, colors }) => {
           },
           formatter: (params: any, ...others: any[]) => {
             const param = params[0];
-            const item = processed.data[params.seriesIndex]
+            const item = processed.data[params.seriesIndex];
             return `${item.name}: ${item.duration} seconds`;
           },
         },
@@ -86,7 +86,7 @@ const LogChart: React.FC<LogChartProps> = ({ data, colors }) => {
         xAxis: {
           type: "value",
           axisLabel: {
-            formatter: (value: number, ...others:any[]) => {
+            formatter: (value: number, ...others: any[]) => {
               const firstDate = new Date(processed.data[0].value);
               const labelDate = new Date(firstDate.getTime() + value * 1000);
               return labelDate.toLocaleString();
@@ -97,30 +97,26 @@ const LogChart: React.FC<LogChartProps> = ({ data, colors }) => {
           type: "category",
           show: false,
         },
-        series: processed.data.map(
-          (item) => (
-            {
-              name: item.name,
-              type: "bar",
-              stack: "total",
-              emphasis: {
-                focus: "series",
-              },
-              data: [item.duration],
-              itemStyle: item.itemStyle,
-            }
-          )
-        ),
+        series: processed.data.map((item) => ({
+          name: item.name,
+          type: "bar",
+          stack: "total",
+          emphasis: {
+            focus: "series",
+          },
+          data: [item.duration],
+          itemStyle: item.itemStyle,
+        })),
         dataZoom: [
           {
             type: "slider",
             xAxisIndex: 0,
-            filterMode: "empty",
+            filterMode: "none",
           },
           {
             type: "inside",
             xAxisIndex: 0,
-            filterMode: "empty",
+            filterMode: "none",
           },
         ],
       });
