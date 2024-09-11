@@ -20,11 +20,13 @@ const LogChart: React.FC<LogChartProps> = ({ data, colors }) => {
         const { log, datetime } = cur;
         const prevDatetime = data[index - 1]?.datetime;
         const duration = prevDatetime
-          ? Math.floor(
-              Math.abs(
-                new Date(datetime as any).getTime() -
-                  new Date(prevDatetime).getTime()
-              ) / 1000
+          ? Number(
+              (
+                Math.abs(
+                  new Date(datetime as any).getTime() -
+                    new Date(prevDatetime).getTime()
+                ) / 1000
+              ).toFixed(2)
             )
           : 0;
 
@@ -40,6 +42,7 @@ const LogChart: React.FC<LogChartProps> = ({ data, colors }) => {
             color: colors[log as string] || "#000",
           },
           duration: duration,
+          to: data[index + 1]?.datetime,
         });
 
         return acc;
@@ -64,65 +67,48 @@ const LogChart: React.FC<LogChartProps> = ({ data, colors }) => {
 
       chartInstance = echarts.init(chartRef.current);
 
-      const options = {
+      var categories = processed.data.map((item) => item.name);
+      var durations = processed.data.map((item) => item.duration);
+      var c = processed.data.map((item) => item.itemStyle.color);
+
+      // ECharts option configuration
+      var options = {
+        title: {
+          text: "Horizontal Bar Graph",
+        },
         tooltip: {
           trigger: "axis",
           axisPointer: {
             type: "shadow",
           },
-          formatter: (params: any) => {
-            console.log(params);
-            const param = params[0];
-            return `${param.name}: ${param.data.duration} seconds`;
-          },
-        },
-        legend: {},
-        grid: {
-          left: "8%",
-          right: "4%",
-          bottom: "10%",
-          containLabel: true,
         },
         xAxis: {
           type: "value",
-          axisLabel: {
-            formatter: (value: number) => {
-              console.log(value);
-              return new Date(value).toLocaleString();
-            },
-          },
+          boundaryGap: [0, 0.01],
         },
         yAxis: {
           type: "category",
-          show: false,
+          data: categories,
         },
-        series: processed.data.map((item) => ({
-          name: item.name,
-          type: "bar",
-          stack: "total",
-          emphasis: {
-            focus: "series",
-          },
-          data: [item.duration],
-          itemStyle: item.itemStyle,
-        })),
-        dataZoom: [
+        series: [
           {
-            type: "slider",
-            xAxisIndex: 0,
-            filterMode: "empty",
-          },
-          {
-            type: "inside",
-            xAxisIndex: 0,
-            filterMode: "empty",
+            name: "Duration",
+            type: "bar",
+            stack: "total",
+            data: durations.map((value, index) => {
+              return {
+                value: value,
+                itemStyle: {
+                  color: c[index],
+                },
+              };
+            }),
           },
         ],
       };
 
       chartInstance.setOption(options);
 
-      // Update the total up/down/other times dynamically
       const logSummaryElement = document.getElementById("logSummary");
       if (logSummaryElement) {
         logSummaryElement.innerHTML = Object.entries(totalDurations)
@@ -134,7 +120,6 @@ const LogChart: React.FC<LogChartProps> = ({ data, colors }) => {
       }
     }
 
-    // Clean up the chart instance when component unmounts
     return () => {
       if (chartInstance) {
         chartInstance.dispose();
