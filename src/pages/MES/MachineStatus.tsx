@@ -294,10 +294,11 @@ const MachineStatus: React.FC = () => {
         {renderDateTimePicker("endDate")}
       </Card>
       {logs?.map((machine, index) => (
-        <Paper key={index} sx={{ mb: 3, p: 2 }}>
+        <Card key={index} sx={{ mb: 3, p: 2 }}>
           <Grid container spacing={2}>
             <Grid item xs={12} sm={9}>
-              <Typography variant="h6">
+              <Typography variant="h5">
+                Polygon:{" "}
                 {polygonOptions.find((p) => p.id === machine.polygonId)?.name}
               </Typography>
               <LogChart
@@ -306,7 +307,7 @@ const MachineStatus: React.FC = () => {
               />
             </Grid>
           </Grid>
-        </Paper>
+        </Card>
       ))}
     </Box>
   );

@@ -33,7 +33,6 @@ const LogChart: React.FC<LogChartProps> = ({ data, colors }) => {
         }
         totalDurations[log as string] += duration;
 
-        acc.categories.push(log as string);
         acc.data.push({
           name: log,
           value: datetime,
@@ -46,7 +45,6 @@ const LogChart: React.FC<LogChartProps> = ({ data, colors }) => {
         return acc;
       },
       {
-        categories: [] as string[],
         data: [] as any[],
       }
     );
@@ -80,9 +78,9 @@ const LogChart: React.FC<LogChartProps> = ({ data, colors }) => {
         },
         legend: {},
         grid: {
-          left: "3%",
+          left: "8%",
           right: "4%",
-          bottom: "3%",
+          bottom: "10%",
           containLabel: true,
         },
         xAxis: {
@@ -96,6 +94,7 @@ const LogChart: React.FC<LogChartProps> = ({ data, colors }) => {
         },
         yAxis: {
           type: "category",
+          show: false,
         },
         series: processed.data.map((item) => ({
           name: item.name,
@@ -148,7 +147,7 @@ const LogChart: React.FC<LogChartProps> = ({ data, colors }) => {
       <div
         ref={chartRef}
         className="chart"
-        style={{ height: "200px", width: "80%" }}
+        style={{ height: "150px", width: "80%" }}
       ></div>
       <Box id="logSummary" sx={{ mt: 2 }}>
         <Typography variant="h5" align="center">
