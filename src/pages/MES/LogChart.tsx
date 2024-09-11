@@ -21,13 +21,13 @@ const LogChart: React.FC<LogChartProps> = ({ data, colors }) => {
         const prevDatetime = data[index - 1]?.datetime;
         const duration = prevDatetime
           ? Number(
-              (
-                Math.abs(
-                  new Date(datetime as any).getTime() -
-                    new Date(prevDatetime).getTime()
-                ) / 1000
-              ).toFixed(2)
-            )
+            (
+              Math.abs(
+                new Date(datetime as any).getTime() -
+                new Date(prevDatetime).getTime()
+              ) / 1000
+            ).toFixed(2)
+          )
           : 0;
 
         if (!totalDurations[log as string]) {
@@ -62,20 +62,18 @@ const LogChart: React.FC<LogChartProps> = ({ data, colors }) => {
 
       const { processed, totalDurations } = processData(data, colors);
 
-      console.log(processed);
-
       chartInstance = echarts.init(chartRef.current);
 
-      const options = {
+      chartInstance.setOption({
         tooltip: {
-          trigger: "axis",
+          trigger: "item",
           axisPointer: {
             type: "shadow",
           },
-          formatter: (params: any) => {
-            console.log(params);
+          formatter: (params: any, ...others: any[]) => {
             const param = params[0];
-            return `${param.name}: ${param.data.duration} seconds`;
+            const item = processed.data[params.seriesIndex]
+            return `${item.name}: ${item.duration} seconds`;
           },
         },
         legend: {},
@@ -88,9 +86,10 @@ const LogChart: React.FC<LogChartProps> = ({ data, colors }) => {
         xAxis: {
           type: "value",
           axisLabel: {
-            formatter: (value: number) => {
-              console.log(value);
-              return new Date(value).toLocaleString();
+            formatter: (value: number, ...others:any[]) => {
+              const firstDate = new Date(processed.data[0].value);
+              const labelDate = new Date(firstDate.getTime() + value * 1000);
+              return labelDate.toLocaleString();
             },
           },
         },
@@ -100,7 +99,6 @@ const LogChart: React.FC<LogChartProps> = ({ data, colors }) => {
         },
         series: processed.data.map(
           (item) => (
-            console.log(item),
             {
               name: item.name,
               type: "bar",
@@ -125,9 +123,7 @@ const LogChart: React.FC<LogChartProps> = ({ data, colors }) => {
             filterMode: "empty",
           },
         ],
-      };
-
-      chartInstance.setOption(options);
+      });
 
       const logSummaryElement = document.getElementById("logSummary");
       if (logSummaryElement) {
