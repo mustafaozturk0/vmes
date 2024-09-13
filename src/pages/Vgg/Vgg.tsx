@@ -7,6 +7,7 @@ import {
   MenuItem,
   Select,
   Typography,
+  Checkbox,
 } from "@mui/material";
 import VggPlayer from "./VggPlayer";
 import VggChart from "./VggChart";
@@ -37,6 +38,7 @@ export const Vgg = () => {
   const containerRef = useRef<HTMLDivElement | null>(null);
 
   const [selectedVgg, setSelectedVgg] = useState(vggOptions[0]);
+  const [showBbox, setShowBbox] = useState(true);
 
   const videoJsOptions = {
     controls: true,
@@ -119,6 +121,10 @@ export const Vgg = () => {
       </Card>
 
       <Box textAlign={"center"}>
+        <Box display={"flex"} alignItems={"center"} gap={1} marginRight={2}>
+          <Checkbox onClick={() => setShowBbox(!showBbox)} />
+          Show Bounding Boxes
+        </Box>
         <Card sx={{ p: 2, mb: 2, display: "flex", justifyContent: "center" }}>
           <Box
             position="relative"
@@ -134,48 +140,49 @@ export const Vgg = () => {
               />{" "}
             </Box>
 
-            {Object.keys(selectedVgg.data).map((key) => {
-              const item = selectedVgg.data[key];
-              const currentData = getDataForTime(item.data);
-              const boxStyles = calculateBoxStyles(item);
+            {showBbox &&
+              Object.keys(selectedVgg.data).map((key) => {
+                const item = selectedVgg.data[key];
+                const currentData = getDataForTime(item.data);
+                const boxStyles = calculateBoxStyles(item);
 
-              return (
-                <Box
-                  key={key}
-                  position="absolute"
-                  top={boxStyles.top}
-                  left={boxStyles.left}
-                  width={boxStyles.width}
-                  bgcolor={
-                    item.type === "classDet"
-                      ? "rgba(255, 0, 0, 0.3)"
-                      : "rgba(0, 255, 0, 0.3)"
-                  }
-                  height={boxStyles.height}
-                  border={
-                    item.type === "classDet"
-                      ? "2px solid red"
-                      : "2px solid green"
-                  }
-                  color="white"
-                  display="flex"
-                  justifyContent="center"
-                  alignItems="center"
-                  zIndex={item.type === "classDet" ? 5 : 2} // Ensures that the boxes appear above the video
-                >
-                  <Typography
-                    variant="body1"
-                    color="black"
-                    fontWeight={800}
-                    fontSize={"larger"}
+                return (
+                  <Box
+                    key={key}
+                    position="absolute"
+                    top={boxStyles.top}
+                    left={boxStyles.left}
+                    width={boxStyles.width}
+                    bgcolor={
+                      item.type === "classDet"
+                        ? "rgba(255, 0, 0, 0.3)"
+                        : "rgba(0, 255, 0, 0.3)"
+                    }
+                    height={boxStyles.height}
+                    border={
+                      item.type === "classDet"
+                        ? "2px solid red"
+                        : "2px solid green"
+                    }
+                    color="white"
+                    display="flex"
+                    justifyContent="center"
+                    alignItems="center"
+                    zIndex={item.type === "classDet" ? 5 : 2} // Ensures that the boxes appear above the video
                   >
-                    {item.type === "classDet"
-                      ? currentData.class
-                      : `Count: ${currentData.humanCount}`}
-                  </Typography>
-                </Box>
-              );
-            })}
+                    <Typography
+                      variant="body1"
+                      color="black"
+                      fontWeight={800}
+                      fontSize={"larger"}
+                    >
+                      {item.type === "classDet"
+                        ? currentData.class
+                        : ` ${key} Count:  ${currentData.humanCount}`}
+                    </Typography>
+                  </Box>
+                );
+              })}
           </Box>
         </Card>
         <Card
