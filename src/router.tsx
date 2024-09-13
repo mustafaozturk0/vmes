@@ -12,6 +12,7 @@ import { CamerasPage } from "./pages/Cameras/CamerasPage";
 import { MesPage } from "./pages/MES/MesPage";
 import { FalsePositivesPage } from "./pages/Reports/FalsePositives/FalsePositivesPage";
 import { MesTrainPage } from "./pages/MES/MesTrain/MesTrainPage";
+import { VggPage } from "./pages/Vgg/VggPage";
 
 const routes: RouteObject[] = [
   {
@@ -79,6 +80,14 @@ const routes: RouteObject[] = [
         element: (
           <PrivateRoute>
             <MesPage />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "vgg",
+        element: (
+          <PrivateRoute>
+            <VggPage />
           </PrivateRoute>
         ),
       },
