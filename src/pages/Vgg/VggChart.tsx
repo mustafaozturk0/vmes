@@ -223,6 +223,18 @@ const ClassDetChart = ({
           show: false,
         },
         series: classDetSeries,
+        dataZoom: [
+          {
+            type: "slider",
+            xAxisIndex: 0,
+            filterMode: "none",
+          },
+          {
+            type: "inside",
+            xAxisIndex: 0,
+            filterMode: "none",
+          },
+        ],
       };
 
       chartInstance.setOption(chartOptions);
