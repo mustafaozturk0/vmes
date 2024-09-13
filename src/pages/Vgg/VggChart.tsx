@@ -1,34 +1,33 @@
 import React, { useEffect, useRef } from "react";
 import * as echarts from "echarts";
-import { vggData } from "./VggData"; // Your data from the file
 import { Card } from "@mui/material";
 
-const VggChart = () => {
+interface VggChartProps {
+  vggData: any;
+}
+
+const VggChart = ({ vggData }: VggChartProps) => {
   return (
     <div>
-      {/* Render the combined chart for all personDet data */}
-      <PersonDetChart />
+      <PersonDetChart vggData={vggData} />
 
-      {/* Render separate charts for each classDet */}
       {Object.keys(vggData)
         .filter((key) => vggData[key].type === "classDet")
         .map((key) => (
-          <ClassDetChart key={key} chartKey={key} />
+          <ClassDetChart key={key} chartKey={key} vggData={vggData} />
         ))}
     </div>
   );
 };
 
-const PersonDetChart = () => {
+const PersonDetChart = ({ vggData }: any) => {
   const chartRef = useRef<HTMLDivElement>(null);
   let chartInstance: echarts.ECharts | null = null;
 
   useEffect(() => {
     if (chartRef.current) {
-      // Initialize the chart instance
       chartInstance = echarts.init(chartRef.current);
 
-      // Prepare the series data by combining all personDet entries
       const personDetSeries = Object.keys(vggData)
         .filter((key) => vggData[key].type === "personDet")
         .map((key) => ({
@@ -42,7 +41,6 @@ const PersonDetChart = () => {
           }),
         }));
 
-      // Chart configuration options
       const chartOptions = {
         title: {
           text: "Person Detections Over Time",
@@ -51,7 +49,6 @@ const PersonDetChart = () => {
         tooltip: {
           trigger: "axis",
           formatter: (params: any) => {
-            // Customize the tooltip content
             let tooltipText = `Time: ${params[0].value[0]} sec<br/>`;
             params.forEach((item: any) => {
               tooltipText += `${item.seriesName}: ${item.value[1]}<br/>`;
@@ -96,10 +93,8 @@ const PersonDetChart = () => {
         ],
       };
 
-      // Set the chart options
       chartInstance.setOption(chartOptions);
 
-      // Cleanup on unmount
       return () => {
         chartInstance && chartInstance.dispose();
       };
@@ -113,8 +108,13 @@ const PersonDetChart = () => {
   );
 };
 
-// Component for each classDet chart (separate for each classDet entry)
-const ClassDetChart = ({ chartKey }: { chartKey: string }) => {
+const ClassDetChart = ({
+  chartKey,
+  vggData,
+}: {
+  chartKey: string;
+  vggData: any;
+}) => {
   const chartRef = useRef<HTMLDivElement>(null);
   let chartInstance: echarts.ECharts | null = null;
 
@@ -122,25 +122,24 @@ const ClassDetChart = ({ chartKey }: { chartKey: string }) => {
     if (chartRef.current) {
       chartInstance = echarts.init(chartRef.current);
 
-      // Create the color mapping for different classes
       const classColorMap: Record<string, string> = {
         Run: "#4CAF50", // Green
         Pause: "#FFC107", // Yellow
         Stop: "#F44336", // Red
         Take: "#00BCD4", // Cyan
         Place: "#FF5722", // Orange
-        // Add more class colors as needed
+        Closed: "#9C27B0", // Purple
+        Open: "#2196F3", // Blue
       };
 
-      // Each segment is represented as an individual bar
       const classDetSeries = vggData[chartKey].data.map(
         (item: any, index: number) => ({
           name: item.class,
           type: "bar",
-          stack: "total", // Make sure to stack the bars
+          stack: "total",
           data: [{ value: item.seconds, name: item.class }],
           itemStyle: {
-            color: classColorMap[item.class] || "#000", // Color based on the class
+            color: classColorMap[item.class] || "#000",
           },
         })
       );
@@ -151,9 +150,8 @@ const ClassDetChart = ({ chartKey }: { chartKey: string }) => {
           left: "center",
         },
         tooltip: {
-          trigger: "item", // Trigger per item (bar segment)
+          trigger: "item",
           formatter: (params: any) => {
-            // Display the class name and duration in the tooltip
             const className = params.seriesName;
             const duration = params.data.value;
             return `${className}: ${duration} sec`;

@@ -1,4 +1,4 @@
-export const vggData: any = {
+export const vggData1: any = {
   v1_m1: {
     type: "classDet",
     x1: 1457,

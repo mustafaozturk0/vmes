@@ -1,15 +1,42 @@
-import React, { useRef, useState, useEffect } from "react";
-import { Box, Card, CardHeader, Typography } from "@mui/material";
+import React, { useRef, useState } from "react";
+import {
+  Box,
+  Card,
+  FormControl,
+  InputLabel,
+  MenuItem,
+  Select,
+  Typography,
+} from "@mui/material";
 import VggPlayer from "./VggPlayer";
-import { vggData } from "./VggData";
 import VggChart from "./VggChart";
+import { vggData1 } from "./VggData1";
+import { vggData0 } from "./VggData0";
+import { useTranslation } from "react-i18next";
 
 export const Vgg = () => {
-  const url =
-    "https://khenda-public.s3.eu-west-3.amazonaws.com/video_1_run_cut.mp4";
+  const [t] = useTranslation("common");
+
+  const vggOptions = [
+    {
+      id: 0,
+      url: "https://khenda-public.s3.eu-west-3.amazonaws.com/video_0_run_cut.mp4",
+      data: vggData0,
+      name: "Video 0",
+    },
+    {
+      id: 1,
+      url: "https://khenda-public.s3.eu-west-3.amazonaws.com/video_1_run_cut.mp4",
+      data: vggData1,
+      name: "Video 1",
+    },
+  ];
+
   const [currentTime, setCurrentTime] = useState(0);
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const containerRef = useRef<HTMLDivElement | null>(null);
+
+  const [selectedVgg, setSelectedVgg] = useState(vggOptions[0]);
 
   const videoJsOptions = {
     controls: true,
@@ -17,14 +44,13 @@ export const Vgg = () => {
     fluid: true,
     sources: [
       {
-        src: url,
+        src: selectedVgg.url,
         type: "video/mp4",
       },
     ],
   };
 
   const handleTimeUpdate = () => {
-    console.log("currentTime", videoRef.current?.currentTime);
     if (videoRef.current) {
       setCurrentTime(videoRef.current.currentTime);
     }
@@ -59,59 +85,110 @@ export const Vgg = () => {
     return { top, left, width, height };
   };
 
+  const handleVggChange = (e: any) => {
+    const vgg = vggOptions.find((v) => v.id === e.target.value);
+    if (vgg) {
+      setSelectedVgg(vgg);
+    }
+  };
+
   return (
-    <Box textAlign={"center"}>
-      <Card sx={{ p: 2, mb: 2, display: "flex", justifyContent: "center" }}>
-        <Box
-          position="relative"
-          ref={containerRef}
-          width="640px"
-          height="360px"
-        >
-          <Box position="relative" zIndex={1} width="100%" height="100%">
-            <VggPlayer options={videoJsOptions} onReady={handlePlayerReady} />
+    <Box>
+      <Card sx={{ p: 2, mb: 2 }}>
+        <FormControl fullWidth>
+          <InputLabel id="camera-select-label" shrink={true}>
+            {t("components.cameraPicker.selectCamera")}
+          </InputLabel>
+          <Select
+            variant="outlined"
+            title={t("components.cameraPicker.selectCameraYouWantToUse")}
+            label={t("components.cameraPicker.selectCamera")}
+            sx={{ minWidth: 120 }}
+            value={selectedVgg.id}
+            onChange={(e) => {
+              handleVggChange(e);
+            }}
+          >
+            {vggOptions.map((vgg) => (
+              <MenuItem key={vgg.id} value={vgg.id}>
+                {vgg.name}
+              </MenuItem>
+            ))}
+          </Select>
+        </FormControl>
+      </Card>
+
+      <Box textAlign={"center"}>
+        <Card sx={{ p: 2, mb: 2, display: "flex", justifyContent: "center" }}>
+          <Box
+            position="relative"
+            ref={containerRef}
+            width="640px"
+            height="360px"
+          >
+            <Box position="relative" zIndex={1} width="100%" height="100%">
+              <VggPlayer
+                key={selectedVgg.id}
+                options={videoJsOptions}
+                onReady={handlePlayerReady}
+              />{" "}
+            </Box>
+
+            {Object.keys(selectedVgg.data).map((key) => {
+              const item = selectedVgg.data[key];
+              const currentData = getDataForTime(item.data);
+              const boxStyles = calculateBoxStyles(item);
+
+              return (
+                <Box
+                  key={key}
+                  position="absolute"
+                  top={boxStyles.top}
+                  left={boxStyles.left}
+                  width={boxStyles.width}
+                  bgcolor={
+                    item.type === "classDet"
+                      ? "rgba(255, 0, 0, 0.3)"
+                      : "rgba(0, 255, 0, 0.3)"
+                  }
+                  height={boxStyles.height}
+                  border={
+                    item.type === "classDet"
+                      ? "2px solid red"
+                      : "2px solid green"
+                  }
+                  color="white"
+                  display="flex"
+                  justifyContent="center"
+                  alignItems="center"
+                  zIndex={item.type === "classDet" ? 5 : 2} // Ensures that the boxes appear above the video
+                >
+                  <Typography
+                    variant="body1"
+                    color="black"
+                    fontWeight={800}
+                    fontSize={"larger"}
+                  >
+                    {item.type === "classDet"
+                      ? currentData.class
+                      : `Count: ${currentData.humanCount}`}
+                  </Typography>
+                </Box>
+              );
+            })}
           </Box>
-
-          {Object.keys(vggData).map((key) => {
-            const item = vggData[key];
-            const currentData = getDataForTime(item.data);
-            const boxStyles = calculateBoxStyles(item);
-
-            return (
-              <Box
-                key={key}
-                position="absolute"
-                top={boxStyles.top}
-                left={boxStyles.left}
-                width={boxStyles.width}
-                height={boxStyles.height}
-                border="2px solid red"
-                color="white"
-                display="flex"
-                justifyContent="center"
-                alignItems="center"
-                zIndex={2} // Ensures that the boxes appear above the video
-              >
-                <Typography variant="body1" color="error" fontWeight={800}>
-                  {item.type === "classDet"
-                    ? currentData.class
-                    : `Count: ${currentData.humanCount}`}
-                </Typography>
-              </Box>
-            );
-          })}
-        </Box>
-      </Card>
-      <Card
-        sx={{
-          p: 2,
-          mt: 2,
-          width: "100%",
-          overflow: "auto",
-        }}
-      >
-        <VggChart />
-      </Card>
+        </Card>
+        <Card
+          sx={{
+            p: 2,
+            mt: 2,
+            width: "100%",
+            overflow: "auto",
+          }}
+        >
+          <VggChart vggData={selectedVgg.data} />
+        </Card>
+      </Box>
     </Box>
   );
 };
