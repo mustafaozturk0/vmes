@@ -4,17 +4,23 @@ import { Card } from "@mui/material";
 
 interface VggChartProps {
   vggData: any;
+  seekToTime?: (time: number) => void;
 }
 
-const VggChart = ({ vggData }: VggChartProps) => {
+const VggChart = ({ vggData, seekToTime }: VggChartProps) => {
   return (
     <div>
-      <PersonDetChart vggData={vggData} />
+      <PersonDetChart vggData={vggData} seekToTime={seekToTime} />
 
       {Object.keys(vggData)
         .filter((key) => vggData[key].type === "classDet")
         .map((key) => (
-          <ClassDetChart key={key} chartKey={key} vggData={vggData} />
+          <ClassDetChart
+            key={key}
+            chartKey={key}
+            vggData={vggData}
+            seekToTime={seekToTime}
+          />
         ))}
     </div>
   );
@@ -38,7 +44,7 @@ const calculateMovingMedian = (data: number[], windowSize: number) => {
   return result;
 };
 
-const PersonDetChart = ({ vggData }: any) => {
+const PersonDetChart = ({ vggData, seekToTime }: any) => {
   const chartRef = useRef<HTMLDivElement>(null);
   let chartInstance: echarts.ECharts | null = null;
 
@@ -139,11 +145,20 @@ const PersonDetChart = ({ vggData }: any) => {
 
       chartInstance.setOption(chartOptions);
 
+      // Add click event listener for seeking
+      chartInstance.on("click", (params: any) => {
+        console.log(params)
+        if (seekToTime && params.value) {
+          const time = params.value[0]; // x-axis value represents time
+          seekToTime(time);
+        }
+      });
+
       return () => {
         chartInstance && chartInstance.dispose();
       };
     }
-  }, []);
+  }, [vggData, seekToTime]);
 
   return (
     <Card sx={{ p: 2, mb: 2 }}>
@@ -155,9 +170,11 @@ const PersonDetChart = ({ vggData }: any) => {
 const ClassDetChart = ({
   chartKey,
   vggData,
+  seekToTime,
 }: {
   chartKey: string;
   vggData: any;
+  seekToTime?: (time: number) => void;
 }) => {
   const chartRef = useRef<HTMLDivElement>(null);
   let chartInstance: echarts.ECharts | null = null;
@@ -239,11 +256,20 @@ const ClassDetChart = ({
 
       chartInstance.setOption(chartOptions);
 
+      // Add click event listener for seeking
+      chartInstance.on("click", (params: any) => {
+        console.log(params);
+        if (seekToTime && params.value) {
+          const time = params.value; // x-axis value represents time
+          seekToTime(time);
+        }
+      });
+
       return () => {
         chartInstance && chartInstance.dispose();
       };
     }
-  }, [chartKey]);
+  }, [chartKey, vggData, seekToTime]);
 
   return (
     <Card sx={{ mt: 2, p: 2 }}>

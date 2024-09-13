@@ -115,6 +115,12 @@ export const Vgg = () => {
     }
   };
 
+  const seekToTime = (time: number) => {
+    if (videoRef.current) {
+      videoRef.current.currentTime = time;
+    }
+  };
+
   return (
     <Box>
       <Card sx={{ p: 2, mb: 2 }}>
@@ -214,7 +220,7 @@ export const Vgg = () => {
             overflow: "auto",
           }}
         >
-          <VggChart vggData={selectedVgg.data} />
+          <VggChart vggData={selectedVgg.data} seekToTime={seekToTime} />
         </Card>
       </Box>
     </Box>
