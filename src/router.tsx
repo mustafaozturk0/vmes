@@ -85,11 +85,7 @@ const routes: RouteObject[] = [
       },
       {
         path: "vgg",
-        element: (
-          <PrivateRoute>
-            <VggPage />
-          </PrivateRoute>
-        ),
+        element: <VggPage />,
       },
     ],
   },
