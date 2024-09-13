@@ -59,7 +59,7 @@ export const Vgg = () => {
   const containerRef = useRef<HTMLDivElement | null>(null);
 
   const [selectedVgg, setSelectedVgg] = useState(vggOptions[0]);
-  const [showBbox, setShowBbox] = useState(true);
+  const [showBbox, setShowBbox] = useState(false);
 
   const videoJsOptions = {
     controls: true,
