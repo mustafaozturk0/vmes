@@ -173,7 +173,14 @@ const ClassDetChart = ({
         Take: "#00BCD4", // Cyan
         Place: "#FF5722", // Orange
         Closed: "#9C27B0", // Purple
-        Open: "#2196F3", // Blue
+        Open: "#2196F3", // Blue,
+        UrunVar: "#607D8B", // Grey
+        UrunYok: "#795548", // Brown
+        KapakKapali: "#FF9800", // Amber
+        KapakAcik: "#9E9E9E", // Grey
+        IsikVar: "#8BC34A", // Light Green
+        IsikYok: "#FFEB3B", // Yellow
+        Alarm: "#E91E63", // Pink
       };
 
       const classDetSeries = vggData[chartKey].data.map(
