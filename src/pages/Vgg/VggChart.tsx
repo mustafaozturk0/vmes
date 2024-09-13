@@ -38,21 +38,17 @@ const calculateMovingMedian = (data: number[], windowSize: number) => {
   return result;
 };
 
-// Component for the personDet chart (combined for all personDet entries)
 const PersonDetChart = ({ vggData }: any) => {
   const chartRef = useRef<HTMLDivElement>(null);
   let chartInstance: echarts.ECharts | null = null;
 
   useEffect(() => {
     if (chartRef.current) {
-      // Initialize the chart instance
       chartInstance = echarts.init(chartRef.current);
 
-      // Prepare the series data by combining all personDet entries
       const personDetSeries = Object.keys(vggData)
         .filter((key) => vggData[key].type === "personDet")
         .map((key) => {
-          // Extract raw data
           const rawData = vggData[key].data.map((item: any) => {
             return {
               seconds: item.seconds,
@@ -60,7 +56,6 @@ const PersonDetChart = ({ vggData }: any) => {
             };
           });
 
-          // Filter out sequential duplicate counts
           const filteredData = rawData.filter(
             (item: any, index: number, arr: any[]) => {
               if (index === 0) return true;
@@ -68,11 +63,9 @@ const PersonDetChart = ({ vggData }: any) => {
             }
           );
 
-          // Calculate moving median with a window size of 3 (adjustable)
           const humanCounts = filteredData.map((item: any) => item.humanCount);
           const smoothedCounts = calculateMovingMedian(humanCounts, 30);
 
-          // Map data for the chart
           const chartData = filteredData.map((item: any, index: number) => {
             return {
               value: [item.seconds, smoothedCounts[index]],
@@ -82,12 +75,11 @@ const PersonDetChart = ({ vggData }: any) => {
           return {
             name: key,
             type: "line",
-            step: "middle", // Use step line to show integer changes
+            step: "middle",
             data: chartData,
           };
         });
 
-      // Chart configuration options
       const chartOptions = {
         title: {
           text: "Person Detections Over Time",
@@ -96,7 +88,6 @@ const PersonDetChart = ({ vggData }: any) => {
         tooltip: {
           trigger: "axis",
           formatter: (params: any) => {
-            // Customize the tooltip content
             let tooltipText = `Time: ${params[0].value[0]} sec<br/>`;
             params.forEach((item: any) => {
               tooltipText += `${item.seriesName}: ${item.value[1]}<br/>`;
@@ -127,7 +118,6 @@ const PersonDetChart = ({ vggData }: any) => {
           nameGap: 50,
           minInterval: 1,
           min: 0,
-          // Adjust y-axis to display integers only
           axisLabel: {
             formatter: "{value}",
           },
@@ -147,10 +137,8 @@ const PersonDetChart = ({ vggData }: any) => {
         ],
       };
 
-      // Set the chart options
       chartInstance.setOption(chartOptions);
 
-      // Cleanup on unmount
       return () => {
         chartInstance && chartInstance.dispose();
       };
