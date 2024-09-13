@@ -91,6 +91,7 @@ const PersonDetChart = ({ vggData, seekToTime }: any) => {
           text: "Person Detections Over Time",
           left: "center",
         },
+        animation: false,
         tooltip: {
           trigger: "axis",
           formatter: (params: any) => {
@@ -147,7 +148,7 @@ const PersonDetChart = ({ vggData, seekToTime }: any) => {
 
       // Add click event listener for seeking
       chartInstance.on("click", (params: any) => {
-        console.log(params)
+        console.log(params);
         if (seekToTime && params.value) {
           const time = params.value[0]; // x-axis value represents time
           seekToTime(time);
@@ -217,6 +218,7 @@ const ClassDetChart = ({
           text: `Class Detections - ${chartKey}`,
           left: "center",
         },
+        animation: false,
         tooltip: {
           trigger: "item",
           formatter: (params: any) => {

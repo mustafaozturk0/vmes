@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { memo, useRef, useState } from "react";
 import {
   Box,
   Card,
@@ -75,7 +75,14 @@ export const Vgg = () => {
 
   const handleTimeUpdate = () => {
     if (videoRef.current) {
-      setCurrentTime(videoRef.current.currentTime);
+      setCurrentTime(videoRef.current.currentTime); // Updates only time state
+    }
+  };
+
+  const handlePlayerReady = (player: any) => {
+    videoRef.current = player.el().querySelector("video");
+    if (videoRef.current) {
+      videoRef.current.addEventListener("timeupdate", handleTimeUpdate);
     }
   };
 
@@ -83,14 +90,6 @@ export const Vgg = () => {
     return data.reduce((prev: any, curr: any) => {
       return currentTime >= curr.seconds ? curr : prev;
     });
-  };
-
-  const handlePlayerReady = (player: any) => {
-    videoRef.current = player.el().querySelector("video");
-
-    if (videoRef.current) {
-      videoRef.current.addEventListener("timeupdate", handleTimeUpdate);
-    }
   };
 
   const calculateBoxStyles = (item: any) => {
@@ -116,6 +115,7 @@ export const Vgg = () => {
   };
 
   const seekToTime = (time: number) => {
+    console.log(time);
     if (videoRef.current) {
       videoRef.current.currentTime = time;
     }
