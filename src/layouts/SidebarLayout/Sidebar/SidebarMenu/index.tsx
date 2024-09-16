@@ -231,49 +231,6 @@ function SidebarMenu() {
               </Button>
             </ListItem>
 
-            <CustomizedAccordion defaultExpanded={true} id="reports">
-              <AccordionSummary expandIcon={<Expand />} sx={{ px: 0.5 }}>
-                <div style={{ display: "flex", alignItems: "center" }}>
-                  <ReportOffRounded />{" "}
-                  <CustomizedItemText pl={1}>
-                    {t("sidebar.buttons.reports")}
-                  </CustomizedItemText>
-                </div>
-              </AccordionSummary>
-              <AccordionDetails sx={{ py: 0, px: 1 }}>
-                <SubMenuWrapper>
-                  <List component="div">
-                    <ListItem component="div">
-                      <Button
-                        disableRipple
-                        component={RouterLink}
-                        to="/reports"
-                        startIcon={<Search />}
-                        onClick={handleItemClick}
-                      >
-                        <CustomizedItemText fontSize={12}>
-                          {t("Search")}{" "}
-                        </CustomizedItemText>
-                      </Button>
-                    </ListItem>
-                    <ListItem component="div">
-                      <Button
-                        disableRipple
-                        component={RouterLink}
-                        to="/false-positives"
-                        startIcon={<WrongLocation />}
-                        onClick={handleItemClick}
-                      >
-                        <CustomizedItemText fontSize={12}>
-                          {" "}
-                          {t("False Positives")}{" "}
-                        </CustomizedItemText>
-                      </Button>
-                    </ListItem>
-                  </List>
-                </SubMenuWrapper>
-              </AccordionDetails>
-            </CustomizedAccordion>
             <ListItem component="div">
               <Button
                 disableRipple
@@ -304,20 +261,6 @@ function SidebarMenu() {
                 </Button>
               </ListItem>
             </>
-            <ListItem component="div">
-              <Button
-                disableRipple
-                component={RouterLink}
-                to="/outputs"
-                onClick={handleItemClick}
-              >
-                <Output />{" "}
-                <CustomizedItemText>
-                  {" "}
-                  {t("sidebar.buttons.outputs")}{" "}
-                </CustomizedItemText>
-              </Button>
-            </ListItem>
           </List>
         </SubMenuWrapper>
       </MenuWrapper>

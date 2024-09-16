@@ -4,10 +4,12 @@ import { ClassDetChart } from "./ClassDetChart";
 
 interface VggChartProps {
   vggData: any;
+  duration: number;
+
   seekToTime?: (time: number) => void;
 }
 
-const VggChart = ({ vggData, seekToTime }: VggChartProps) => {
+const VggChart = ({ vggData, seekToTime, duration }: VggChartProps) => {
   return (
     <div>
       <PersonDetChart vggData={vggData} seekToTime={seekToTime} />
@@ -16,6 +18,7 @@ const VggChart = ({ vggData, seekToTime }: VggChartProps) => {
         .map((key) => (
           <ClassDetChart
             key={key}
+            duration={duration}
             chartKey={key}
             vggData={vggData}
             seekToTime={seekToTime}

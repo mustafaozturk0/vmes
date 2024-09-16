@@ -6,9 +6,11 @@ export const ClassDetChart = ({
   chartKey,
   vggData,
   seekToTime,
+  duration,
 }: {
   chartKey: string;
   vggData: any;
+  duration: number;
   seekToTime?: (time: number) => void;
 }) => {
   const chartRef = useRef<HTMLDivElement>(null);
@@ -18,34 +20,38 @@ export const ClassDetChart = ({
     if (chartRef.current) {
       chartInstance = echarts.init(chartRef.current);
 
-      const classColorMap: Record<string, string> = {
-        Run: "#4CAF50", // Green
-        Pause: "#FFC107", // Yellow
-        Stop: "#F44336", // Red
-        Take: "#00BCD4", // Cyan
-        Place: "#FF5722", // Orange
-        Closed: "#9C27B0", // Purple
-        Open: "#2196F3", // Blue,
-        UrunVar: "#607D8B", // Grey
-        UrunYok: "#795548", // Brown
-        KapakKapali: "#FF9800", // Amber
-        KapakAcik: "#9E9E9E", // Grey
-        IsikVar: "#8BC34A", // Light Green
-        IsikYok: "#FFEB3B", // Yellow
-        Alarm: "#E91E63", // Pink
-      };
+      // Prepare data
+      const data = vggData[chartKey].data;
 
-      const classDetSeries = vggData[chartKey].data.map(
-        (item: any, index: number) => ({
-          name: item.class,
-          type: "bar",
-          stack: "total",
-          data: [{ value: item.seconds, name: item.class }],
-          itemStyle: {
-            color: classColorMap[item.class] || "#000",
-          },
-        })
+      // Extract class names
+      const classNames = Array.from(
+        new Set(data.map((item: any) => item.class))
       );
+
+      // Prepare data points using class names directly
+      const lineData: [number, string][] = [];
+
+      // Start with initial class at time 0 if not already
+      if (data[0].seconds !== 0) {
+        lineData.push([0, data[0].class]);
+      }
+
+      data.forEach((item: any, index: number) => {
+        const currentTime = item.seconds;
+        const currentClass = item.class;
+
+        // Add data point at current time
+        lineData.push([currentTime, currentClass]);
+
+        // If not the last item, add a point at the next time with the same class
+        if (index < data.length - 1) {
+          const nextTime = data[index + 1].seconds;
+          lineData.push([nextTime, currentClass]);
+        } else {
+          // For the last item, extend to the duration
+          lineData.push([duration, currentClass]);
+        }
+      });
 
       const chartOptions = {
         title: {
@@ -54,28 +60,35 @@ export const ClassDetChart = ({
         },
         animation: false,
         tooltip: {
-          trigger: "item",
+          trigger: "axis",
           formatter: (params: any) => {
-            const className = params.seriesName;
-            const duration = params.data.value;
-            return `${className}: ${duration} sec`;
+            const className = params[0].data[1];
+            const time = params[0].data[0];
+            return `${className}: ${time.toFixed(2)} sec`;
           },
-        },
-        legend: {
-          data: Array.from(
-            new Set(vggData[chartKey].data.map((item: any) => item.class))
-          ),
-          top: 30,
         },
         xAxis: {
           type: "value",
           name: "Seconds",
+          min: 0,
+          max: duration,
         },
         yAxis: {
           type: "category",
-          show: false,
+          data: classNames,
+          name: "Classes",
         },
-        series: classDetSeries,
+        series: [
+          {
+            type: "line",
+            step: "end",
+            data: lineData,
+            lineStyle: {
+              color: "#2196F3",
+            },
+            symbol: "none",
+          },
+        ],
         dataZoom: [
           {
             type: "slider",
@@ -94,9 +107,8 @@ export const ClassDetChart = ({
 
       // Add click event listener for seeking
       chartInstance.on("click", (params: any) => {
-        console.log(params);
         if (seekToTime && params.value) {
-          const time = params.value; // x-axis value represents time
+          const time = params.value[0]; // x-axis value represents time
           seekToTime(time);
         }
       });
@@ -105,11 +117,11 @@ export const ClassDetChart = ({
         chartInstance && chartInstance.dispose();
       };
     }
-  }, [chartKey, vggData, seekToTime]);
+  }, [chartKey, vggData, duration, seekToTime]);
 
   return (
     <Card sx={{ mt: 2, p: 2 }}>
-      <div ref={chartRef} style={{ height: "150px", width: "100%" }}></div>
+      <div ref={chartRef} style={{ height: "250px", width: "100%" }}></div>
     </Card>
   );
 };

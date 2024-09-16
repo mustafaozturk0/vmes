@@ -74,6 +74,7 @@ export const Vgg = () => {
 
   const [selectedVgg, setSelectedVgg] = useState(vggOptions[0]);
   const [showBbox, setShowBbox] = useState(false);
+  const [duration, setDuration] = useState(0);
 
   const videoJsOptions = {
     controls: true,
@@ -97,6 +98,9 @@ export const Vgg = () => {
     videoRef.current = player.el().querySelector("video");
     if (videoRef.current) {
       videoRef.current.addEventListener("timeupdate", handleTimeUpdate);
+      videoRef.current.addEventListener("loadedmetadata", () => {
+        setDuration(videoRef.current?.duration || 0);
+      });
     }
   };
 
@@ -234,7 +238,11 @@ export const Vgg = () => {
             overflow: "auto",
           }}
         >
-          <VggChart vggData={selectedVgg.data} seekToTime={seekToTime} />
+          <VggChart
+            vggData={selectedVgg.data}
+            seekToTime={seekToTime}
+            duration={duration}
+          />
         </Card>
       </Box>
     </Box>
