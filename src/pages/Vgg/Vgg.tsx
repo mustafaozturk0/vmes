@@ -10,13 +10,15 @@ import {
   Checkbox,
 } from "@mui/material";
 import VggPlayer from "./VggPlayer";
-import VggChart from "./VggChart";
+import VggChart from "./VggCharts.tsx/VggChart";
 import { vggData1 } from "./VggData1";
 import { vggData0 } from "./VggData0";
 import { useTranslation } from "react-i18next";
 import { vggData2 } from "./VggData2";
 import { vggData3 } from "./VggData3";
 import { vggData4 } from "./VggData4";
+import { run0 } from "./run0";
+import { run1 } from "./run1";
 
 export const Vgg = () => {
   const [t] = useTranslation("common");
@@ -24,30 +26,42 @@ export const Vgg = () => {
   const vggOptions = [
     {
       id: 0,
+      url: "https://khenda-public.s3.eu-west-3.amazonaws.com/video_0_run_cut.mp4",
+      data: run0,
+      name: "Run Cut 0",
+    },
+    {
+      id: 1,
+      url: "https://khenda-public.s3.eu-west-3.amazonaws.com/video_1_run_cut.mp4",
+      data: run1,
+      name: "Run Cut 1",
+    },
+    {
+      id: 2,
       url: "https://khenda-public.s3.eu-west-3.amazonaws.com/2-BPO/%C3%9CRET%C4%B0M_CAM2_720p.mp4",
       data: vggData0,
       name: "Video 2",
     },
     {
-      id: 1,
+      id: 3,
       url: "https://khenda-public.s3.eu-west-3.amazonaws.com/2-BPO/%C3%9CRET%C4%B0M_CAM3_720p.mp4",
       data: vggData1,
       name: "Video 3",
     },
     {
-      id: 2,
+      id: 4,
       url: "https://khenda-public.s3.eu-west-3.amazonaws.com/2-BPO/%C3%9CRET%C4%B0M_CAM5_720p.mp4",
       data: vggData2,
       name: "Video 5",
     },
     {
-      id: 3,
+      id: 5,
       url: "https://khenda-public.s3.eu-west-3.amazonaws.com/2-BPO/%C3%9CRET%C4%B0M_CAM14_720p.mp4",
       data: vggData3,
       name: "Video 14",
     },
     {
-      id: 4,
+      id: 6,
       url: "https://khenda-public.s3.eu-west-3.amazonaws.com/2-BPO/%C3%9CRET%C4%B0M_CAM15_720p.mp4",
       data: vggData4,
       name: "Video 15",
