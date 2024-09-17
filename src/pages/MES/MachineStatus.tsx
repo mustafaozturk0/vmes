@@ -81,7 +81,7 @@ const MachineStatus: React.FC = () => {
       .unwrap()
 
       .catch((error) => {
-        enqueueSnackbar(t("Couldnt load machine data"), {
+        enqueueSnackbar(t("mesPage.couldntLoadMachineData"), {
           variant: "error",
         });
       });
@@ -177,13 +177,13 @@ const MachineStatus: React.FC = () => {
                 control={control}
                 render={({ field }) => (
                   <FormControl fullWidth>
-                    <InputLabel>{t("Polygon")}</InputLabel>
+                    <InputLabel>{t("mesPage.polygon")}</InputLabel>
                     <Select
                       {...field}
                       multiple={true}
                       value={selectedPolygons}
                       variant="outlined"
-                      label={t("Polygon")}
+                      label={t("mesPage.polygon")}
                     >
                       {polygonOptions.map((polygon) => (
                         <MenuItem
@@ -285,7 +285,7 @@ const MachineStatus: React.FC = () => {
                 loading={isLoading}
                 startIcon={<Search />}
               >
-                Search
+                {t("searchForm.search")}
               </LoadingButton>
             </Grid>
           </Grid>
@@ -298,7 +298,7 @@ const MachineStatus: React.FC = () => {
           <Grid container spacing={2}>
             <Grid item xs={12} sm={9}>
               <Typography variant="h5">
-                Polygon:{" "}
+                {t("mesPage.polygon")}:{" "}
                 {polygonOptions.find((p) => p.id === machine.polygonId)?.name}
               </Typography>
               <LogChart

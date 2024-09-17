@@ -303,5 +303,26 @@
       "refreshOutput": "Refresh Outputs",
       "addOutput": "Add Output"
     }
+  },
+  "factory": {
+    "noData":"No data",
+    "error": "Error",
+    "line": "Line",
+    "machine":"Machine",
+    "addLine": "Add Line",
+    "lineName": "Line Name",
+    "linePlaceholder": "Line 1",
+    "addStation": "Add Station"
+  },
+  "factoryButtonGroup": {
+    "lineAdded": "Line added successfully",
+    "errorAddingLine": "Error adding line",
+    "stationAdded": "Station added successfully",
+    "errorAddingStation": "Error adding station"
+  },
+  "mesPage": {
+    "logSummary": "Log Summary: ",
+    "couldntLoadMachineData": "Couldnt load machine data",
+    "polygon": "Polygon"
   }
 }

@@ -40,7 +40,7 @@
       "darkMode": "Karanlık mod",
       "lightMode": "Aydınlık mod",
       "changeLanguage": "Dili değiştir",
-      "toggleMenu": "Menüyü değiştir"
+      "toggleMenu": "Menüyü aç"
     },
     "buttons": {
       "home": "Genel bakış",
@@ -303,5 +303,26 @@
       "refreshOutput": "Çıkışları Yenile",
       "addOutput": "Çıkış Ekle"
     }
+  },
+  "factory": {
+    "noData": "Veri yok",
+    "error": "Hata",
+    "line": "Hat",
+    "machine": "Makine",
+    "addLine": "Hat Ekle",
+    "lineName": "Hat Adı",
+    "linePlaceholder": "Hat 1",
+    "addStation": "İstasyon Ekle"
+  },
+  "factoryButtonGroup": {
+    "lineAdded": "Hat başarıyla eklendi",
+    "errorAddingLine": "Hat eklenirken hata oluştu",
+    "stationAdded": "İstasyon başarıyla eklendi",
+    "errorAddingStation": "İstasyon eklenirken hata oluştu"
+  },
+  "mesPage": {
+    "logSummary": "Kayıt Özeti: ",
+    "couldntLoadMachineData": "Makine verisi yüklenemedi",
+    "polygon": "Poligon"
   }
 }

@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from "react";
 import { MachineLogDto } from "../../api/swagger/swagger.api";
 import * as echarts from "echarts";
 import { Box, Typography } from "@mui/material";
+import { useTranslation } from "react-i18next";
 
 interface LogChartProps {
   data: MachineLogDto[];
@@ -9,6 +10,7 @@ interface LogChartProps {
 }
 
 const LogChart: React.FC<LogChartProps> = ({ data, colors }) => {
+  const [t] = useTranslation("common");
   const chartRef = useRef<HTMLDivElement>(null);
   let chartInstance: echarts.ECharts | null = null;
 
@@ -148,7 +150,7 @@ const LogChart: React.FC<LogChartProps> = ({ data, colors }) => {
       ></div>
       <Box id="logSummary" sx={{ mt: 2 }}>
         <Typography variant="h5" align="center">
-          Log Summary:
+          {t("mesPage.logSummary")}
         </Typography>
       </Box>
     </Box>

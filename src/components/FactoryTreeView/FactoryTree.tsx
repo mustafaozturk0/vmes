@@ -52,7 +52,7 @@ export default function EngineeringTree({ onSelectCallback }: TreeViewProps) {
     getFactoryTree()
       .unwrap()
       .catch((error) => {
-        enqueueSnackbar(t("factory.tree.error"), {
+        enqueueSnackbar(t("factory.error"), {
           variant: "error",
         });
       });
@@ -282,6 +282,6 @@ export default function EngineeringTree({ onSelectCallback }: TreeViewProps) {
       </div>
     </div>
   ) : (
-    <Alert severity="info">{t("factory.tree.noData")}</Alert>
+    <Alert severity="info">{t("factory.noData")}</Alert>
   );
 }

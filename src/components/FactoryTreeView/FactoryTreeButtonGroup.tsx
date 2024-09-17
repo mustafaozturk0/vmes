@@ -52,12 +52,12 @@ export const FactoryTreeButtonGroup = () => {
         return id;
       })
       .finally(() => {
-        enqueueSnackbar(t("engineeringTools.buttonGroup.lineAdded"), {
+        enqueueSnackbar(t("factoryButtonGroup.lineAdded"), {
           variant: "success",
         });
       })
       .catch((error) => {
-        enqueueSnackbar(t("engineeringTools.buttonGroup.lineAddError"), {
+        enqueueSnackbar(t("factoryButtonGroup.errorAddingLine"), {
           variant: "error",
         });
       });
@@ -75,12 +75,12 @@ export const FactoryTreeButtonGroup = () => {
         return id;
       })
       .finally(() => {
-        enqueueSnackbar(t("engineeringTools.buttonGroup.stationAdded"), {
+        enqueueSnackbar(t("factoryButtonGroup.stationAdded"), {
           variant: "success",
         });
       })
       .catch((error) => {
-        enqueueSnackbar(t("engineeringTools.buttonGroup.stationAddError"), {
+        enqueueSnackbar(t("factoryButtonGroup.errorAddingStation"), {
           variant: "error",
         });
       });
@@ -90,7 +90,7 @@ export const FactoryTreeButtonGroup = () => {
     const iconFontSize = 8;
     return (
       <>
-        <TooltipWrapper title={<>{t("factory.page.addLine")}</>} arrow>
+        <TooltipWrapper title={<>{t("factory.addLine")}</>} arrow>
           <span>
             <IconButton
               onClick={() => setAddLineDialogOpen(!addLineDialogOpen)}
@@ -104,12 +104,12 @@ export const FactoryTreeButtonGroup = () => {
                 marginTop={-1}
                 color="success"
               >
-                {t("Add Line")}
+                {t("factory.addLine")}
               </Typography>
             </IconButton>
           </span>
         </TooltipWrapper>
-        <TooltipWrapper title={<>{t("Add Station")}</>} arrow>
+        <TooltipWrapper title={<>{t("factory.addStation")}</>} arrow>
           <span>
             <IconButton
               onClick={() => setAddStationDialogOpen(!addStationDialogOpen)}
@@ -120,7 +120,7 @@ export const FactoryTreeButtonGroup = () => {
               sx={{ display: "inline-block", padding: 0, mr: 2 }}
             >
               <TableRestaurant fontSize={"small"} />
-              {t("Add Station")
+              {t("factory.addStation")
                 .split(" ")
                 .map((word, index) => (
                   <Typography
@@ -152,9 +152,9 @@ export const FactoryTreeButtonGroup = () => {
         addDialogOpen={addLineDialogOpen}
         onClose={() => setAddLineDialogOpen(false)}
         onAddCallback={addNewLine}
-        title={t("factory.page.addLine")}
-        label={t("factory.addLine.lineName")}
-        placeholder={t("engineeringTools.buttonGroup.linePlaceholder")}
+        title={t("factory.addLine")}
+        label={t("factory.lineName")}
+        placeholder={t("factory.linePlaceholder")}
       />
       <AddStationDialog
         open={addStationDialogOpen}

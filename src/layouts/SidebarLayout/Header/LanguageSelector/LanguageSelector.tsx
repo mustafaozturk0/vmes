@@ -47,66 +47,66 @@ function LanguageSelector() {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   const languages = [
-    {
-      value: ILanguages.DE,
-      label: "germanflag",
-      text: t("sidebar.languages.german"),
-    },
+    // {
+    //   value: ILanguages.DE,
+    //   label: "germanflag",
+    //   text: t("sidebar.languages.german"),
+    // },
     {
       value: ILanguages.EN,
       label: "usflag",
       text: t("sidebar.languages.english"),
     },
-    {
-      value: ILanguages.ES,
-      label: "spainflag",
-      text: t("sidebar.languages.spain"),
-    },
-    {
-      value: ILanguages.FR,
-      label: "franceflag",
-      text: t("sidebar.languages.francais"),
-    },
-    {
-      value: ILanguages.IT,
-      label: "italyflag",
-      text: t("sidebar.languages.italian"),
-    },
-    {
-      value: ILanguages.PL,
-      label: "polishflag",
-      text: t("sidebar.languages.polish"),
-    },
-    {
-      value: ILanguages.PT,
-      label: "portugueseflag",
-      text: t("sidebar.languages.portugal"),
-    },
-    {
-      value: ILanguages.RO,
-      label: "romaniaflag",
-      text: t("sidebar.languages.romania"),
-    },
+    // {
+    //   value: ILanguages.ES,
+    //   label: "spainflag",
+    //   text: t("sidebar.languages.spain"),
+    // },
+    // {
+    //   value: ILanguages.FR,
+    //   label: "franceflag",
+    //   text: t("sidebar.languages.francais"),
+    // },
+    // {
+    //   value: ILanguages.IT,
+    //   label: "italyflag",
+    //   text: t("sidebar.languages.italian"),
+    // },
+    // {
+    //   value: ILanguages.PL,
+    //   label: "polishflag",
+    //   text: t("sidebar.languages.polish"),
+    // },
+    // {
+    //   value: ILanguages.PT,
+    //   label: "portugueseflag",
+    //   text: t("sidebar.languages.portugal"),
+    // },
+    // {
+    //   value: ILanguages.RO,
+    //   label: "romaniaflag",
+    //   text: t("sidebar.languages.romania"),
+    // },
     {
       value: ILanguages.TR,
       label: "turkishflag",
       text: t("sidebar.languages.turkish"),
     },
-    {
-      value: ILanguages.RU,
-      label: "russiaflag",
-      text: t("sidebar.languages.ruski"),
-    },
-    {
-      value: ILanguages.CN,
-      label: "chinaflag",
-      text: t("sidebar.languages.china"),
-    },
-    {
-      value: ILanguages.KR,
-      label: "koreanflag",
-      text: t("sidebar.languages.korean"),
-    },
+    // {
+    //   value: ILanguages.RU,
+    //   label: "russiaflag",
+    //   text: t("sidebar.languages.ruski"),
+    // },
+    // {
+    //   value: ILanguages.CN,
+    //   label: "chinaflag",
+    //   text: t("sidebar.languages.china"),
+    // },
+    // {
+    //   value: ILanguages.KR,
+    //   label: "koreanflag",
+    //   text: t("sidebar.languages.korean"),
+    // },
   ];
 
   const handleOpen = () => {

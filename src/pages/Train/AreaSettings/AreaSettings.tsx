@@ -37,7 +37,7 @@ export const AreaSettings = () => {
 
   const handleDeletePolygon = () => {
     // eslint-disable-next-line no-restricted-globals
-    if (!confirm(t("Are you sure to delete this polygon?"))) return;
+    if (!confirm(t("train.areaDialog.wantToDeleteThisPolygon"))) return;
     else {
       setPolygons(
         polygons.filter((_, index) => index !== selectedPolygonIndex)
